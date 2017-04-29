@@ -1,0 +1,139 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Samples</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Sample</th>
+      <th>Reading number</th>
+      <th>Bacterial number</th>
+      <th>Bacterial size shape</th>
+      <th>Bacterial mean</th>
+      <th>Bacterial standard deviation</th>
+      <th>Bacterial dilution</th>
+      <th>No bacteria per gram</th>
+      <th>Micrograms</th>
+      <th>Actinobacteria</th>
+      <th>Actinobacteria mean</th>
+      <th>Actinobacterial standard deviation</th>
+      <th>Actinobacteria dilution</th>
+      <th>Actinobacteria dilution</th>
+      <th>Actinobacteria length cm</th>
+      <th>Actinobacteria micrograms</th>
+      <th>Fungi</th>
+      <th>Fungi diameter</th>
+      <th>Fungi colour</th>
+      <th>Fungi calculation</th>
+      <th>Fungi mean</th>
+      <th>Fungi standard deviation</th>
+      <th>Fungi dilution</th>
+      <th>Fungal strands cm</th>
+      <th>Fungi micrograms</th>
+      <th>Oomycetes</th>
+      <th>Oomycetes diameter</th>
+      <th>Oomycetes colour</th>
+      <th>Oomycetes calculation</th>
+      <th>Oomycetes mean</th>
+      <th>Oomycetes standard deviation</th>
+      <th>Oomycetes dilution</th>
+      <th>Oomycetes number per gram</th>
+      <th>Oomycetes micrograms</th>
+      <th>Flagellate</th>
+      <th>Flagellate mean</th>
+      <th>Flagellate standard deviation</th>
+      <th>Flagellate dilution</th>
+      <th>Flagellate protozoa</th>
+      <th>Amoebae</th>
+      <th>Amoebae mean</th>
+      <th>Amoebae standard deviation</th>
+      <th>Amoebae dilution</th>
+      <th>Amoebae protozoa</th>
+      <th>Ciliates</th>
+      <th>Ciliates mean</th>
+      <th>Ciliates standard deviation</th>
+      <th>Ciliates dilution</th>
+      <th>Ciliates protozoa</th>
+      <th>Nematodes</th>
+      <th>Nematodes mean</th>
+      <th>Nematodes dilution</th>
+      <th>Nematodes protozoa</th>
+      <th>Fb biomass ratio</th>
+      <th>Gps</th>
+      <th>Sample date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @samples.each do |sample| %>
+      <tr>
+        <td><%= sample.user_id %></td>
+        <td><%= sample.sample_id %></td>
+        <td><%= sample.reading_number %></td>
+        <td><%= sample.bacterial_number %></td>
+        <td><%= sample.bacterial_size_shape %></td>
+        <td><%= sample.bacterial_mean %></td>
+        <td><%= sample.bacterial_standard_deviation %></td>
+        <td><%= sample.bacterial_dilution %></td>
+        <td><%= sample.no_bacteria_per_gram %></td>
+        <td><%= sample.micrograms %></td>
+        <td><%= sample.actinobacteria %></td>
+        <td><%= sample.actinobacteria_mean %></td>
+        <td><%= sample.actinobacterial_standard_deviation %></td>
+        <td><%= sample.actinobacteria_dilution %></td>
+        <td><%= sample.actinobacteria_dilution %></td>
+        <td><%= sample.actinobacteria_length_cm %></td>
+        <td><%= sample.actinobacteria_micrograms %></td>
+        <td><%= sample.fungi %></td>
+        <td><%= sample.fungi_diameter %></td>
+        <td><%= sample.fungi_colour %></td>
+        <td><%= sample.fungi_calculation %></td>
+        <td><%= sample.fungi_mean %></td>
+        <td><%= sample.fungi_standard_deviation %></td>
+        <td><%= sample.fungi_dilution %></td>
+        <td><%= sample.fungal_strands_cm %></td>
+        <td><%= sample.fungi_micrograms %></td>
+        <td><%= sample.oomycetes %></td>
+        <td><%= sample.oomycetes_diameter %></td>
+        <td><%= sample.oomycetes_colour %></td>
+        <td><%= sample.oomycetes_calculation %></td>
+        <td><%= sample.oomycetes_mean %></td>
+        <td><%= sample.oomycetes_standard_deviation %></td>
+        <td><%= sample.oomycetes_dilution %></td>
+        <td><%= sample.oomycetes_number_per_gram %></td>
+        <td><%= sample.oomycetes_micrograms %></td>
+        <td><%= sample.flagellate %></td>
+        <td><%= sample.flagellate_mean %></td>
+        <td><%= sample.flagellate_standard_deviation %></td>
+        <td><%= sample.flagellate_dilution %></td>
+        <td><%= sample.flagellate_protozoa %></td>
+        <td><%= sample.amoebae %></td>
+        <td><%= sample.amoebae_mean %></td>
+        <td><%= sample.amoebae_standard_deviation %></td>
+        <td><%= sample.amoebae_dilution %></td>
+        <td><%= sample.amoebae_protozoa %></td>
+        <td><%= sample.ciliates %></td>
+        <td><%= sample.ciliates_mean %></td>
+        <td><%= sample.ciliates_standard_deviation %></td>
+        <td><%= sample.ciliates_dilution %></td>
+        <td><%= sample.ciliates_protozoa %></td>
+        <td><%= sample.nematodes %></td>
+        <td><%= sample.nematodes_mean %></td>
+        <td><%= sample.nematodes_dilution %></td>
+        <td><%= sample.nematodes_protozoa %></td>
+        <td><%= sample.fb_biomass_ratio %></td>
+        <td><%= sample.gps %></td>
+        <td><%= sample.sample_date %></td>
+        <td><%= link_to 'Show', sample %></td>
+        <td><%= link_to 'Edit', edit_sample_path(sample) %></td>
+        <td><%= link_to 'Destroy', sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sample', new_sample_path %>

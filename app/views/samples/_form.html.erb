@@ -1,0 +1,302 @@
+<%= form_for(sample) do |f| %>
+  <% if sample.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
+
+      <ul>
+      <% sample.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sample_id %>
+    <%= f.number_field :sample_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reading_number %>
+    <%= f.number_field :reading_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bacterial_number %>
+    <%= f.number_field :bacterial_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bacterial_size_shape %>
+    <%= f.text_field :bacterial_size_shape %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bacterial_mean %>
+    <%= f.text_field :bacterial_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bacterial_standard_deviation %>
+    <%= f.text_field :bacterial_standard_deviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bacterial_dilution %>
+    <%= f.number_field :bacterial_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :no_bacteria_per_gram %>
+    <%= f.number_field :no_bacteria_per_gram %>
+  </div>
+
+  <div class="field">
+    <%= f.label :micrograms %>
+    <%= f.number_field :micrograms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actinobacteria %>
+    <%= f.number_field :actinobacteria %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actinobacteria_mean %>
+    <%= f.text_field :actinobacteria_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actinobacterial_standard_deviation %>
+    <%= f.text_field :actinobacterial_standard_deviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actinobacteria_dilution %>
+    <%= f.number_field :actinobacteria_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actinobacteria_dilution %>
+    <%= f.number_field :actinobacteria_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actinobacteria_length_cm %>
+    <%= f.text_field :actinobacteria_length_cm %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actinobacteria_micrograms %>
+    <%= f.number_field :actinobacteria_micrograms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi %>
+    <%= f.number_field :fungi %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi_diameter %>
+    <%= f.number_field :fungi_diameter %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi_colour %>
+    <%= f.text_field :fungi_colour %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi_calculation %>
+    <%= f.number_field :fungi_calculation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi_mean %>
+    <%= f.text_field :fungi_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi_standard_deviation %>
+    <%= f.text_field :fungi_standard_deviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi_dilution %>
+    <%= f.number_field :fungi_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungal_strands_cm %>
+    <%= f.number_field :fungal_strands_cm %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fungi_micrograms %>
+    <%= f.number_field :fungi_micrograms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes %>
+    <%= f.number_field :oomycetes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_diameter %>
+    <%= f.number_field :oomycetes_diameter %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_colour %>
+    <%= f.text_field :oomycetes_colour %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_calculation %>
+    <%= f.number_field :oomycetes_calculation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_mean %>
+    <%= f.text_field :oomycetes_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_standard_deviation %>
+    <%= f.text_field :oomycetes_standard_deviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_dilution %>
+    <%= f.number_field :oomycetes_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_number_per_gram %>
+    <%= f.number_field :oomycetes_number_per_gram %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oomycetes_micrograms %>
+    <%= f.text_field :oomycetes_micrograms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flagellate %>
+    <%= f.number_field :flagellate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flagellate_mean %>
+    <%= f.text_field :flagellate_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flagellate_standard_deviation %>
+    <%= f.text_field :flagellate_standard_deviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flagellate_dilution %>
+    <%= f.number_field :flagellate_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flagellate_protozoa %>
+    <%= f.number_field :flagellate_protozoa %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amoebae %>
+    <%= f.number_field :amoebae %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amoebae_mean %>
+    <%= f.text_field :amoebae_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amoebae_standard_deviation %>
+    <%= f.text_field :amoebae_standard_deviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amoebae_dilution %>
+    <%= f.number_field :amoebae_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amoebae_protozoa %>
+    <%= f.number_field :amoebae_protozoa %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ciliates %>
+    <%= f.number_field :ciliates %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ciliates_mean %>
+    <%= f.text_field :ciliates_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ciliates_standard_deviation %>
+    <%= f.text_field :ciliates_standard_deviation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ciliates_dilution %>
+    <%= f.number_field :ciliates_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ciliates_protozoa %>
+    <%= f.number_field :ciliates_protozoa %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nematodes %>
+    <%= f.number_field :nematodes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nematodes_mean %>
+    <%= f.text_field :nematodes_mean %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nematodes_dilution %>
+    <%= f.number_field :nematodes_dilution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nematodes_protozoa %>
+    <%= f.text_field :nematodes_protozoa %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fb_biomass_ratio %>
+    <%= f.text_field :fb_biomass_ratio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gps %>
+    <%= f.text_field :gps %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sample_date %>
+    <%= f.date_select :sample_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
