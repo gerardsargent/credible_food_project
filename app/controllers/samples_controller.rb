@@ -5,16 +5,19 @@ class SamplesController < ApplicationController
   # GET /samples.json
   def index
     @samples = Sample.all
+    @page_title = "Sample History Overview"
   end
 
   # GET /samples/1
   # GET /samples/1.json
   def show
+    @page_title = @sample.sample_id
   end
 
   # GET /samples/new
   def new
     @sample = Sample.new
+    @page_title = "Input Sample Data"
   end
 
   # GET /samples/1/edit

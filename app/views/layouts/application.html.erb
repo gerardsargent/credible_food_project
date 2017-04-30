@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CredibleFoodProject</title>
+    <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
+
+    <meta name="keywords" content="<%= @seo_keywords %>"
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  
+    <div>
+      <div>
+        <h1>The Credible Food Project</h1>
+      </div>
+    </div>
+    
     <%= yield %>
+
   </body>
 </html>
