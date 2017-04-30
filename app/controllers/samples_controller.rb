@@ -1,5 +1,6 @@
 class SamplesController < ApplicationController
   before_action :set_sample, only: [:show, :edit, :update, :destroy]
+  layout "sample"
 
   # GET /samples
   # GET /samples.json
