@@ -13,13 +13,19 @@
 
   <body>
   
-    <div>
+    <header>
       <div>
-        <h1>Credible Food Project - Samples</h1>
+        <h1>The Credible Food Project</h1>
       </div>
-    </div>
+    </header>
     
     <%= yield %>
+
+    <footer>
+        <div>
+        <p>&copy; <%= Time.current.year %> The Credible Food Project</p>
+        </div>
+    </footer>
 
   </body>
 </html>

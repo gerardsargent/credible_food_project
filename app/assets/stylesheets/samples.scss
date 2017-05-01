@@ -2,6 +2,92 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-    background-color: grey;
+$dark-green: #213921;
+$margin-padding-desktop: 25px;
+$sample-background: #BFC24B;
+$biomass-background: #C1A065;
+
+a {
+    text-decoration: none;
+    color: $dark-green;
 }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1E2831;
+}
+
+footer, header {
+    text-align: center;
+}
+
+.bacteria {
+    background-color: $sample-background;
+}
+
+.biomass {
+    background-color: $biomass-background;
+}
+
+.crud-options {
+    text-align: center;
+}
+
+.actinobacteria {
+    background-color: lighten( $sample-background, 10% );
+}
+
+.fungi {
+    background-color: lighten( $sample-background, 20% );
+}
+
+.oomycetes {
+    background-color: lighten( $sample-background, 30% );
+}
+
+.others {
+    background-color: lighten( $sample-background, 40% );
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.sample-history {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.flex-no-wrap {
+    flex-wrap: nowrap;
+    margin: $margin-padding-desktop auto;
+}
+
+.sample-history-item {
+    margin: $margin-padding-desktop;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 200px;
+}
+
+.sample-history-title {
+    width: 100%;
+    text-align: center;
+    // padding: $margin-padding-desktop;
+}
+
+.sample-notice {
+    background-color: #96D4FF;
+    border: 1px solid #96C8F2;
+    padding: $margin-padding-desktop;
+}
+
