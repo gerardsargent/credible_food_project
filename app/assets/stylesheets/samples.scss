@@ -6,6 +6,7 @@ $dark-green: #213921;
 $margin-padding-desktop: 25px;
 $sample-background: #BFC24B;
 $biomass-background: #C1A065;
+$form-background: #C19F6D;
 
 a {
     text-decoration: none;
@@ -23,12 +24,20 @@ footer, header {
     text-align: center;
 }
 
+.amoeba {
+    background-color: lighten( $biomass-background, 20% )
+}
+
 .bacteria {
     background-color: $sample-background;
 }
 
 .biomass {
     background-color: $biomass-background;
+}
+
+.centre-text {
+    text-align: center;
 }
 
 .crud-options {
@@ -39,8 +48,20 @@ footer, header {
     background-color: lighten( $sample-background, 10% );
 }
 
+.ciliates {
+    background-color: lighten( $biomass-background, 30%);
+}
+
+.flagellate {
+    background-color: lighten( $biomass-background, 10%);
+}
+
 .fungi {
     background-color: lighten( $sample-background, 20% );
+}
+
+.nematodes {
+    background-color: lighten( $biomass-background, 40%);
 }
 
 .oomycetes {
@@ -67,9 +88,22 @@ footer, header {
     margin: 0 auto;
 }
 
+.flex-centre {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .flex-no-wrap {
     flex-wrap: nowrap;
     margin: $margin-padding-desktop auto;
+}
+
+.form-header {
+    background-color: $form-background;
 }
 
 .sample-history-item {
@@ -90,4 +124,3 @@ footer, header {
     border: 1px solid #96C8F2;
     padding: $margin-padding-desktop;
 }
-
