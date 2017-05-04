@@ -170,7 +170,6 @@
           <div class="sample-history-item"><%= link_to 'Show', sample %></div>
           <div class="sample-history-item"><%= link_to 'Edit', edit_sample_path(sample) %></div>
           <div class="sample-history-item"><%= link_to 'Destroy', sample, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-          <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
         </div>
 
       </div>
@@ -180,4 +179,7 @@
     <% end %>
   <% end %>
 
+  <div class="container">
+    <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
+  </div>
 </main>
