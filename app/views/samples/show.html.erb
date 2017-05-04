@@ -2,7 +2,7 @@
 
   <p id="notice"><%= notice %></p>
 
-  <div class="sample-history flex-no-wrap">
+  <div class="sample-history flex-centre centre-text">
 
         <div class="sample-history-item">
           <h3>User ID:</h3>
@@ -27,6 +27,11 @@
         <div class="sample-history-item">
           <h3>GPS Location of Sample:</h3>
           <p> <p><%= @sample.gps %></p>
+        </div>
+
+        <div class="sample-history-item">
+          <h3>Coverslip Size:</h3>
+          <p> <p><%= @sample.coverslip %></p>
         </div>
 
       </div>

@@ -43,6 +43,11 @@
         <%= f.label "Date Sample Taken:" %>
         <%= f.date_select :sample_date %>
       </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Coverslip Size:" %>
+        <%= f.number_field :coverslip %>
+      </div>
     </div>
 
     <!-- ****** Bacteria -->
@@ -51,27 +56,17 @@
         <h3>Bacteria</h3>
       </div>
       <div class="sample-history-item">
-        <%= f.label :bacterial_number %>
+        <%= f.label "Number of Bacteria:" %>
         <%= f.number_field :bacterial_number %>
       </div>
 
       <div class="sample-history-item">
-        <%= f.label :bacterial_size_shape %>
+        <%= f.label "Bacterial Size & Shape:" %>
         <%= f.text_field :bacterial_size_shape %>
       </div>
 
       <div class="sample-history-item">
-        <%= f.label :bacterial_mean %>
-        <%= f.text_field :bacterial_mean %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label :bacterial_standard_deviation %>
-        <%= f.text_field :bacterial_standard_deviation %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label :bacterial_dilution %>
+        <%= f.label "Bacterial Dilution Level:" %>
         <%= f.number_field :bacterial_dilution %>
       </div>
 
