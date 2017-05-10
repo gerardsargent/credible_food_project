@@ -9,6 +9,12 @@
     <p id="notice"><%= notice %></p>
   </div>
 
+  <div class="container">
+    <div class="flex-centre"
+      <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
+    </div>
+  </div>
+
   <% if @samples.blank? %>
     <div class="container centre-text">
       <h3>No sample records have been uploaded. Please upload the first sample below...</h3>
@@ -43,7 +49,7 @@
 
         <div class="sample-history-item">
           <h3>GPS Location of Sample:</h3>
-          <p> <p><%= sample.gps %></p>
+          <p><%= sample.gps %></p>
         </div>
 
       </div>
@@ -63,6 +69,11 @@
         <div class="sample-history-item">
           <h3>Micrograms of Bacteria:</h3>
           <p><%= sample.micrograms %></p>
+        </div>
+
+        <div class="sample-history-item">
+          <h3>Bacterial Mean Number:</h3>
+          <p><%= sample.bacterial_mean %></p>
         </div>
 
       </div>
@@ -180,11 +191,5 @@
 
     <% end %>
   <% end %>
-
-  <div class="container">
-    <div class="flex-centre"
-      <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
-    </div>
-  </div>
 
 </main>
