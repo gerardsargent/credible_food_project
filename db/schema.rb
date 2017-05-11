@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511093613) do
+ActiveRecord::Schema.define(version: 20170511165541) do
 
   create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "sample_id"
     t.integer  "reading_number"
     t.integer  "bacterial_number"
     t.string   "bacterial_size_shape"
@@ -67,11 +65,14 @@ ActiveRecord::Schema.define(version: 20170511093613) do
     t.integer  "nematodes_dilution"
     t.float    "nematodes_protozoa",                 limit: 24
     t.float    "fb_biomass_ratio",                   limit: 24
-    t.float    "gps",                                limit: 24
-    t.date     "sample_date"
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
     t.integer  "coverslip"
+    t.integer  "user_id"
+    t.integer  "sample_id"
+    t.date     "sample_date"
+    t.integer  "gps"
+    t.float    "fungal_cm_length_for_calc",          limit: 24
     t.index ["gps"], name: "index_samples_on_gps", using: :btree
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree
