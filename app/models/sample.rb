@@ -1,5 +1,5 @@
 class Sample < ApplicationRecord
-    before_save :bacterial_mean_calc, :bacterial_st_dev_calc, :actino_mean_calc, :actino_st_dev_calc, :fungi_mean_calc, :fungi_st_dev_calc, :oomycetes_mean_calc, :oomycetes_st_dev_calc #, :bacteria_per_gm_calc
+    before_save :bacterial_mean_calc, :bacterial_st_dev_calc, :bacteria_per_gm_calc, :bacterial_micrograms_calc, :actino_mean_calc, :actino_st_dev_calc, :actino_cm_length_calc, :fungi_mean_calc, :fungi_st_dev_calc, :oomycetes_mean_calc, :oomycetes_st_dev_calc
  
     def bacterial_mean_calc
         # Take all of the readings for sample x and put them into an array
@@ -12,18 +12,24 @@ class Sample < ApplicationRecord
         @bacterial_sum = @reading_array.sum
         
         @bacterial_mean = @bacterial_sum / @reading_length
-        self.bacterial_mean = @bacterial_mean
+        self.bacterial_mean = @bacterial_mean.round(2)
     end
 
     def bacterial_st_dev_calc
         sum_sqr = @reading_array.map {|x| x * x}.reduce(&:+)
         
-        self.bacterial_standard_deviation = Math.sqrt((sum_sqr - @reading_length * @bacterial_mean * @bacterial_mean)/(@reading_length-1))
+        self.bacterial_standard_deviation = Math.sqrt((sum_sqr - @reading_length * @bacterial_mean * @bacterial_mean)/(@reading_length-1)).round(2)
     end
 
-    # def bacteria_per_gm_calc
-    #     self.no_bacteria_per_gram = (((@bacterial_mean * self.bacterial_dilution) * self.coverslip)*22)
-    # end
+    def bacteria_per_gm_calc
+        @bacteria_per_gm = (((@bacterial_mean * self.bacterial_dilution) * self.coverslip)*22)
+        self.no_bacteria_per_gram = @bacteria_per_gm
+    end
+
+    def bacterial_micrograms_calc
+        @bacterial_micrograms = ((@bacteria_per_gm * 0.000002))
+        self.micrograms = @bacterial_micrograms
+    end
 
     def actino_mean_calc
         @actino_array = Sample.where(sample_id: sample_id).pluck(:actinobacteria)
@@ -32,13 +38,18 @@ class Sample < ApplicationRecord
         @actino_sum = @actino_array.sum
 
         @actino_mean = @actino_sum / @actino_length
-        self.actinobacteria_mean = @actino_mean
+        self.actinobacteria_mean = @actino_mean.round(2)
     end
 
     def actino_st_dev_calc
         sum_sqr = @actino_array.map {|x| x * x}.reduce(&:+)
         
-        self.actinobacterial_standard_deviation = Math.sqrt((sum_sqr - @actino_length * @actino_mean * @actino_mean)/(@actino_length-1))
+        self.actinobacterial_standard_deviation = Math.sqrt((sum_sqr - @actino_length * @actino_mean * @actino_mean)/(@actino_length-1)).round(2)
+    end
+
+    def actino_cm_length_calc
+        @actino_cm_length = (((@actino_mean * self.actinobacteria_dilution) * self.coverslip)*22)
+        self.actinobacteria_length_cm = @actino_cm_length
     end
 
     def fungi_mean_calc
@@ -48,13 +59,18 @@ class Sample < ApplicationRecord
         @fungi_sum = @fungi_array.sum
 
         @fungi_mean = @fungi_sum / @fungi_length
-        self.fungi_mean = @fungi_mean
+        self.fungi_mean = @fungi_mean.round(2)
     end
 
     def fungi_st_dev_calc
         sum_sqr = @fungi_array.map {|x| x * x}.reduce(&:+)
         
-        self.fungi_standard_deviation = Math.sqrt((sum_sqr - @fungi_length * @fungi_mean * @fungi_mean)/(@fungi_length-1))
+        self.fungi_standard_deviation = Math.sqrt((sum_sqr - @fungi_length * @fungi_mean * @fungi_mean)/(@fungi_length-1)).round(2)
+    end
+
+    def fungi_calculation_calc
+        @fungi_calc = self.fungi * self.fungi_diameter
+        self.fungi_calculation = @fungi_calc
     end
 
     def oomycetes_mean_calc
