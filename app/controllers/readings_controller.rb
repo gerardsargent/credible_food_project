@@ -1,4 +1,5 @@
 class ReadingsController < ApplicationController
+
   before_action :set_reading, only: [:show, :edit, :update, :destroy]
 
   # GET /readings
@@ -71,4 +72,5 @@ class ReadingsController < ApplicationController
     def reading_params
       params.fetch(:reading, {})
     end
+
 end

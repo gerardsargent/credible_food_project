@@ -15,12 +15,11 @@
         <td><%= link_to 'Show', reading %></td>
         <td><%= link_to 'Edit', edit_reading_path(reading) %></td>
         <td><%= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Sample', new_samples_path(samples) %></td> <!--Working on this-->
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<a href="../samples/index.html.erb">Click Here</a> <!--Hyperlink to samples page, only for testing purposes-->
 
-<%= link_to 'New Reading', new_reading_path %>
+<br>
