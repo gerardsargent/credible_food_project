@@ -73,4 +73,8 @@ class ReadingsController < ApplicationController
       params.fetch(:reading, {})
     end
 
+    def redirecting
+      redirect_to "../views/samples/index.html.erb"
+    end
+
 end
