@@ -13,9 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  url: <%= ENV.fetch("JAWSDB_URL") %>
 
 development:
   <<: *default
@@ -49,6 +47,3 @@ test:
 #
 production:
   <<: *default
-  database: credible_food_project_production
-  username: credible_food_project
-  password: <%= ENV['CREDIBLE_FOOD_PROJECT_DATABASE_PASSWORD'] %>
