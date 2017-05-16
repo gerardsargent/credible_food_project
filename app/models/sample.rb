@@ -14,6 +14,7 @@ class Sample < ApplicationRecord
         fungi_calculation_calc
         fungi_cm_for_calculation_calc
         fungal_strands_cm_calc
+        fungi_average_diameter_in_um_calc
         oomycetes_mean_calc
         oomycetes_st_dev_calc
     end
@@ -100,9 +101,21 @@ class Sample < ApplicationRecord
     end
 
     def fungal_strands_cm_calc
-        @fungal_strands_cm = (((@fungi_cm_for_calculation_calc.round(3) * self.fungi_dilution) * self.coverslip) * 22) 
+        @fungal_strands_cm = (((@fungi_cm_for_calculation_calc.round(3) * self.fungi_dilution) * self.coverslip) * 22)
         self.fungal_strands_cm = @fungal_strands_cm
     end
+
+    # def fungi_average_diameter_in_um_calc
+    #     # Take all of the readings for sample x and put them into an array
+    #     @fungi_calculation_array = Sample.where(sample_id: sample_id).pluck(:fungi_calculation)
+    #     if 
+            
+    #     else
+    #         @fungi_calculation_array_sum = @fungi_calculation_array.sum
+        
+    #     @fungi_average_diameter_in_um = @fungi_sum / @fungi_calculation_array_sum
+    #     self.fungi_average_diameter_in_um = @fungi_average_diameter_in_um
+    # end
 
     def oomycetes_mean_calc
         @oomycetes_array = Sample.where(sample_id: sample_id).pluck(:oomycetes)
