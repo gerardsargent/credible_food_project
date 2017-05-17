@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511182533) do
+ActiveRecord::Schema.define(version: 20170517150612) do
 
   create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "reading_number"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170511182533) do
     t.integer  "fungi_dilution"
     t.float    "fungal_cm_length_for_calc",          limit: 24
     t.integer  "fungal_strands_cm"
+    t.float    "fungi_average_diameter_in_um",       limit: 24
     t.integer  "fungi_micrograms"
     t.integer  "oomycetes"
     t.integer  "oomycetes_diameter"
@@ -73,7 +74,7 @@ ActiveRecord::Schema.define(version: 20170511182533) do
     t.integer  "sample_id"
     t.date     "sample_date"
     t.integer  "gps"
-    t.float    "fungi_average_diameter_in_um",       limit: 24
+    t.float    "fungi_average_diameter_in_cm",       limit: 24
     t.index ["gps"], name: "index_samples_on_gps", using: :btree
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree

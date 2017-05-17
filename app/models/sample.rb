@@ -15,8 +15,10 @@ class Sample < ApplicationRecord
         fungi_cm_for_calculation_calc
         fungal_strands_cm_calc
         fungi_average_diameter_in_um_calc
+        fungi_average_diameter_cm_calc
         oomycetes_mean_calc
         oomycetes_st_dev_calc
+        oomycetes_do_not_use_this_row_calc
     end
  
     private
@@ -91,8 +93,7 @@ class Sample < ApplicationRecord
     def fungi_do_not_use_this_row_calc
         # Refers row 26 
         fungi_do_not_use_this_row_calc = self.fungi * self.fungi_diameter
-        @fungi_do_not_use_this_row_calc_round = fungi_do_not_use_this_row_calc.round(1)
-        self.fungi_calculation = @fungi_do_not_use_this_row_calc_round
+        self.fungi_calculation = fungi_do_not_use_this_row_calc
     end
 
     def fungi_cm_for_calculation_calc
@@ -109,10 +110,22 @@ class Sample < ApplicationRecord
 
     def fungi_average_diameter_in_um_calc
         # Cell V26
+        # Take all the values from the fungi 'do not use this row' calculations
         fungi_do_not_use_this_row_array = Sample.where(sample_id: sample_id).pluck(:fungi_calculation)
+        # Remove any nil values so the array can be calculated
         fungi_compact = fungi_do_not_use_this_row_array.compact
+        # Add together all the values in the compacted array
         fungi_calc_sum = fungi_compact.sum
-        self.fungi_average_diameter_in_um = fungi_calc_sum / @fungi_sum
+
+        fungi_av_diameter_final = fungi_calc_sum / @fungi_sum
+        @fungi_av_di_final = fungi_av_diameter_final.round(1)
+        self.fungi_average_diameter_in_um = @fungi_av_di_final
+    end
+
+    def fungi_average_diameter_cm_calc
+        # Cell W26
+        @fungi_av_di_cm = @fungi_av_di_final * 0.0001
+        self.fungi_average_diameter_in_cm = @fungi_av_di_cm 
     end
 
     def oomycetes_mean_calc
@@ -129,6 +142,12 @@ class Sample < ApplicationRecord
         sum_sqr = @oomycetes_array.map {|x| x * x}.reduce(&:+)
         
         self.oomycetes_standard_deviation = Math.sqrt((sum_sqr - @oomycetes_length * @oomycetes_mean * @oomycetes_mean)/(@oomycetes_length-1))
+    end
+
+    def oomycetes_do_not_use_this_row_calc
+        # Refers to row 33 
+        oomycetes_do_not_use_this_row_calc = self.oomycetes * self.oomycetes_diameter
+        self.oomycetes_calculation = oomycetes_do_not_use_this_row_calc
     end
         
 end
