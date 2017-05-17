@@ -11,7 +11,7 @@ class Sample < ApplicationRecord
         actino_cm_length_calc
         fungi_mean_calc
         fungi_st_dev_calc
-        fungi_calculation_calc
+        fungi_do_not_use_this_row_calc
         fungi_cm_for_calculation_calc
         fungal_strands_cm_calc
         fungi_average_diameter_in_um_calc
@@ -61,8 +61,6 @@ class Sample < ApplicationRecord
         self.micrograms = @bacterial_micrograms
     end
 
-    
-
     def actino_st_dev_calc
         sum_sqr = @actino_array.map {|x| x * x}.reduce(&:+)
         
@@ -90,32 +88,32 @@ class Sample < ApplicationRecord
         self.fungi_standard_deviation = Math.sqrt((sum_sqr - @fungi_length * @fungi_mean * @fungi_mean)/(@fungi_length-1)).round(2)
     end
 
-    def fungi_calculation_calc
-        @fungi_calc = self.fungi * self.fungi_diameter
-        self.fungi_calculation = @fungi_calc
+    def fungi_do_not_use_this_row_calc
+        # Refers row 26 
+        fungi_do_not_use_this_row_calc = self.fungi * self.fungi_diameter
+        @fungi_do_not_use_this_row_calc_round = fungi_do_not_use_this_row_calc.round(1)
+        self.fungi_calculation = @fungi_do_not_use_this_row_calc_round
     end
 
     def fungi_cm_for_calculation_calc
-        @fungi_cm_for_calculation_calc = (@fungi_mean * 0.045)
+        # Cell V22
+        @fungi_cm_for_calculation_calc = (self.fungi_mean * 0.045)
         self.fungal_cm_length_for_calc = @fungi_cm_for_calculation_calc.round(3)
     end
 
     def fungal_strands_cm_calc
+        # Cell Y21
         @fungal_strands_cm = (((@fungi_cm_for_calculation_calc.round(3) * self.fungi_dilution) * self.coverslip) * 22)
         self.fungal_strands_cm = @fungal_strands_cm
     end
 
-    # def fungi_average_diameter_in_um_calc
-    #     # Take all of the readings for sample x and put them into an array
-    #     @fungi_calculation_array = Sample.where(sample_id: sample_id).pluck(:fungi_calculation)
-    #     if 
-            
-    #     else
-    #         @fungi_calculation_array_sum = @fungi_calculation_array.sum
-        
-    #     @fungi_average_diameter_in_um = @fungi_sum / @fungi_calculation_array_sum
-    #     self.fungi_average_diameter_in_um = @fungi_average_diameter_in_um
-    # end
+    def fungi_average_diameter_in_um_calc
+        # Cell V26
+        fungi_do_not_use_this_row_array = Sample.where(sample_id: sample_id).pluck(:fungi_calculation)
+        fungi_compact = fungi_do_not_use_this_row_array.compact
+        fungi_calc_sum = fungi_compact.sum
+        self.fungi_average_diameter_in_um = fungi_calc_sum / @fungi_sum
+    end
 
     def oomycetes_mean_calc
         @oomycetes_array = Sample.where(sample_id: sample_id).pluck(:oomycetes)
