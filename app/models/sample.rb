@@ -16,9 +16,23 @@ class Sample < ApplicationRecord
         fungal_strands_cm_calc
         fungi_average_diameter_in_um_calc
         fungi_average_diameter_cm_calc
+        fungi_micrograms_calc
         oomycetes_mean_calc
         oomycetes_st_dev_calc
         oomycetes_do_not_use_this_row_calc
+        oomycetes_cm_for_calculation_calc
+        oomycetes_strands_cm_calc
+        oomycetes_average_diameter_in_um_calc
+        oomycetes_average_diameter_cm_calc
+        oomycetes_micrograms_calc
+        flagellate_mean_calc
+        flagellate_st_dev_calc
+        flagellate_protozoa_calc
+        amoebae_mean_calc
+        amoebae_st_dev_calc
+        ciliates_mean_calc
+        ciliates_st_dev_calc
+        nematodes_sum_calc
     end
  
     private
@@ -128,7 +142,14 @@ class Sample < ApplicationRecord
         self.fungi_average_diameter_in_cm = @fungi_av_di_cm 
     end
 
+    def fungi_micrograms_calc
+        # Cell Z21
+        @fungi_micrograms = (@fungal_strands_cm*((3.14*((0.5*@fungi_av_di_cm)*(0.5*@fungi_av_di_cm)))*3300000))
+        self.fungi_micrograms = @fungi_micrograms
+    end
+
     def oomycetes_mean_calc
+        # Cell V28
         @oomycetes_array = Sample.where(sample_id: sample_id).pluck(:oomycetes)
         @oomycetes_array.map!(&:to_f)
         @oomycetes_length = @oomycetes_array.length
@@ -139,6 +160,7 @@ class Sample < ApplicationRecord
     end
 
     def oomycetes_st_dev_calc
+        # Cell W28
         sum_sqr = @oomycetes_array.map {|x| x * x}.reduce(&:+)
         
         self.oomycetes_standard_deviation = Math.sqrt((sum_sqr - @oomycetes_length * @oomycetes_mean * @oomycetes_mean)/(@oomycetes_length-1))
@@ -149,5 +171,112 @@ class Sample < ApplicationRecord
         oomycetes_do_not_use_this_row_calc = self.oomycetes * self.oomycetes_diameter
         self.oomycetes_calculation = oomycetes_do_not_use_this_row_calc
     end
+
+    def oomycetes_cm_for_calculation_calc
+        # Cell V29
+        @oomycetes_cm_for_calculation_calc = (self.oomycetes_mean * 0.045)
+        self.oomycetes_cm_length_for_calc = @oomycetes_cm_for_calculation_calc.round(3)
+    end
+
+    def oomycetes_strands_cm_calc
+        # Cell Y28
+        @oomycetes_strands_cm = (((@oomycetes_cm_for_calculation_calc.round(3) * self.oomycetes_dilution) * self.coverslip) * 22)
+        self.oomycetes_strands_cm = @oomycetes_strands_cm
+    end
+
+    def oomycetes_average_diameter_in_um_calc
+        # Cell V33
+        # Take all the values from the oomycetes 'do not use this row' calculations
+        oomycetes_do_not_use_this_row_array = Sample.where(sample_id: sample_id).pluck(:oomycetes_calculation)
+        # Remove any nil values so the array can be calculated
+        oomycetes_compact = oomycetes_do_not_use_this_row_array.compact
+        # Add together all the values in the compacted array
+        oomycetes_calc_sum = oomycetes_compact.sum
+
+        oomycetes_av_diameter_final = oomycetes_calc_sum / @oomycetes_sum
+        @oomycetes_av_di_final = oomycetes_av_diameter_final
+        self.oomycetes_average_diameter_in_um = @oomycetes_av_di_final
+    end
+
+    def oomycetes_average_diameter_cm_calc
+        # Cell W33
+        @oomycetes_av_di_cm = @oomycetes_av_di_final * 0.0001
+        self.oomycetes_average_diameter_in_cm = @oomycetes_av_di_cm 
+    end
+
+    def oomycetes_micrograms_calc
+        # Cell Z28
+        @oomycetes_mg = (@oomycetes_strands_cm*((3.14 * ((0.5 * @oomycetes_av_di_cm) * (0.5 * @oomycetes_av_di_cm))) * 3300000))
+        self.oomycetes_micrograms = @oomycetes_mg
+    end
+
+    def flagellate_mean_calc
+        # Cell V35
+        @flagellate_array = Sample.where(sample_id: sample_id).pluck(:flagellate)
+        @flagellate_array.map!(&:to_f)
+        @flagellate_length = @flagellate_array.length
+        @flagellate_sum = @flagellate_array.sum
+
+        @flagellate_mean = @flagellate_sum / @flagellate_length
+        self.flagellate_mean = @flagellate_mean
+    end
+
+    def flagellate_st_dev_calc
+        # Cell W35
+        sum_sqr = @flagellate_array.map {|x| x * x}.reduce(&:+)
+        
+        self.flagellate_standard_deviation = Math.sqrt((sum_sqr - @flagellate_length * @flagellate_mean * @flagellate_mean)/(@flagellate_length-1))
+    end
+
+    def flagellate_protozoa_calc
+        # Cell Y35
+        self.flagellate_protozoa = (((@flagellate_mean*self.flagellate_dilution)*self.coverslip)*22)
+    end
+
+    def amoebae_mean_calc
+        # Cell V36
+        @amoebae_array = Sample.where(sample_id: sample_id).pluck(:amoebae)
+        @amoebae_array.map!(&:to_f)
+        @amoebae_length = @amoebae_array.length
+        @amoebae_sum = @amoebae_array.sum
+
+        @amoebae_mean = @amoebae_sum / @amoebae_length
+        self.amoebae_mean = @amoebae_mean
+    end
+
+    def amoebae_st_dev_calc
+        # Cell W36
+        sum_sqr = @amoebae_array.map {|x| x * x}.reduce(&:+)
+        
+        self.amoebae_standard_deviation = Math.sqrt((sum_sqr - @amoebae_length * @amoebae_mean * @amoebae_mean)/(@amoebae_length-1))
+    end
+
+    def ciliates_mean_calc
+        # Cell V38
+        @ciliates_array = Sample.where(sample_id: sample_id).pluck(:ciliates)
+        @ciliates_array.map!(&:to_f)
+        @ciliates_length = @ciliates_array.length
+        @ciliates_sum = @ciliates_array.sum
+
+        @ciliates_mean = @ciliates_sum / @ciliates_length
+        self.ciliates_mean = @ciliates_mean
+    end
+
+    def ciliates_st_dev_calc
+        # Cell W38
+        sum_sqr = @ciliates_array.map {|x| x * x}.reduce(&:+)
+        
+        self.ciliates_standard_deviation = Math.sqrt((sum_sqr - @ciliates_length * @ciliates_mean * @ciliates_mean)/(@ciliates_length-1))
+    end
+
+    def nematodes_sum_calc
+        # Cell V38 - this is actually a SUM in the original spreadsheet. I have kept the name 'mean' as it was already written in the spreadsheet but this will need changing later
+        @nematodes_array = Sample.where(sample_id: sample_id).pluck(:nematodes)
+        @nematodes_sum = @nematodes_array.sum
+
+        self.nematodes_mean = @nematodes_sum
+    end
+
+
         
 end
