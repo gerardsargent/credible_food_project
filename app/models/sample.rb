@@ -30,9 +30,12 @@ class Sample < ApplicationRecord
         flagellate_protozoa_calc
         amoebae_mean_calc
         amoebae_st_dev_calc
+        amoebae_protozoa_calc
         ciliates_mean_calc
         ciliates_st_dev_calc
+        ciliates_protozoa_calc
         nematodes_sum_calc
+        nematodes_protozoa_calc
     end
  
     private
@@ -251,6 +254,11 @@ class Sample < ApplicationRecord
         self.amoebae_standard_deviation = Math.sqrt((sum_sqr - @amoebae_length * @amoebae_mean * @amoebae_mean)/(@amoebae_length-1))
     end
 
+    def amoebae_protozoa_calc
+        # Cell Y36
+        self.amoebae_protozoa = (((@amoebae_mean*self.amoebae_dilution)*self.coverslip)*22)
+    end
+
     def ciliates_mean_calc
         # Cell V38
         @ciliates_array = Sample.where(sample_id: sample_id).pluck(:ciliates)
@@ -269,14 +277,22 @@ class Sample < ApplicationRecord
         self.ciliates_standard_deviation = Math.sqrt((sum_sqr - @ciliates_length * @ciliates_mean * @ciliates_mean)/(@ciliates_length-1))
     end
 
+    def ciliates_protozoa_calc
+        # Cell Y36
+        self.ciliates_protozoa = (((@ciliates_mean*self.ciliates_dilution)*self.coverslip)*22)
+    end
+
     def nematodes_sum_calc
-        # Cell V38 - this is actually a SUM in the original spreadsheet. I have kept the name 'mean' as it was already written in the spreadsheet but this will need changing later
+        # Cell V41 - this is actually a SUM in the original spreadsheet. I have kept the name 'mean' as it was already written in the spreadsheet but this will need changing later
         @nematodes_array = Sample.where(sample_id: sample_id).pluck(:nematodes)
         @nematodes_sum = @nematodes_array.sum
 
         self.nematodes_mean = @nematodes_sum
     end
 
-
+    def nematodes_protozoa_calc
+        # Cell Y36
+        self.nematodes_protozoa = (@nematodes_sum*self.nematodes_dilution)*20
+    end
         
 end
