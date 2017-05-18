@@ -9,6 +9,7 @@ class Sample < ApplicationRecord
         actino_mean_calc
         actino_st_dev_calc
         actino_cm_length_calc
+        actinobacteria_micrograms_calc
         fungi_mean_calc
         fungi_st_dev_calc
         fungi_do_not_use_this_row_calc
@@ -36,6 +37,7 @@ class Sample < ApplicationRecord
         ciliates_protozoa_calc
         nematodes_sum_calc
         nematodes_protozoa_calc
+        biomass_ratio_calc
     end
  
     private
@@ -95,6 +97,11 @@ class Sample < ApplicationRecord
     def actino_cm_length_calc
         @actino_cm_length = (((@actino_mean * self.actinobacteria_dilution) * self.coverslip)*22)
         self.actinobacteria_length_cm = @actino_cm_length
+    end
+
+    def actinobacteria_micrograms_calc
+        @actinobacteria_micrograms = (@actino_cm_length*(3.14*((0.00005*0.00005)*230000)))
+        self.micrograms = @actinobacteria_micrograms
     end
 
     def fungi_mean_calc
@@ -299,6 +306,10 @@ class Sample < ApplicationRecord
     def nematodes_protozoa_calc
         # Cell Y36
         self.nematodes_protozoa = (@nematodes_sum*self.nematodes_dilution)*20
+    end
+
+    def biomass_ratio_calc
+        self.fb_biomass_ratio = (@fungi_micrograms/(@bacterial_micrograms + @actinobacteria_micrograms))
     end
         
 end
