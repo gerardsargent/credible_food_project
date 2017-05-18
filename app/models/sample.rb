@@ -43,31 +43,27 @@ class Sample < ApplicationRecord
     def bacterial_mean_calc
         # Take all of the readings for sample x and put them into an array
         @reading_array = Sample.where(sample_id: sample_id).pluck(:bacterial_number)
+        @reading_array_compact = @reading_array.compact
         # Turn all of the values inside array into floats
-        @reading_array.map!(&:to_f)
-        # Count the length of @readings_array
-        @reading_length = @reading_array.length
+        @reading_array_compact.map!(&:to_f)
+        # Count the length of @readings_array and set it to 1 if nothing has been entered yet
+        @reading_length = @reading_array_compact.length
+        if @reading_length < 1
+            @reading_length = 1
+        else
+            @reading_length = @reading_array_compact.length
+        end
         # Sum the total of all the values stored in the @readings array
-        @bacterial_sum = @reading_array.sum
+        @bacterial_sum = @reading_array_compact.sum
         
         @bacterial_mean = @bacterial_sum / @reading_length
         self.bacterial_mean = @bacterial_mean.round(2)
     end
 
-    def actino_mean_calc
-        @actino_array = Sample.where(sample_id: sample_id).pluck(:actinobacteria)
-        @actino_array.map!(&:to_f)
-        @actino_length = @actino_array.length
-        @actino_sum = @actino_array.sum
-
-        @actino_mean = @actino_sum / @actino_length
-        self.actinobacteria_mean = @actino_mean.round(2)
-    end
-
     def bacterial_st_dev_calc
-        sum_sqr = @reading_array.map {|x| x * x}.reduce(&:+)
+        sum_sqr = @reading_array_compact.map {|x| x * x}.reduce(&:+)
         
-        self.bacterial_standard_deviation = Math.sqrt((sum_sqr - @reading_length * @bacterial_mean * @bacterial_mean)/(@reading_length-1)).round(2)
+        self.bacterial_standard_deviation = Math.sqrt((sum_sqr - @reading_length * @bacterial_mean * @bacterial_mean)/(@reading_length - 1)).round(2)
     end
 
     def bacteria_per_gm_calc
@@ -78,6 +74,16 @@ class Sample < ApplicationRecord
     def bacterial_micrograms_calc
         @bacterial_micrograms = ((@bacteria_per_gm * 0.000002))
         self.micrograms = @bacterial_micrograms
+    end
+
+    def actino_mean_calc
+        @actino_array = Sample.where(sample_id: sample_id).pluck(:actinobacteria)
+        @actino_array.map!(&:to_f)
+        @actino_length = @actino_array.length
+        @actino_sum = @actino_array.sum
+
+        @actino_mean = @actino_sum / @actino_length
+        self.actinobacteria_mean = @actino_mean.round(2)
     end
 
     def actino_st_dev_calc
