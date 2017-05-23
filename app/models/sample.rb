@@ -1,4 +1,5 @@
 class Sample < ApplicationRecord
+
     before_save :do_calc
 
     def do_calc
@@ -6,55 +7,65 @@ class Sample < ApplicationRecord
         bacterial_st_dev_calc
         bacteria_per_gm_calc
         bacterial_micrograms_calc
-        actino_mean_calc
-        actino_st_dev_calc
-        actino_cm_length_calc
-        actinobacteria_micrograms_calc
-        fungi_mean_calc
-        fungi_st_dev_calc
-        fungi_do_not_use_this_row_calc
-        fungi_cm_for_calculation_calc
-        fungal_strands_cm_calc
-        fungi_average_diameter_in_um_calc
-        fungi_average_diameter_cm_calc
-        fungi_micrograms_calc
-        oomycetes_mean_calc
-        oomycetes_st_dev_calc
-        oomycetes_do_not_use_this_row_calc
-        oomycetes_cm_for_calculation_calc
-        oomycetes_strands_cm_calc
-        oomycetes_average_diameter_in_um_calc
-        oomycetes_average_diameter_cm_calc
-        oomycetes_micrograms_calc
-        flagellate_mean_calc
-        flagellate_st_dev_calc
-        flagellate_protozoa_calc
-        amoebae_mean_calc
-        amoebae_st_dev_calc
-        amoebae_protozoa_calc
-        ciliates_mean_calc
-        ciliates_st_dev_calc
-        ciliates_protozoa_calc
-        nematodes_sum_calc
-        nematodes_protozoa_calc
-        biomass_ratio_calc
+        # actino_mean_calc
+        # actino_st_dev_calc
+        # actino_cm_length_calc
+        # actinobacteria_micrograms_calc
+        # fungi_mean_calc
+        # fungi_st_dev_calc
+        # fungi_do_not_use_this_row_calc
+        # fungi_cm_for_calculation_calc
+        # fungal_strands_cm_calc
+        # fungi_average_diameter_in_um_calc
+        # fungi_average_diameter_cm_calc
+        # fungi_micrograms_calc
+        # oomycetes_mean_calc
+        # oomycetes_st_dev_calc
+        # oomycetes_do_not_use_this_row_calc
+        # oomycetes_cm_for_calculation_calc
+        # oomycetes_strands_cm_calc
+        # oomycetes_average_diameter_in_um_calc
+        # oomycetes_average_diameter_cm_calc
+        # oomycetes_micrograms_calc
+        # flagellate_mean_calc
+        # flagellate_st_dev_calc
+        # flagellate_protozoa_calc
+        # amoebae_mean_calc
+        # amoebae_st_dev_calc
+        # amoebae_protozoa_calc
+        # ciliates_mean_calc
+        # ciliates_st_dev_calc
+        # ciliates_protozoa_calc
+        # nematodes_sum_calc
+        # nematodes_protozoa_calc
+        # biomass_ratio_calc
     end
  
     private
     
     def bacterial_mean_calc
         # Take all of the readings for sample x and put them into an array
+        puts "*************************"
+        
         @reading_array = Sample.where(sample_id: sample_id).pluck(:bacterial_number)
+        puts @reading_array
         @reading_array_compact = @reading_array.compact
+        puts @reading_array_compact
         # Turn all of the values inside array into floats
         @reading_array_compact.map!(&:to_f)
+        puts @reading_array_compact
         # Count the length of @readings_array and set it to 1 if nothing has been entered yet
-        @reading_length = @reading_array_compact.length
-        if @reading_length < 1
+        if @reading_array_compact.length < 1
+            puts " Compact len 0"
             @reading_length = 1
         else
+            puts "Comact len >0"
             @reading_length = @reading_array_compact.length
         end
+        puts @reading_length
+
+        
+        puts "*************************"
         # Sum the total of all the values stored in the @readings array
         @bacterial_sum = @reading_array_compact.sum
         
@@ -63,9 +74,20 @@ class Sample < ApplicationRecord
     end
 
     def bacterial_st_dev_calc
-        sum_sqr = @reading_array_compact.map {|x| x * x}.reduce(&:+)
-        
+        if @reading_array_compact.length < 1
+            sum_sqr = 1
+        else
+            sum_sqr = @reading_array_compact.map {|x| x * x}.reduce(&:+)
+            puts "*************************"
+            puts @reading_array_compact
+            puts sum_sqr
+            puts @reading_length
+            puts "*************************"
+        end
+
         self.bacterial_standard_deviation = Math.sqrt((sum_sqr - @reading_length * @bacterial_mean * @bacterial_mean)/(@reading_length - 1)).round(2)
+        
+        
     end
 
     def bacteria_per_gm_calc
@@ -101,7 +123,7 @@ class Sample < ApplicationRecord
 
     def actinobacteria_micrograms_calc
         @actinobacteria_micrograms = (@actino_cm_length*(3.14*((0.00005*0.00005)*230000)))
-        self.micrograms = @actinobacteria_micrograms
+        self.actinobacteria_micrograms = @actinobacteria_micrograms
     end
 
     def fungi_mean_calc
@@ -305,11 +327,11 @@ class Sample < ApplicationRecord
 
     def nematodes_protozoa_calc
         # Cell Y36
-        self.nematodes_protozoa = (@nematodes_sum*self.nematodes_dilution)*20
+        self.nematodes_protozoa = (@nematodes_sum * self.nematodes_dilution) * 20
     end
 
     def biomass_ratio_calc
-        self.fb_biomass_ratio = (@fungi_micrograms/(@bacterial_micrograms + @actinobacteria_micrograms))
+        self.fb_biomass_ratio = (@fungi_micrograms / (@bacterial_micrograms + @actinobacteria_micrograms))
     end
         
 end

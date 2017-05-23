@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518104056) do
+ActiveRecord::Schema.define(version: 20170518184151) do
 
   create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "reading_number"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20170518104056) do
     t.float    "oomycetes_standard_deviation",       limit: 24
     t.integer  "oomycetes_dilution"
     t.float    "oomycetes_cm_length_for_calc",       limit: 24
+    t.integer  "oomycetes_strands_cm"
+    t.float    "oomycetes_average_diameter_in_um",   limit: 24
+    t.float    "oomycetes_average_diameter_in_cm",   limit: 24
     t.integer  "oomycetes_number_per_gram"
     t.float    "oomycetes_micrograms",               limit: 24
     t.integer  "flagellate"
@@ -75,11 +78,7 @@ ActiveRecord::Schema.define(version: 20170518104056) do
     t.integer  "user_id"
     t.integer  "sample_id"
     t.date     "sample_date"
-    t.integer  "gps"
-    t.integer  "oomycetes_strands_cm"
-    t.float    "oomycetes_average_diameter_in_um",   limit: 24
-    t.float    "oomycetes_average_diameter_in_cm",   limit: 24
-    t.index ["gps"], name: "index_samples_on_gps", using: :btree
+    t.float    "gps",                                limit: 24
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_samples_on_user_id", using: :btree
