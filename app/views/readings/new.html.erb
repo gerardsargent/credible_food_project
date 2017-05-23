@@ -1,0 +1,17 @@
+<h1>Add Post</h1>
+
+<%= form_for :readings, url: readings_path do |r| %>
+    <p>
+        <%= r.label :title %><br>
+        <%= r.text_field :title %>
+    </p>
+
+    <p>
+        <%= r.label :body %><br>
+        <%= r.text_field :body %>
+    </p>
+
+    <p>
+        <%= r.submit %>
+    </p>
+<% end %>

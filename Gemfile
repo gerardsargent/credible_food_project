@@ -35,7 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#Allows connection to Heroku
+gem 'wdm', '>= 0.1.0'
+
+# Allows connection to Heroku
 gem "figaro"
 
 group :development, :test do
