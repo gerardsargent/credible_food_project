@@ -2,13 +2,18 @@
 
 <%= form_for :readings, url: readings_path do |r| %>
     <p>
-        <%= r.label :title %><br>
-        <%= r.text_field :title %>
+        <%= r.label :land_name %><br>
+        <%= r.text_field :land_name %>
     </p>
 
     <p>
-        <%= r.label :body %><br>
-        <%= r.text_field :body %>
+        <%= r.label :crop_growing %><br>
+        <%= r.text_field :crop_growing %>
+    </p>
+
+    <p>
+        <%= r.label :gps %><br>
+        <%= r.text_field :gps %>
     </p>
 
     <p>
