@@ -1,4 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+    <strong>User:</strong>
+    <%= @reading.user_id %>
+</p>
+
+<p>
+    <strong>Reading number:</strong>
+    <%= @reading.reading_number %>
+</p>
+
+<p>
+    <strong>Land Name:</strong>
+    <%= @reading.land_name %>
+</p>
+
 <%= link_to 'Edit', edit_reading_path(@reading) %> |
 <%= link_to 'Back', readings_path %>

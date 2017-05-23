@@ -2,6 +2,15 @@
 
 <h1>Readings</h1>
 
+<div>
+  <% @readings.each do |reading| %>
+  <div><%= link_to 'Show', @redirecting %></div>
+  <div><%= link_to 'Edit', edit_reading_path(reading) %></div>
+  <div><%= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  <div><%= link_to 'New Reading', new_reading_path %></div>
+  <% end %>
+</div>
+
 <table>
   <thead>
     <tr>

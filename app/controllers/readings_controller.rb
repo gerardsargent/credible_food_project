@@ -70,7 +70,13 @@ class ReadingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reading_params
-      params.fetch(:reading, {})
+      params.require(:reading).permit(:user_id, :reading_number, :land_name)
+      #params.fetch(:reading, {})
+    end
+
+    # Redirection, for testing purposes.
+    def redirecting
+      redirect_to "../views/samples/index.html.erb"
     end
 
 end
