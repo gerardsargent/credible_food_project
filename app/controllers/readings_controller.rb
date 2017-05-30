@@ -1,27 +1,32 @@
 class ReadingsController < ApplicationController
 
   def readings_page
-    @readings = Reading.all
+    @readingsVar = Reading.all
   end
 
   def show
-    @readings = Reading.find(params[:id])
-    @cheese = "CHEESE" # Testing Purposes.
+    @readingsVar = Reading.find(params[:id])
   end
 
   def new
   end
 
   def create
-    # render plain: params[:readings].inspect
-    readings_params = params.require(:readings).permit(:land_name, :crop_growing, :gps)
-    @readings = Reading.new(readings_params)
-    @readings.save
-    redirect_to @readings
+    # render plain: params[:readings].inspect <--- Testing Purposes
+    readings_params = params.require(:readingsVar).permit(:land_name, :crop_growing, :gps)
+    @readingsVar = Reading.new(readings_params)
+
+    if (@readingsVar.save)
+      redirect_to @readings
+    else
+      render 'new'
+    end
   end
 
-  private def reading_params
-    readings_params = params.require(:readings).permit(:land_name, :crop_growing, :gps)
+  def destroy
+    @page = Reading.find(params[:id])
+    @page.destroy
+    redirect_to reading_path(reading)
   end
 
 end

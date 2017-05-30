@@ -4,10 +4,11 @@
 
     <p><%= link_to "Add", new_path %></p>
 
-<% @readings.each do |reading| %>
+<% @readingsVar.each do |reading| %>
 
     <h3><%= reading.land_name %></h3>
     <p><%= reading.crop_growing %></p>
     <p><%= reading.gps %></p>
+    <p><%= link_to 'View', reading_path(reading) %></p>
 
 <% end %>
