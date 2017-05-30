@@ -5,7 +5,8 @@ class ReadingsController < ApplicationController
   end
 
   def show
-    @reading = Reading.find(params[:id])
+    @readings = Reading.find(params[:id])
+    @cheese = "CHEESE" # Testing Purposes.
   end
 
   def new
@@ -13,9 +14,9 @@ class ReadingsController < ApplicationController
 
   def create
     # render plain: params[:readings].inspect
-    @reading = Reading.new(params[reading_params])
-    @reading.save
-    redirect_to @reading
+    @readings = Reading.new(params[reading_params])
+    @readings.save
+    redirect_to @readings
   end
 
   private def reading_params
