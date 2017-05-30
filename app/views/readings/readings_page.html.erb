@@ -1,3 +1,13 @@
-<h1>Readings#readings_page</h1>
-<p>Find me in app/views/readings/readings_page.html.erb</p>
-<p><%= link_to "Add", new_path %></p>
+<h1>Readings</h1>
+
+<h2>Options</h2>
+
+    <p><%= link_to "Add", new_path %></p>
+
+<% @readings.each do |reading| %>
+
+    <h3><%= reading.land_name %></h3>
+    <p><%= reading.crop_growing %></p>
+    <p><%= reading.gps %></p>
+
+<% end %>
