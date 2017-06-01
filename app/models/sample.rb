@@ -4,12 +4,11 @@ class Sample < ApplicationRecord
 
     def do_calc
         bacterial_mean_calc
-        bacterial_st_dev_calc
         bacteria_per_gm_calc
         bacterial_micrograms_calc
-        # actino_mean_calc
-        # actino_st_dev_calc
-        # actino_cm_length_calc
+        actinobacteria_mean_calc
+        # actinobacteria_st_dev_calc
+        # actinobacteria_cm_length_calc
         # actinobacteria_micrograms_calc
         # fungi_mean_calc
         # fungi_st_dev_calc
@@ -42,52 +41,62 @@ class Sample < ApplicationRecord
     end
  
     private
-    
+
     def bacterial_mean_calc
         # Take all of the readings for sample x and put them into an array
-        puts "*************************"
-        
-        @reading_array = Sample.where(sample_id: sample_id).pluck(:bacterial_number)
-        puts @reading_array
-        @reading_array_compact = @reading_array.compact
-        puts @reading_array_compact
-        # Turn all of the values inside array into floats
-        @reading_array_compact.map!(&:to_f)
-        puts @reading_array_compact
-        # Count the length of @readings_array and set it to 1 if nothing has been entered yet
-        if @reading_array_compact.length < 1
-            puts " Compact len 0"
-            @reading_length = 1
-        else
-            puts "Comact len >0"
-            @reading_length = @reading_array_compact.length
-        end
-        puts @reading_length
+        @bacterial_array = Sample.where(sample_id: sample_id).pluck(:bacterial_number)
+        @bacterial_array.push(self.bacterial_number)
 
+        # @bacterial_array.map!(&:to_f)
+        puts "****************"
+        puts "@bacterial_array: "
+        puts @bacterial_array.inspect
+        puts "****************"
         
-        puts "*************************"
-        # Sum the total of all the values stored in the @readings array
-        @bacterial_sum = @reading_array_compact.sum
-        
-        @bacterial_mean = @bacterial_sum / @reading_length
-        self.bacterial_mean = @bacterial_mean.round(2)
+        if @bacterial_array.length == 1
+            self.bacterial_mean = @bacterial_array[0]
+            puts "****************"
+            puts "self.bacterial_mean: "
+            puts self.bacterial_mean
+            puts "****************"
+        else
+            #Use Descriptive Statistics gem to calculate values
+            bacterial_mean = @bacterial_array.extend(DescriptiveStatistics)
+
+            @bacterial_mean = bacterial_mean.mean
+            # @bacterial_mean = @bacterial_sum / @bacterial_length
+            self.bacterial_mean = @bacterial_mean.round(2)
+            puts "****************"
+            puts "self.bacterial_mean: "
+            puts self.bacterial_mean
+            puts "****************"
+        end
+
+        bacterial_st_dev_calc
     end
 
     def bacterial_st_dev_calc
-        if @reading_array_compact.length < 1
-            sum_sqr = 1
-        else
-            sum_sqr = @reading_array_compact.map {|x| x * x}.reduce(&:+)
-            puts "*************************"
-            puts @reading_array_compact
-            puts sum_sqr
-            puts @reading_length
-            puts "*************************"
-        end
 
-        self.bacterial_standard_deviation = Math.sqrt((sum_sqr - @reading_length * @bacterial_mean * @bacterial_mean)/(@reading_length - 1)).round(2)
-        
-        
+        puts "****************"
+        puts "@bacterial_array carried over: "
+        puts @bacterial_array
+        puts "****************"
+
+        if @bacterial_array.length == 1
+            @bacterial_st_dev = 0
+        else
+            stats = @bacterial_array.extend(DescriptiveStatistics)
+            @bacterial_st_dev = stats.standard_deviation()
+        end
+        puts "****************"
+        puts "@bacterial_st_dev: "
+        puts @bacterial_st_dev
+        puts "****************"
+        self.bacterial_standard_deviation = @bacterial_st_dev.round(2)
+        puts "****************"
+        puts "self.bacterial_standard_deviation: "
+        puts self.bacterial_standard_deviation
+        puts "****************"
     end
 
     def bacteria_per_gm_calc
@@ -100,20 +109,69 @@ class Sample < ApplicationRecord
         self.micrograms = @bacterial_micrograms
     end
 
-    def actino_mean_calc
-        @actino_array = Sample.where(sample_id: sample_id).pluck(:actinobacteria)
-        @actino_array.map!(&:to_f)
-        @actino_length = @actino_array.length
-        @actino_sum = @actino_array.sum
+    def actinobacteria_mean_calc
+        # Take all of the readings for sample x and put them into an array
+        actinobacteria_array = Sample.where(sample_id: sample_id).pluck(:actinobacteria)
+        actinobacteria_array.push(self.actinobacteria)
+        @actinobacteria_array_compact = actinobacteria_array.compact
 
-        @actino_mean = @actino_sum / @actino_length
-        self.actinobacteria_mean = @actino_mean.round(2)
+        # @actinobacteria_array.map!(&:to_f)
+        puts "****************"
+        puts "@actinobacteria_array: "
+        puts @actinobacteria_array_compact.inspect
+        puts "****************"
+        
+        if @actinobacteria_array_compact.length == 1
+            self.actinobacteria_mean = @actinobacteria_array_compact[0]
+            puts "****************"
+            puts "self.actinobacteria_mean: "
+            puts self.actinobacteria_mean
+            puts "****************"
+        else
+            #Use Descriptive Statistics gem to calculate values
+            actinobacteria_mean = @actinobacteria_array_compact.extend(DescriptiveStatistics)
+
+            @actinobacteria_mean = actinobacteria_mean.mean
+            # @actinobacteria_mean = @actinobacteria_sum / @actinobacteria_length
+            self.actinobacteria_mean = @actinobacteria_mean.round(2)
+            puts "****************"
+            puts "self.actinobacteria_mean: "
+            puts self.actinobacteria_mean
+            puts "****************"
+        end
+
+        actinobacteria_st_dev_calc
+
+        # @actinobacteria_array_compact = Sample.where(sample_id: sample_id).pluck(:actinobacteria)
+        # @actinobacteria_array_compact.map!(&:to_f)
+        # @actinobacteria_length = @actinobacteria_array_compact.length
+        # @actinobacteria_sum = @actinobacteria_array_compact.sum
+
+        # @actinobacteria_mean = @actinobacteria_sum / @actinobacteria_length
+        # self.actinobacteria_mean = @actinobacteria_mean.round(2)
     end
 
-    def actino_st_dev_calc
-        sum_sqr = @actino_array.map {|x| x * x}.reduce(&:+)
-        
-        self.actinobacterial_standard_deviation = Math.sqrt((sum_sqr - @actino_length * @actino_mean * @actino_mean)/(@actino_length-1)).round(2)
+    def actinobacteria_st_dev_calc
+        puts "****************"
+        puts "@actinobacteria_array_compact carried over: "
+        puts @actinobacteria_array_compact
+        puts "****************"
+
+        if @actinobacteria_array_compact.length == 1
+            @actinobacteria_st_dev = 0
+        else
+            stats = @actinobacteria_array_compact.extend(DescriptiveStatistics)
+            @actinobacteria_st_dev = stats.standard_deviation()
+        end
+        puts "****************"
+        puts "@actinobacteria_st_dev: "
+        puts @actinobacteria_st_dev
+        puts "****************"
+        self.actinobacteria_standard_deviation = @actinobacteria_st_dev.round(2)
+        puts "****************"
+        puts "self.actinobacteria_standard_deviation: "
+        puts self.actinobacteria_standard_deviation
+        puts "****************"
     end
 
     def actino_cm_length_calc
