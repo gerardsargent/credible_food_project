@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #get 'readings/show', to: 'readings#show', as: 'show'
 
   #delete 'page/:id', to: 'readings#destroy'
-
+  
   get '/readings', to: 'readings#readings_page'
   post '/readings', to: 'readings#create'
   get '/readings/new', to: 'readings#new', as: 'new_page'

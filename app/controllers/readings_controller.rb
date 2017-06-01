@@ -20,9 +20,10 @@ class ReadingsController < ApplicationController
   end
 
   def destroy
-    @page = Reading.find(params[:id])
-    @page.destroy
-    redirect_to readings_path(reading)
+    @readings = Reading.find(params[:id])
+    @readings.destroy
+    #@readings.save
+    redirect_to readings_path
   end
 
 end
