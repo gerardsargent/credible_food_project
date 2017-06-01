@@ -35,7 +35,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'wdm', '>= 0.1.0'
+# require 'rbconfig'
+# gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw/i
 
 # Allows connection to Heroku
 gem "figaro"
