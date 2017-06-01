@@ -31,6 +31,13 @@ class SamplesController < ApplicationController
     @sample = Sample.new(sample_params)
 
     respond_to do |format|
+      puts "-----------------------"
+      puts "sample_params = "
+      sample_params.each do |k, v|
+        puts(k)
+        puts(v)
+      end
+      puts "-----------------------"
       if @sample.save
         format.html { redirect_to @sample, notice: 'Sample was successfully created.' }
         format.json { render :show, status: :created, location: @sample }

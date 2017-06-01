@@ -7,6 +7,7 @@ $margin-padding-desktop: 25px;
 $sample-background: #BFC24B;
 $biomass-background: #C1A065;
 $form-background: #C19F6D;
+$border-radius: 7.64px;
 
 a {
     text-decoration: none;
@@ -77,17 +78,6 @@ footer, header {
     max-width: 90%;
 }
 
-.sample-history {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 10px;
-    margin: 0 auto;
-}
-
 .flex-centre {
     display: flex;
     justify-content: center;
@@ -97,20 +87,49 @@ footer, header {
     width: 100%;
 }
 
-.flex-no-wrap {
-    flex-wrap: nowrap;
-    margin: $margin-padding-desktop auto;
+.flex-no-wrap-lg {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
 }
 
 .form-header {
     background-color: $form-background;
 }
 
+.sample-history {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+    margin: $margin-padding-desktop auto;
+    border-radius: $border-radius;
+}
+
+.sample-history-inner {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+}
+
 .sample-history-item {
+    display: inline-block;
     margin: $margin-padding-desktop;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 200px;
 }
 
 .sample-history-title {
@@ -123,4 +142,27 @@ footer, header {
     background-color: #96D4FF;
     border: 1px solid #96C8F2;
     padding: $margin-padding-desktop;
+}
+
+.sample-summary {
+    background-color: $form-background;
+}
+
+@media (min-width: 480px) {
+    .sample-history-inner {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (min-width: 1200px) {
+    .flex-no-wrap-lg {
+        flex-wrap: nowrap;
+    }
+
+    .sample-history-inner {
+        margin: $margin-padding-desktop;
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 200px;
+    }
 }

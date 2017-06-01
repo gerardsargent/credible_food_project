@@ -6,8 +6,7 @@ class Sample < ApplicationRecord
         bacterial_mean_calc
         bacteria_per_gm_calc
         bacterial_micrograms_calc
-        actinobacteria_mean_calc
-        # actinobacteria_st_dev_calc
+        # actinobacteria_mean_calc
         # actinobacteria_cm_length_calc
         # actinobacteria_micrograms_calc
         # fungi_mean_calc
@@ -46,39 +45,47 @@ class Sample < ApplicationRecord
         # Take all of the readings for sample x and put them into an array
         @bacterial_array = Sample.where(sample_id: sample_id).pluck(:bacterial_number)
         @bacterial_array.push(self.bacterial_number)
-
-        # @bacterial_array.map!(&:to_f)
+        
         puts "****************"
-        puts "@bacterial_array: "
+        puts "@bacterial_array in bacterial_mean_calc: "
         puts @bacterial_array.inspect
         puts "****************"
         
         if @bacterial_array.length == 1
             self.bacterial_mean = @bacterial_array[0]
+            @bacterial_mean = self.bacterial_mean
             puts "****************"
-            puts "self.bacterial_mean: "
+            puts "self.bacterial_mean in bacterial_mean_calc: "
             puts self.bacterial_mean
+            puts "****************"
+            puts "****************"
+            puts "@bacterial_mean in bacterial_mean_calc: "
+            puts @bacterial_mean
             puts "****************"
         else
             #Use Descriptive Statistics gem to calculate values
             bacterial_mean = @bacterial_array.extend(DescriptiveStatistics)
-
             @bacterial_mean = bacterial_mean.mean
+            puts "****************"
+            puts "@bacterial_mean from bacterial_mean_calc: "
+            puts @bacterial_mean
+            puts "****************"
             # @bacterial_mean = @bacterial_sum / @bacterial_length
             self.bacterial_mean = @bacterial_mean.round(2)
             puts "****************"
-            puts "self.bacterial_mean: "
+            puts "self.bacterial_mean from bacterial_mean_calc: "
             puts self.bacterial_mean
             puts "****************"
         end
 
         bacterial_st_dev_calc
+
     end
 
     def bacterial_st_dev_calc
 
         puts "****************"
-        puts "@bacterial_array carried over: "
+        puts "@bacterial_array in bacterial_st_dev_calc: "
         puts @bacterial_array
         puts "****************"
 
@@ -89,19 +96,35 @@ class Sample < ApplicationRecord
             @bacterial_st_dev = stats.standard_deviation()
         end
         puts "****************"
-        puts "@bacterial_st_dev: "
+        puts "@bacterial_st_dev in bacterial_st_dev_calc: "
         puts @bacterial_st_dev
         puts "****************"
         self.bacterial_standard_deviation = @bacterial_st_dev.round(2)
         puts "****************"
-        puts "self.bacterial_standard_deviation: "
+        puts "self.bacterial_standard_deviation from bacterial_st_dev_calc: "
         puts self.bacterial_standard_deviation
         puts "****************"
     end
 
-    def bacteria_per_gm_calc
-        @bacteria_per_gm = (((@bacterial_mean * self.bacterial_dilution) * self.coverslip)*22)
+    def bacteria_per_gm_calc 
+        @bacteria_per_gm = (((@bacterial_mean.round(2) * self.bacterial_dilution) * self.coverslip)*22)
+        puts "****************"
+        puts "@bacterial_per_gm in bacteria_per_gm_calc: "
+        puts @bacteria_per_gm
+        puts "****************"
         self.no_bacteria_per_gram = @bacteria_per_gm
+        puts "****************"
+        puts "@bacterial_mean in bacteria_per_gm_calc: "
+        puts @bacterial_mean
+        puts "****************"
+        puts "****************"
+        puts "self.bacterial_dilution in bacteria_per_gm_calc: "
+        puts self.bacterial_dilution
+        puts "****************"
+        puts "****************"
+        puts "self.coverslip in bacteria_per_gm_calc: "
+        puts self.coverslip
+        puts "****************"
     end
 
     def bacterial_micrograms_calc

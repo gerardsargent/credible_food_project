@@ -22,174 +22,58 @@
   <% else %>
     <% @samples.each do |sample| %>
 
-    <div class="container">
+      <div class="container">
 
-      <!-- Header -->
-      <div class="sample-history flex-no-wrap">
+        <!-- Header -->
+        <div class="sample-history flex-wrap sample-summary">
 
-        <div class="sample-history-item">
-          <h3>User ID:</h3>
-          <p><%= sample.user_id %></p>
-        </div>
+          <div class="sample-history-inner">
 
-        <div class="sample-history-item">
-          <h3>Sample ID:</h3>
-          <p><%= sample.sample_id %></p>
-        </div>
+            <div class="sample-history-item">
+              <h3>User ID:</h3>
+              <p><%= sample.user_id %></p>
+            </div>
 
-        <div class="sample-history-item">
-        <h3>Reading Number:</h3>
-        <p><%= sample.reading_number %></p>
-        </div>
+            <div class="sample-history-item">
+              <h3>Sample ID:</h3>
+              <p><%= sample.sample_id %></p>
+            </div>
 
-        <div class="sample-history-item">
-          <h3>Date taken:</h3>
-          <p><%= sample.sample_date %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>GPS Location of Sample:</h3>
-          <p><%= sample.gps %></p>
-        </div>
-
-      </div>
-      
-      <!-- Bacteria -->
-      <div class="sample-history bacteria">
-
-        <div class="sample-history-title">
-          <h3> Bacteria </h3>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Number of Bacteria Per Gram:</h3>
-          <p><%= sample.no_bacteria_per_gram %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Micrograms of Bacteria:</h3>
-          <p><%= sample.micrograms %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Bacterial Mean Number:</h3>
-          <p><%= sample.bacterial_mean %></p>
-        </div>
-
-      </div>
-
-      <!-- Actinobacteria -->
-      <div class="sample-history actinobacteria">
-
-        <div class="sample-history-title">
-          <h3> Actinobacteria </h3>
-        </div>
-
-
-        <div class="sample-history-item">
-          <h3>Actinobacteria - length in cm</h3>
-          <p><%= sample.actinobacteria_length_cm %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Actinobacteria - micrograms</h3>
-          <p><%= sample.actinobacteria_micrograms %></p>
-        </div>
-
-      </div>
-
-      <!-- Fungi -->
-      <div class="sample-history fungi">
-
-        <div class="sample-history-title">
-          <h3> Fungi </h3>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Fungi - length in CM of Fungal Strands</h3>
-          <p><%= sample.fungal_strands_cm %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Fungi - micrograms</h3>
-          <p><%= sample.fungi_micrograms %></p>
-        </div>
-
-      </div>
-
-      <!-- Oomycetes -->
-      <div class="sample-history oomycetes">
-
-        <div class="sample-history-title">
-          <h3> Oomycetes </h3>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Oomycetes - number per gram</h3>
-          <p><%= sample.oomycetes_number_per_gram %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Oomycetes - micrograms</h3>
-          <p><%= sample.oomycetes_micrograms %></p>
-        </div>
-
-      </div>
-
-      <!-- Others (flagellate, Amoebae, Ciliates) -->
-      <div class="sample-history others">
-
-        <div class="sample-history-title">
-          <h3> Others </h3>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Flagellate - protozoa</h3>
-          <p><%= sample.flagellate_protozoa %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Amoebae - protozoa</h3>
-          <p><%= sample.amoebae_protozoa %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Ciliates - protozoa</h3>
-          <p><%= sample.ciliates_protozoa %></p>
-        </div>
-
-        <div class="sample-history-item">
-          <h3>Nomatodes - protozoa</h3>
-          <p><%= sample.nematodes_protozoa %></p>
-        </div>
-
-      </div>
-
-      <!-- Biomass Ratio -->
-        <div class="sample-history biomass">
-
-          <div class="sample-history-title">
-            <h3> F:B Biomass Ratio </h3>
+            <div class="sample-history-item">
+              <h3>Reading Number:</h3>
+              <p><%= sample.reading_number %></p>
+            </div>
+            
           </div>
 
-          <div class="sample-history-item">
-            <p><%= sample.fb_biomass_ratio %></p>
-          </div>
+          <div class="sample-history-inner">
+            <div class="sample-history-item">
+              <h3>Date taken:</h3>
+              <p><%= sample.sample_date %></p>
+            </div>
 
-      </div>
+            <div class="sample-history-item">
+              <h3>GPS Location of Sample:</h3>
+              <p><%= sample.gps %></p>
+            </div>
 
-      <!-- CRUD Options -->
-        <div class="sample-history flex-no-wrap crud-options">
-          <div class="sample-history-item"><%= link_to 'Show', sample %></div>
-          <div class="sample-history-item"><%= link_to 'Edit', edit_sample_path(sample) %></div>
-          <div class="sample-history-item"><%= link_to 'Destroy', sample, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        </div>
+          </div> <!-- End of sample-history-inner div -->
 
-      </div>
+          <!-- This is where the old code was originally -->
 
-    </div>
+          <!-- CRUD Options -->
+          <div class="sample-history-inner crud-options">
+            <div class="sample-history-item"><%= link_to 'View Record', sample %></div>
+            <div class="sample-history-item"><%= link_to 'Edit Record', edit_sample_path(sample) %></div>
+            <div class="sample-history-item"><%= link_to 'Delete Record', sample, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+          </div> <!-- End of CRUD div -->
 
-    <% end %>
-  <% end %>
+        </div> <!-- End of sample-history div -->
+        
+      </div> <!-- End of container div -->
 
+    <% end %> <!-- End of sample loop -->
+  
+  <% end %> <!-- End of if statement -->
+  
 </main>

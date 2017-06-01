@@ -2,159 +2,321 @@
 
   <p id="notice"><%= notice %></p>
 
-  <div class="sample-history flex-centre centre-text">
+  <!-- Sample Summary Header -->
 
-        <div class="sample-history-item">
-          <h3>User ID:</h3>
-          <p><%= @sample.user_id %></p>
-        </div>
+  <div class="sample-history flex-centre centre-text sample-summary">
 
-        <div class="sample-history-item">
-          <h3>Sample ID:</h3>
-          <p><%= @sample.sample_id %></p>
-        </div>
+    <div class="sample-history-item">
+      <h3>User ID:</h3>
+      <p><%= @sample.user_id %></p>
+    </div>
 
-        <div class="sample-history-item">
-        <h3>Reading Number:</h3>
-        <p><%= @sample.reading_number %></p>
-        </div>
+    <div class="sample-history-item">
+      <h3>Sample ID:</h3>
+      <p><%= @sample.sample_id %></p>
+    </div>
 
-        <div class="sample-history-item">
-          <h3>Date taken:</h3>
-          <p><%= @sample.sample_date %></p>
-        </div>
+    <div class="sample-history-item">
+    <h3>Reading Number:</h3>
+    <p><%= @sample.reading_number %></p>
+    </div>
 
-        <div class="sample-history-item">
-          <h3>GPS Location of Sample:</h3>
-          <p> <p><%= @sample.gps %></p>
-        </div>
+    <div class="sample-history-item">
+      <h3>Date taken:</h3>
+      <p><%= @sample.sample_date %></p>
+    </div>
 
-        <div class="sample-history-item">
-          <h3>Coverslip Size:</h3>
-          <p> <p><%= @sample.coverslip %></p>
-        </div>
+    <div class="sample-history-item">
+      <h3>GPS Location of Sample:</h3>
+      <p> <p><%= @sample.gps %></p>
+    </div>
 
+    <div class="sample-history-item">
+      <h3>Coverslip Size:</h3>
+      <p> <p><%= @sample.coverslip %></p>
+    </div>
+
+  </div>
+
+  <!-- ***** Bacteria -->
+
+  <div class="sample-history bacteria">
+
+    <div class="sample-history-title">
+
+      <h3>Bacteria</h3>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial number:</strong>
+          <%= @sample.bacterial_number %>
+        </p>
       </div>
 
-  <p>
-    <strong>Bacterial number:</strong>
-    <%= @sample.bacterial_number %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial size shape:</strong>
+          <%= @sample.bacterial_size_shape %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Bacterial size shape:</strong>
-    <%= @sample.bacterial_size_shape %>
-  </p>
+    </div>
 
-  <p>
-    <strong>Bacterial mean:</strong>
-    <%= @sample.bacterial_mean %>
-  </p>
+    <div class="sample-history-inner">
 
-  <p>
-    <strong>Bacterial standard deviation:</strong>
-    <%= @sample.bacterial_standard_deviation %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial mean:</strong>
+          <%= @sample.bacterial_mean %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Bacterial dilution:</strong>
-    <%= @sample.bacterial_dilution %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial standard deviation:</strong>
+          <%= @sample.bacterial_standard_deviation %>
+        </p>
+      </div>
 
-  <p>
-    <strong>No bacteria per gram:</strong>
-    <%= @sample.no_bacteria_per_gram %>
-  </p>
+    </div>
 
-  <p>
-    <strong>Micrograms:</strong>
-    <%= @sample.micrograms %>
-  </p>
+    <div class="sample-history-inner">
 
-  <p>
-    <strong>Actinobacteria:</strong>
-    <%= @sample.actinobacteria %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial dilution:</strong>
+          <%= @sample.bacterial_dilution %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Actinobacteria mean:</strong>
-    <%= @sample.actinobacteria_mean %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>No bacteria per gram:</strong>
+          <%= @sample.no_bacteria_per_gram %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Actinobacterial standard deviation:</strong>
-    <%= @sample.actinobacterial_standard_deviation %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Micrograms:</strong>
+          <%= @sample.micrograms %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Actinobacteria dilution:</strong>
-    <%= @sample.actinobacteria_dilution %>
-  </p>
+    </div>
+    
+  </div>
 
-  <p>
-    <strong>Length in cm of actinobacteria per gm:</strong>
-    <%= @sample.actinobacteria_length_cm %>
-  </p>
+  <!-- ***** Actinobacteria -->
 
-  <p>
-    <strong>Actinobacteria micrograms:</strong>
-    <%= @sample.actinobacteria_micrograms %>
-  </p>
+  <div class="sample-history actinobacteria">
 
-  <p>
-    <strong>Fungi:</strong>
-    <%= @sample.fungi %>
-  </p>
+    <div class="sample-history-title">
 
-  <p>
-    <strong>Fungi diameter:</strong>
-    <%= @sample.fungi_diameter %>
-  </p>
+      <h3>Actinobacteria</h3>
 
-  <p>
-    <strong>Fungi colour:</strong>
-    <%= @sample.fungi_colour %>
-  </p>
+    </div>
 
-  <p>
-    <strong>Fungi calculation:</strong>
-    <%= @sample.fungi_calculation %>
-  </p>
+    <div class="sample-history-inner">
 
-  <p>
-    <strong>Fungi mean:</strong>
-    <%= @sample.fungi_mean %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria:</strong>
+          <%= @sample.actinobacteria %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Fungi standard deviation:</strong>
-    <%= @sample.fungi_standard_deviation %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria mean:</strong>
+          <%= @sample.actinobacteria_mean %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Fungi dilution:</strong>
-    <%= @sample.fungi_dilution %>
-  </p>
+    </div>
 
-  <p>
-    <strong>Fungal strands cm:</strong>
-    <%= @sample.fungal_strands_cm %>
-  </p>
+    <div class="sample-history-inner">
 
-  <p>
-    <strong>Fungi micrograms:</strong>
-    <% @sample.fungi_micrograms %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacterial standard deviation:</strong>
+          <%= @sample.actinobacterial_standard_deviation %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Fungi Average Diameter in UM:</strong>
-    <%= @sample.fungi_average_diameter_in_um %>
-  </p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria dilution:</strong>
+          <%= @sample.actinobacteria_dilution %>
+        </p>
+      </div>
 
-  <p>
-    <strong>Fungi Average Diameter in CM:</strong>
-    <%= @sample.fungi_average_diameter_in_cm %>
-  </p>
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Length in cm of actinobacteria per gm:</strong>
+          <%= @sample.actinobacteria_length_cm %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria micrograms:</strong>
+          <%= @sample.actinobacteria_micrograms %>
+        </p>
+      </div>
+
+    </div>
+    
+  </div>
+
+  <!-- ***** Fungi -->
+
+  <div class="sample-history fungi">
+
+    <div class="sample-history-title">
+
+      <h3>Fungi</h3>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi:</strong>
+          <%= @sample.fungi %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi diameter:</strong>
+          <%= @sample.fungi_diameter %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi colour:</strong>
+          <%= @sample.fungi_colour %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi calculation:</strong>
+          <%= @sample.fungi_calculation %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi mean:</strong>
+          <%= @sample.fungi_mean %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi standard deviation:</strong>
+          <%= @sample.fungi_standard_deviation %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi dilution:</strong>
+          <%= @sample.fungi_dilution %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungal strands cm:</strong>
+          <%= @sample.fungal_strands_cm %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi micrograms:</strong>
+          <% @sample.fungi_micrograms %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi Average Diameter in UM:</strong>
+          <%= @sample.fungi_average_diameter_in_um %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi Average Diameter in CM:</strong>
+          <%= @sample.fungi_average_diameter_in_cm %>
+        </p>
+      </div>
+
+    </div>
+    
+  </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <p>
     <strong>Oomycetes:</strong>
