@@ -1,5 +1,5 @@
 <h1>Testing</h1>
-<h2><%= @readingsVar.land_name %></h2>
-<p><%= @readingsVar.crop_growing %></p>
+<h2><%= @readings.land_name %></h2>
+<p><%= @readings.crop_growing %></p>
 <p><%= link_to 'Return', readings_path %></p>
-<p><%= link_to 'Delete', @page, method: :delete  %></p>
+<p><%= link_to 'Delete', @readings, method: :delete %></p>

@@ -1,11 +1,11 @@
 class ReadingsController < ApplicationController
 
   def readings_page
-    @readingsVar = Reading.all
+    @readings = Reading.all
   end
 
   def show
-    @readingsVar = Reading.find(params[:id])
+    @readings = Reading.find(params[:id])
   end
 
   def new
@@ -13,20 +13,16 @@ class ReadingsController < ApplicationController
 
   def create
     # render plain: params[:readings].inspect <--- Testing Purposes
-    readings_params = params.require(:readingsVar).permit(:land_name, :crop_growing, :gps)
-    @readingsVar = Reading.new(readings_params)
-
-    if (@readingsVar.save)
-      redirect_to @readings
-    else
-      render 'new'
-    end
+    readings_params = params.require(:readings).permit(:land_name, :crop_growing, :gps)
+    @readings = Reading.new(readings_params)
+    @readings.save
+    redirect_to readings_url
   end
 
   def destroy
     @page = Reading.find(params[:id])
     @page.destroy
-    redirect_to reading_path(reading)
+    redirect_to readings_path(reading)
   end
 
 end
