@@ -11,9 +11,9 @@ class SamplesController < ApplicationController
 
   # GET /samples/1
   # GET /samples/1.json
-  def show
-    @page_title = @sample.sample_id
-  end
+  # def show
+  #   @page_title = @sample.sample_id
+  # end
 
   # GET /samples/new
   def new
@@ -31,6 +31,13 @@ class SamplesController < ApplicationController
     @sample = Sample.new(sample_params)
 
     respond_to do |format|
+      puts "-----------------------"
+      puts "sample_params = "
+      sample_params.each do |k, v|
+        puts(k)
+        puts(v)
+      end
+      puts "-----------------------"
       if @sample.save
         format.html { redirect_to @sample, notice: 'Sample was successfully created.' }
         format.json { render :show, status: :created, location: @sample }
@@ -73,6 +80,6 @@ class SamplesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sample_params
-      params.require(:sample).permit(:user_id, :sample_id, :reading_number, :bacterial_number, :bacterial_size_shape, :bacterial_mean, :bacterial_standard_deviation, :bacterial_dilution, :no_bacteria_per_gram, :micrograms, :actinobacteria, :actinobacteria_mean, :actinobacterial_standard_deviation, :actinobacteria_dilution, :actinobacteria_dilution, :actinobacteria_length_cm, :actinobacteria_micrograms, :fungi, :fungi_diameter, :fungi_colour, :fungi_calculation, :fungi_mean, :fungi_standard_deviation, :fungi_dilution, :fungal_strands_cm, :fungi_micrograms, :oomycetes, :oomycetes_diameter, :oomycetes_colour, :oomycetes_calculation, :oomycetes_mean, :oomycetes_standard_deviation, :oomycetes_dilution, :oomycetes_number_per_gram, :oomycetes_micrograms, :flagellate, :flagellate_mean, :flagellate_standard_deviation, :flagellate_dilution, :flagellate_protozoa, :amoebae, :amoebae_mean, :amoebae_standard_deviation, :amoebae_dilution, :amoebae_protozoa, :ciliates, :ciliates_mean, :ciliates_standard_deviation, :ciliates_dilution, :ciliates_protozoa, :nematodes, :nematodes_mean, :nematodes_dilution, :nematodes_protozoa, :fb_biomass_ratio, :gps, :sample_date)
+      params.require(:sample).permit(:user_id, :sample_id, :reading_number, :bacterial_number, :bacterial_size_shape, :bacterial_mean, :bacterial_standard_deviation, :bacterial_dilution, :no_bacteria_per_gram, :micrograms, :actinobacteria, :actinobacteria_mean, :actinobacterial_standard_deviation, :actinobacteria_dilution, :actinobacteria_dilution, :actinobacteria_length_cm, :actinobacteria_micrograms, :fungi, :fungi_diameter, :fungi_colour, :fungi_calculation, :fungi_mean, :fungi_standard_deviation, :fungi_dilution, :fungal_strands_cm, :fungi_micrograms, :oomycetes, :oomycetes_diameter, :oomycetes_colour, :oomycetes_calculation, :oomycetes_mean, :oomycetes_standard_deviation, :oomycetes_dilution, :oomycetes_number_per_gram, :oomycetes_micrograms, :flagellate, :flagellate_mean, :flagellate_standard_deviation, :flagellate_dilution, :flagellate_protozoa, :amoebae, :amoebae_mean, :amoebae_standard_deviation, :amoebae_dilution, :amoebae_protozoa, :ciliates, :ciliates_mean, :ciliates_standard_deviation, :ciliates_dilution, :ciliates_protozoa, :nematodes, :nematodes_mean, :nematodes_dilution, :nematodes_protozoa, :fb_biomass_ratio, :gps, :sample_date, :coverslip)
     end
 end

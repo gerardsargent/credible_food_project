@@ -1,289 +1,643 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>User:</strong>
-  <%= @sample.user_id %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Sample:</strong>
-  <%= @sample.sample_id %>
-</p>
+  <!-- Sample Summary Header -->
 
-<p>
-  <strong>Reading number:</strong>
-  <%= @sample.reading_number %>
-</p>
+  <div class="sample-history flex-centre centre-text sample-summary">
 
-<p>
-  <strong>Bacterial number:</strong>
-  <%= @sample.bacterial_number %>
-</p>
+    <div class="sample-history-item">
+      <h3>User ID:</h3>
+      <p><%= @sample.user_id %></p>
+    </div>
 
-<p>
-  <strong>Bacterial size shape:</strong>
-  <%= @sample.bacterial_size_shape %>
-</p>
+    <div class="sample-history-item">
+      <h3>Sample ID:</h3>
+      <p><%= @sample.sample_id %></p>
+    </div>
 
-<p>
-  <strong>Bacterial mean:</strong>
-  <%= @sample.bacterial_mean %>
-</p>
+    <div class="sample-history-item">
+    <h3>Reading Number:</h3>
+    <p><%= @sample.reading_number %></p>
+    </div>
 
-<p>
-  <strong>Bacterial standard deviation:</strong>
-  <%= @sample.bacterial_standard_deviation %>
-</p>
+    <div class="sample-history-item">
+      <h3>Date taken:</h3>
+      <p><%= @sample.sample_date %></p>
+    </div>
 
-<p>
-  <strong>Bacterial dilution:</strong>
-  <%= @sample.bacterial_dilution %>
-</p>
+    <div class="sample-history-item">
+      <h3>GPS Location of Sample:</h3>
+      <p> <p><%= @sample.gps %></p>
+    </div>
 
-<p>
-  <strong>No bacteria per gram:</strong>
-  <%= @sample.no_bacteria_per_gram %>
-</p>
+    <div class="sample-history-item">
+      <h3>Coverslip Size:</h3>
+      <p> <p><%= @sample.coverslip %></p>
+    </div>
 
-<p>
-  <strong>Micrograms:</strong>
-  <%= @sample.micrograms %>
-</p>
+  </div>
 
-<p>
-  <strong>Actinobacteria:</strong>
-  <%= @sample.actinobacteria %>
-</p>
+  <!-- ***** Bacteria -->
 
-<p>
-  <strong>Actinobacteria mean:</strong>
-  <%= @sample.actinobacteria_mean %>
-</p>
+  <div class="sample-history bacteria">
 
-<p>
-  <strong>Actinobacterial standard deviation:</strong>
-  <%= @sample.actinobacterial_standard_deviation %>
-</p>
+    <div class="sample-history-title">
 
-<p>
-  <strong>Actinobacteria dilution:</strong>
-  <%= @sample.actinobacteria_dilution %>
-</p>
+      <h3>Bacteria</h3>
 
-<p>
-  <strong>Actinobacteria dilution:</strong>
-  <%= @sample.actinobacteria_dilution %>
-</p>
+    </div>
 
-<p>
-  <strong>Actinobacteria length cm:</strong>
-  <%= @sample.actinobacteria_length_cm %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Actinobacteria micrograms:</strong>
-  <%= @sample.actinobacteria_micrograms %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial number:</strong>
+          <%= @sample.bacterial_number %>
+        </p>
+      </div>
 
-<p>
-  <strong>Fungi:</strong>
-  <%= @sample.fungi %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial size shape:</strong>
+          <%= @sample.bacterial_size_shape %>
+        </p>
+      </div>
 
-<p>
-  <strong>Fungi diameter:</strong>
-  <%= @sample.fungi_diameter %>
-</p>
+    </div>
 
-<p>
-  <strong>Fungi colour:</strong>
-  <%= @sample.fungi_colour %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Fungi calculation:</strong>
-  <%= @sample.fungi_calculation %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial mean:</strong>
+          <%= @sample.bacterial_mean %>
+        </p>
+      </div>
 
-<p>
-  <strong>Fungi mean:</strong>
-  <%= @sample.fungi_mean %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial standard deviation:</strong>
+          <%= @sample.bacterial_standard_deviation %>
+        </p>
+      </div>
 
-<p>
-  <strong>Fungi standard deviation:</strong>
-  <%= @sample.fungi_standard_deviation %>
-</p>
+    </div>
 
-<p>
-  <strong>Fungi dilution:</strong>
-  <%= @sample.fungi_dilution %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Fungal strands cm:</strong>
-  <%= @sample.fungal_strands_cm %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Bacterial dilution:</strong>
+          <%= @sample.bacterial_dilution %>
+        </p>
+      </div>
 
-<p>
-  <strong>Fungi micrograms:</strong>
-  <%= @sample.fungi_micrograms %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>No bacteria per gram:</strong>
+          <%= @sample.no_bacteria_per_gram %>
+        </p>
+      </div>
 
-<p>
-  <strong>Oomycetes:</strong>
-  <%= @sample.oomycetes %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Micrograms:</strong>
+          <%= @sample.micrograms %>
+        </p>
+      </div>
 
-<p>
-  <strong>Oomycetes diameter:</strong>
-  <%= @sample.oomycetes_diameter %>
-</p>
+    </div>
+    
+  </div>
 
-<p>
-  <strong>Oomycetes colour:</strong>
-  <%= @sample.oomycetes_colour %>
-</p>
+  <!-- ***** Actinobacteria -->
 
-<p>
-  <strong>Oomycetes calculation:</strong>
-  <%= @sample.oomycetes_calculation %>
-</p>
+  <div class="sample-history actinobacteria">
 
-<p>
-  <strong>Oomycetes mean:</strong>
-  <%= @sample.oomycetes_mean %>
-</p>
+    <div class="sample-history-title">
 
-<p>
-  <strong>Oomycetes standard deviation:</strong>
-  <%= @sample.oomycetes_standard_deviation %>
-</p>
+      <h3>Actinobacteria</h3>
 
-<p>
-  <strong>Oomycetes dilution:</strong>
-  <%= @sample.oomycetes_dilution %>
-</p>
+    </div>
 
-<p>
-  <strong>Oomycetes number per gram:</strong>
-  <%= @sample.oomycetes_number_per_gram %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Oomycetes micrograms:</strong>
-  <%= @sample.oomycetes_micrograms %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria:</strong>
+          <%= @sample.actinobacteria %>
+        </p>
+      </div>
 
-<p>
-  <strong>Flagellate:</strong>
-  <%= @sample.flagellate %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria mean:</strong>
+          <%= @sample.actinobacteria_mean %>
+        </p>
+      </div>
 
-<p>
-  <strong>Flagellate mean:</strong>
-  <%= @sample.flagellate_mean %>
-</p>
+    </div>
 
-<p>
-  <strong>Flagellate standard deviation:</strong>
-  <%= @sample.flagellate_standard_deviation %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Flagellate dilution:</strong>
-  <%= @sample.flagellate_dilution %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacterial standard deviation:</strong>
+          <%= @sample.actinobacterial_standard_deviation %>
+        </p>
+      </div>
 
-<p>
-  <strong>Flagellate protozoa:</strong>
-  <%= @sample.flagellate_protozoa %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria dilution:</strong>
+          <%= @sample.actinobacteria_dilution %>
+        </p>
+      </div>
 
-<p>
-  <strong>Amoebae:</strong>
-  <%= @sample.amoebae %>
-</p>
+    </div>
 
-<p>
-  <strong>Amoebae mean:</strong>
-  <%= @sample.amoebae_mean %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Amoebae standard deviation:</strong>
-  <%= @sample.amoebae_standard_deviation %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Length in cm of actinobacteria per gm:</strong>
+          <%= @sample.actinobacteria_length_cm %>
+        </p>
+      </div>
 
-<p>
-  <strong>Amoebae dilution:</strong>
-  <%= @sample.amoebae_dilution %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Actinobacteria micrograms:</strong>
+          <%= @sample.actinobacteria_micrograms %>
+        </p>
+      </div>
 
-<p>
-  <strong>Amoebae protozoa:</strong>
-  <%= @sample.amoebae_protozoa %>
-</p>
+    </div>
+    
+  </div>
 
-<p>
-  <strong>Ciliates:</strong>
-  <%= @sample.ciliates %>
-</p>
+  <!-- ***** Fungi -->
 
-<p>
-  <strong>Ciliates mean:</strong>
-  <%= @sample.ciliates_mean %>
-</p>
+  <div class="sample-history fungi">
 
-<p>
-  <strong>Ciliates standard deviation:</strong>
-  <%= @sample.ciliates_standard_deviation %>
-</p>
+    <div class="sample-history-title">
 
-<p>
-  <strong>Ciliates dilution:</strong>
-  <%= @sample.ciliates_dilution %>
-</p>
+      <h3>Fungi</h3>
 
-<p>
-  <strong>Ciliates protozoa:</strong>
-  <%= @sample.ciliates_protozoa %>
-</p>
+    </div>
 
-<p>
-  <strong>Nematodes:</strong>
-  <%= @sample.nematodes %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Nematodes mean:</strong>
-  <%= @sample.nematodes_mean %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi:</strong>
+          <%= @sample.fungi %>
+        </p>
+      </div>
 
-<p>
-  <strong>Nematodes dilution:</strong>
-  <%= @sample.nematodes_dilution %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi diameter:</strong>
+          <%= @sample.fungi_diameter %>
+        </p>
+      </div>
 
-<p>
-  <strong>Nematodes protozoa:</strong>
-  <%= @sample.nematodes_protozoa %>
-</p>
+    </div>
 
-<p>
-  <strong>Fb biomass ratio:</strong>
-  <%= @sample.fb_biomass_ratio %>
-</p>
+    <div class="sample-history-inner">
 
-<p>
-  <strong>Gps:</strong>
-  <%= @sample.gps %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi colour:</strong>
+          <%= @sample.fungi_colour %>
+        </p>
+      </div>
 
-<p>
-  <strong>Sample date:</strong>
-  <%= @sample.sample_date %>
-</p>
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi calculation:</strong>
+          <%= @sample.fungi_calculation %>
+        </p>
+      </div>
 
-<%= link_to 'Edit', edit_sample_path(@sample) %> |
-<%= link_to 'Back', samples_path %>
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi mean:</strong>
+          <%= @sample.fungi_mean %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi standard deviation:</strong>
+          <%= @sample.fungi_standard_deviation %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi dilution:</strong>
+          <%= @sample.fungi_dilution %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungal strands cm:</strong>
+          <%= @sample.fungal_strands_cm %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi micrograms:</strong>
+          <% @sample.fungi_micrograms %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi Average Diameter in UM:</strong>
+          <%= @sample.fungi_average_diameter_in_um %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fungi Average Diameter in CM:</strong>
+          <%= @sample.fungi_average_diameter_in_cm %>
+        </p>
+      </div>
+
+    </div>
+    
+  </div>  
+
+  <!-- ***** Oomycetes -->
+
+  <div class="sample-history oomycetes">
+
+    <div class="sample-history-title">
+      <h3>Oomycetes</h3>
+    </div> <!-- ****** End of sample-history-title -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes:</strong>
+          <%= @sample.oomycetes %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes diameter:</strong>
+          <%= @sample.oomycetes_diameter %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes colour:</strong>
+          <%= @sample.oomycetes_colour %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes calculation:</strong>
+          <%= @sample.oomycetes_calculation %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes mean:</strong>
+          <%= @sample.oomycetes_mean %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes standard deviation:</strong>
+          <%= @sample.oomycetes_standard_deviation %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes dilution:</strong>
+          <%= @sample.oomycetes_dilution %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes number per gram:</strong>
+          <%= @sample.oomycetes_number_per_gram %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes CM for Calculation (Cell V29):</strong>
+          <%= @sample.oomycetes_cm_length_for_calc %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes Strands Length in CM:</strong>
+          <%= @sample.oomycetes_strands_cm %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes Average Diameter in UM (Cell V33):</strong>
+          <%= @sample.oomycetes_average_diameter_in_um %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes Average Diameter in CM (Cell W33):</strong>
+          <%= @sample.oomycetes_average_diameter_in_cm %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Oomycetes micrograms:</strong>
+          <%= @sample.oomycetes_micrograms %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+    
+  </div> 
+
+    <!-- ***** Flagellate -->
+
+  <div class="sample-history flagellate">
+
+    <div class="sample-history-title">
+      <h3>Flagellate</h3>
+    </div> <!-- ****** End of sample-history-title -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Flagellate:</strong>
+          <%= @sample.flagellate %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Flagellate mean:</strong>
+          <%= @sample.flagellate_mean %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Flagellate dilution:</strong>
+          <%= @sample.flagellate_dilution %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Flagellate protozoa:</strong>
+          <%= @sample.flagellate_protozoa %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+    
+  </div> <!-- ****** End of SAMPLE-HISTORY WHOLE SECTION -->
+
+    <!-- ***** Amoebae -->
+
+  <div class="sample-history flagellate">
+
+    <div class="sample-history-title">
+      <h3>Amoebae</h3>
+    </div> <!-- ****** End of sample-history-title -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Amoebae:</strong>
+          <%= @sample.amoebae %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Amoebae mean:</strong>
+          <%= @sample.amoebae_mean %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Amoebae standard deviation:</strong>
+          <%= @sample.amoebae_standard_deviation %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Amoebae dilution:</strong>
+          <%= @sample.amoebae_dilution %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Amoebae protozoa:</strong>
+          <%= @sample.amoebae_protozoa %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+  
+  </div> <!-- ****** End of SAMPLE-HISTORY WHOLE SECTION -->
+
+    <!-- ***** Ciliates -->
+
+  <div class="sample-history flagellate">
+
+    <div class="sample-history-title">
+      <h3>Ciliates</h3>
+    </div> <!-- ****** End of sample-history-title -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Ciliates:</strong>
+          <%= @sample.ciliates %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Ciliates mean:</strong>
+          <%= @sample.ciliates_mean %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Ciliates standard deviation:</strong>
+          <%= @sample.ciliates_standard_deviation %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Ciliates dilution:</strong>
+          <%= @sample.ciliates_dilution %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Ciliates protozoa:</strong>
+          <%= @sample.ciliates_protozoa %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+  
+  </div> <!-- ****** End of SAMPLE-HISTORY WHOLE SECTION -->
+
+    <!-- ***** Nematodes -->
+
+  <div class="sample-history flagellate">
+
+    <div class="sample-history-title">
+      <h3>Nematodes</h3>
+    </div> <!-- ****** End of sample-history-title -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Nematodes:</strong>
+          <%= @sample.nematodes %>
+        </p>
+      </div>
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Nematodes Sum:</strong>
+          <%= @sample.nematodes_mean %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Nematodes dilution:</strong>
+          <%= @sample.nematodes_dilution %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Nematodes protozoa:</strong>
+          <%= @sample.nematodes_protozoa %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+  
+  </div> <!-- ****** End of SAMPLE-HISTORY WHOLE SECTION -->
+
+      <!-- ***** FB Biomass Ratio -->
+
+  <div class="sample-history fb-biomass">
+
+    <div class="sample-history-title">
+      <h3>FB Biomass Ratio</h3>
+    </div> <!-- ****** End of sample-history-title -->
+
+    <div class="sample-history-inner">
+
+      <div class="sample-history-item">
+        <p>
+          <strong>Fb biomass ratio:</strong>
+          <%= @sample.fb_biomass_ratio %>
+        </p>
+      </div>
+
+    </div> <!-- ****** End of sample-history-inner -->
+  
+  </div> <!-- ****** End of SAMPLE-HISTORY WHOLE SECTION -->
+
+  <%= link_to 'Edit', edit_sample_path(@sample) %> |
+  <%= link_to 'Back', samples_path %>
+</div>
