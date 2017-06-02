@@ -16,7 +16,7 @@ default: &default
   username: cfp
   password: password
   socket: /tmp/mysql.sock
-
+  url: <%= ENV.fetch("JAWSDB_URL") %>
 development:
   <<: *default
   database: credible_food_project_development
@@ -49,6 +49,3 @@ test:
 #
 production:
   <<: *default
-  database: credible_food_project_production
-  username: credible_food_project
-  password: <%= ENV['CREDIBLE_FOOD_PROJECT_DATABASE_PASSWORD'] %>
