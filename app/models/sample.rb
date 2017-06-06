@@ -13,8 +13,8 @@ class Sample < ApplicationRecord
         fungi_do_not_use_this_row_calc
         fungi_cm_for_calculation_calc
         fungal_strands_cm_calc
-        # fungi_average_diameter_in_um_calc
-        # fungi_average_diameter_cm_calc
+        fungi_average_diameter_in_um_calc
+        fungi_average_diameter_cm_calc
         # fungi_micrograms_calc
         # oomycetes_mean_calc
         # oomycetes_st_dev_calc
@@ -173,19 +173,49 @@ class Sample < ApplicationRecord
 
     def fungi_average_diameter_in_um_calc
         # Cell V26
+        # Take all of the readings for sample x and put them into an array. This is a reproduction of the formula in fungi_mean_calc above to enable the @fungi_av_di_final calculation at the end of this method
+        fungi_array = Sample.where(sample_id: sample_id).pluck(:fungi)
+            puts "****************"
+            puts "fungi_array before push = "
+            puts fungi_array.inspect
+            puts "****************"
+
+        fungi_array.push(self.fungi)
+            puts "****************"
+            puts "fungi_array after push = "
+            puts fungi_array.inspect
+            puts "****************"
+
+        fungi_array_compact = fungi_array.compact
+            puts "****************"
+            puts "fungi_array_compact = "
+            puts fungi_array_compact.inspect
+            puts "****************"
+
+        fungi_sum = fungi_array.compact.sum
+            puts "****************"
+            puts "fungi_sum = "
+            puts fungi_sum
+            puts "****************"
+
         # Take all the values from the fungi 'do not use this row' calculations
         fungi_do_not_use_this_row_array = Sample.where(sample_id: sample_id).pluck(:fungi_calculation)
-        puts "****************"
-        puts "fungi_do_not_use_this_row_array = "
-        puts fungi_do_not_use_this_row_array
-        puts "****************"
+
         # Remove any nil values so the array can be calculated
         fungi_compact = fungi_do_not_use_this_row_array.compact
         # Add together all the values in the compacted array
         fungi_calc_sum = fungi_compact.sum
+        puts "****************"
+        puts "fungi_calc_sum = "
+        puts fungi_calc_sum
+        puts "****************"
 
-        fungi_av_diameter_final = fungi_calc_sum / @fungi_sum
+        fungi_av_diameter_final = fungi_calc_sum / fungi_sum
         @fungi_av_di_final = fungi_av_diameter_final.round(1)
+        puts "****************"
+        puts "@fungi_av_di_final = "
+        puts @fungi_av_di_final
+        puts "****************"
         self.fungi_average_diameter_in_um = @fungi_av_di_final
     end
 

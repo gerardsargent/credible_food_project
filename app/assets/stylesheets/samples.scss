@@ -129,13 +129,14 @@ footer, header {
 
 .sample-history-item {
     display: inline-block;
-    margin: $margin-padding-desktop;
+    width: 200px;
+    padding: $margin-padding-desktop;
 }
 
 .sample-history-title {
     width: 100%;
     text-align: center;
-    // padding: $margin-padding-desktop;
+    padding: $margin-padding-desktop;
 }
 
 .sample-notice {
