@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170601171813) do
+=======
+ActiveRecord::Schema.define(version: 20170523144917) do
+
+  create_table "readings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "land_name"
+    t.string   "crop_growing"
+    t.string   "gps"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+>>>>>>> readings_page
 
   create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
