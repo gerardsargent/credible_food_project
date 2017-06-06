@@ -1,24 +1,5 @@
 <h1>Add Post</h1>
 
-<%= form_for :readings, url: readings_path do |r| %>
-    <p>
-        <%= r.label :land_name %><br>
-        <%= r.text_field :land_name %>
-    </p>
-
-    <p>
-        <%= r.label :crop_growing %><br>
-        <%= r.text_field :crop_growing %>
-    </p>
-
-    <p>
-        <%= r.label :gps %><br>
-        <%= r.text_field :gps %>
-    </p>
-
-    <p>
-        <%= r.submit %>
-    </p>
-<% end %>
+<%= render 'form', readings: @readings %>
 
 <p><%= link_to 'Return', readings_path %></p>
