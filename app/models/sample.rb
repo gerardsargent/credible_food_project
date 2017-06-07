@@ -21,9 +21,9 @@ class Sample < ApplicationRecord
         oomycetes_do_not_use_this_row_calc
         oomycetes_cm_for_calculation_calc
         oomycetes_strands_cm_calc
-        # oomycetes_average_diameter_in_um_calc
-        # oomycetes_average_diameter_cm_calc
-        # oomycetes_micrograms_calc
+        oomycetes_average_diameter_in_um_calc
+        oomycetes_average_diameter_cm_calc
+        oomycetes_micrograms_calc
         # flagellate_mean_calc
         # flagellate_st_dev_calc
         # flagellate_protozoa_calc
@@ -185,16 +185,8 @@ class Sample < ApplicationRecord
 
         # Take all the values from the fungi 'do not use this row' calculations
         fungi_do_not_use_this_row_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:fungi_calculation)
-            puts "****************"
-            puts "fungi_do_not_use_this_row_array"
-            puts fungi_do_not_use_this_row_array.inspect
-            puts "****************"
 
         fungi_do_not_use_this_row_array.push(@fungi_do_not_use_this_row_calc)
-            puts "****************"
-            puts "fungi_do_not_use_this_row_array after push = "
-            puts fungi_do_not_use_this_row_array.inspect
-            puts "****************"
 
         # Remove any nil values so the array can be calculated
         fungi_compact = fungi_do_not_use_this_row_array.compact
@@ -226,7 +218,9 @@ class Sample < ApplicationRecord
         oomycetes_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:oomycetes)
         oomycetes_array.push(self.oomycetes)
         @oomycetes_array_compact = oomycetes_array.compact
-        
+        #Calculate sum of array for use in oomycetes_average_diameter_in_um_calc below
+        @oomycetes_sum = @oomycetes_array_compact.sum
+
         if @oomycetes_array_compact.length == 1
             self.oomycetes_mean = @oomycetes_array_compact[0]
             # This instance variable is set so that oomycetes_cm_length_calc can execute later even when no other records exist
@@ -234,6 +228,7 @@ class Sample < ApplicationRecord
         else
             #Use Descriptive Statistics gem to calculate values
             oomycetes_mean = @oomycetes_array_compact.extend(DescriptiveStatistics)
+
 
             @oomycetes_mean = oomycetes_mean.mean
             # @oomycetes_mean = @oomycetes_sum / @oomycetes_length
@@ -257,6 +252,20 @@ class Sample < ApplicationRecord
     def oomycetes_do_not_use_this_row_calc
         # Refers to row 33 
         @oomycetes_do_not_use_this_row_calc = self.oomycetes * self.oomycetes_diameter
+            # puts "****************"
+            # puts "self.oomycetes = "
+            # puts self.oomycetes
+            # puts "****************"
+
+            # puts "****************"
+            # puts "self.oomycetes_diameter = "
+            # puts self.oomycetes_diameter
+            # puts "****************"
+
+            puts "****************"
+            puts "@oomycetes_do_not_use_this_row_calc = "
+            puts @oomycetes_do_not_use_this_row_calc
+            puts "****************"            
         self.oomycetes_calculation = @oomycetes_do_not_use_this_row_calc
     end
 
@@ -268,20 +277,20 @@ class Sample < ApplicationRecord
 
     def oomycetes_strands_cm_calc
         # Cell Y28
-        puts "****************"
-        puts "@oomycetes_cm_for_calculation_calc.round(3) = "
-        puts @oomycetes_cm_for_calculation_calc.round(3)
-        puts "****************"
+        # puts "****************"
+        # puts "@oomycetes_cm_for_calculation_calc.round(3) = "
+        # puts @oomycetes_cm_for_calculation_calc.round(3)
+        # puts "****************"
 
-        puts "****************"
-        puts "self.oomycetes_dilution = "
-        puts self.oomycetes_dilution
-        puts "****************"
+        # puts "****************"
+        # puts "self.oomycetes_dilution = "
+        # puts self.oomycetes_dilution
+        # puts "****************"
 
-        puts "****************"
-        puts "self.coverslip = "
-        puts self.coverslip
-        puts "****************"
+        # puts "****************"
+        # puts "self.coverslip = "
+        # puts self.coverslip
+        # puts "****************"
 
         @oomycetes_strands_cm = (((@oomycetes_cm_for_calculation_calc.round(3) * self.oomycetes_dilution) * self.coverslip) * 22)
         self.oomycetes_strands_cm = @oomycetes_strands_cm
@@ -295,13 +304,30 @@ class Sample < ApplicationRecord
         # Cell V33
         # Take all the values from the oomycetes 'do not use this row' calculations
         oomycetes_do_not_use_this_row_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:oomycetes_calculation)
-
+            puts "****************"
+            puts "oomycetes_do_not_use_this_row_array before push = "
+            puts oomycetes_do_not_use_this_row_array.inspect
+            puts "****************"
         oomycetes_do_not_use_this_row_array.push(@oomycetes_cm_for_calculation_calc)
+            puts "****************"
+            puts "oomycetes_do_not_use_this_row_array after push = "
+            puts oomycetes_do_not_use_this_row_array.inspect
+            puts "****************"
+
         # Remove any nil values so the array can be calculated
         oomycetes_compact = oomycetes_do_not_use_this_row_array.compact
         # Add together all the values in the compacted array
         oomycetes_calc_sum = oomycetes_compact.sum
+            puts "****************"
+            puts "oomycetes_calc_sum = "
+            puts oomycetes_calc_sum
+            puts "****************"
 
+            puts "****************"
+            puts "@oomycetes_sum = "
+            puts @oomycetes_sum
+            puts "****************"
+     
         oomycetes_av_diameter_final = oomycetes_calc_sum / @oomycetes_sum
         @oomycetes_av_di_final = oomycetes_av_diameter_final
         self.oomycetes_average_diameter_in_um = @oomycetes_av_di_final
@@ -309,7 +335,15 @@ class Sample < ApplicationRecord
 
     def oomycetes_average_diameter_cm_calc
         # Cell W33
+            puts "****************"
+            puts "@oomycetes_av_di_final = "
+            puts @oomycetes_av_di_final
+            puts "****************"
         @oomycetes_av_di_cm = @oomycetes_av_di_final * 0.0001
+            puts "****************"
+            puts "@oomycetes_av_di_cm = "
+            puts @oomycetes_av_di_cm
+            puts "****************"
         self.oomycetes_average_diameter_in_cm = @oomycetes_av_di_cm 
     end
 
