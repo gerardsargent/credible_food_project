@@ -252,7 +252,7 @@
 
       <div class="sample-history-item">
         <p>
-          <strong>Fungal strands cm:</strong>
+          <strong>Length in cm of fungal strands / gm:</strong>
           <%= @sample.fungal_strands_cm %>
         </p>
       </div>
@@ -264,7 +264,7 @@
       <div class="sample-history-item">
         <p>
           <strong>Fungi micrograms:</strong>
-          <% @sample.fungi_micrograms %>
+          <%= @sample.fungi_micrograms %>
         </p>
       </div>
 
@@ -396,7 +396,7 @@
       <div class="sample-history-item">
         <p>
           <strong>Oomycetes Average Diameter in CM (Cell W33):</strong>
-          <%= @sample.oomycetes_average_diameter_in_cm %>
+          <%= "%f" % @sample.oomycetes_average_diameter_in_cm %>
         </p>
       </div>
 
@@ -441,10 +441,21 @@
 
       <div class="sample-history-item">
         <p>
+          <strong>Flagellate Standard Deviation:</strong>
+          <%= @sample.flagellate_standard_deviation %>
+        </p>
+      </div> <!-- End of sample-history-item -->
+
+      <div class="sample-history-item">
+        <p>
           <strong>Flagellate dilution:</strong>
           <%= @sample.flagellate_dilution %>
         </p>
       </div> <!-- End of sample-history-item -->
+
+    </div> <!-- ****** End of sample-history-inner -->
+
+    <div class="sample-history-inner">
 
       <div class="sample-history-item">
         <p>
