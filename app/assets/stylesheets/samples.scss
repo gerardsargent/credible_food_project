@@ -167,3 +167,48 @@ footer, header {
         flex-basis: 200px;
     }
 }
+
+// Samples Form Mk.II CSS - Below
+
+.form_title {
+    display: flex;
+    flex-grow: 12;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    //width: 1.2%;
+    border: 1px solid blue;
+}
+
+input {
+    width: 90%;
+    font-size: 1.5em;
+}
+
+table th, td {
+    font-size: 0.5em;
+}
+
+.second_section {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.nematodes {
+    flex-grow: 1;
+    max-width: 20%;
+}
+
+.notes {
+    flex-grow: 3;
+    max-width: 70%;
+}
+
+.notes_2 th {
+    max-width: 20%;
+}

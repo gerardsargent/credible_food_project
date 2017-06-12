@@ -3,6 +3,6 @@
 
 <h1>Edit Post</h1>
 
-<%= render 'form', readings: @readings %>
+<%= render 'form', readings: @readings, method: "put" %>
 
 <p><%= link_to 'Return', readings_path %></p>
