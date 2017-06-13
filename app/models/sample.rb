@@ -13,29 +13,29 @@ class Sample < ApplicationRecord
         fungi_do_not_use_this_row_calc
         fungi_cm_for_calculation_calc
         fungal_strands_cm_calc
-        # fungi_average_diameter_in_um_calc
-        # fungi_average_diameter_cm_calc
-        # fungi_micrograms_calc
-        # oomycetes_mean_calc
-        # oomycetes_st_dev_calc
-        # oomycetes_do_not_use_this_row_calc
-        # oomycetes_cm_for_calculation_calc
-        # oomycetes_strands_cm_calc
-        # oomycetes_average_diameter_in_um_calc
-        # oomycetes_average_diameter_cm_calc
-        # oomycetes_micrograms_calc
-        # flagellate_mean_calc
-        # flagellate_st_dev_calc
-        # flagellate_protozoa_calc
-        # amoebae_mean_calc
-        # amoebae_st_dev_calc
-        # amoebae_protozoa_calc
-        # ciliates_mean_calc
-        # ciliates_st_dev_calc
-        # ciliates_protozoa_calc
-        # nematodes_sum_calc
-        # nematodes_protozoa_calc
-        # biomass_ratio_calc
+        fungi_average_diameter_in_um_calc
+        fungi_average_diameter_cm_calc
+        fungi_micrograms_calc
+        oomycetes_mean_calc
+        oomycetes_st_dev_calc
+        oomycetes_do_not_use_this_row_calc
+        oomycetes_cm_for_calculation_calc
+        oomycetes_strands_cm_calc
+        oomycetes_average_diameter_in_um_calc
+        oomycetes_average_diameter_cm_calc
+        oomycetes_micrograms_calc
+        flagellate_mean_calc
+        flagellate_st_dev_calc
+        flagellate_protozoa_calc
+        amoebae_mean_calc
+        moebae_st_dev_calc
+        amoebae_protozoa_calc
+        ciliates_mean_calc
+        ciliates_st_dev_calc
+        ciliates_protozoa_calc
+        nematodes_sum_calc
+        nematodes_protozoa_calc
+        biomass_ratio_calc
     end
  
     private

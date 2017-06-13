@@ -1,231 +1,9 @@
 <div class="container">
 
-  <%= form_for(sample) do |f| %>
-
-    <% if sample.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
-
-        <ul>
-        <% sample.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <!-- ****** Header Row 1 -->
-    <div class="flex-centre centre-text form-header">
-      <div class="sample-history-item">
-        <%= f.label "User ID Number:" %>
-        <%= f.number_field :user_id %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Sample ID Number:" %>
-        <%= f.number_field :sample_id %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Reading No:" %>
-        <%= reading_number_types = [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-        f.select :reading_number, reading_number_types %>
-      </div>
-    </div>
-
-    <!-- ****** Header Row 2 -->
-    <div class="flex-centre centre-text form-header">
-      <div class="sample-history-item">
-        <%= f.label "GPS Co-Ordinates:" %>
-        <%= f.text_field :gps %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Date Sample Taken:" %>
-        <%= f.date_select :sample_date %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Coverslip Size:" %>
-        <%= coverslip_types = [2038, 2491, 3044]
-        f.select :coverslip, coverslip_types %>
-      </div>
-    </div>
-
-    <!-- ****** Bacteria -->
-    <div class="flex-centre centre-text bacteria">
-      <div class="sample-history-title">
-        <h3>Bacteria</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Number of Bacteria:" %>
-        <%= f.number_field :bacterial_number %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Bacterial Size & Shape:" %>
-        <%= f.text_field :bacterial_size_shape %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Bacterial Dilution Level:" %>
-        <%= f.number_field :bacterial_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Actinobacteria -->
-    <div class="flex-centre centre-text actinobacteria">
-      <div class="sample-history-title">
-        <h3>Actinobacteria</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Number of actinobacteria:" %>
-        <%= f.number_field :actinobacteria %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Actinobacteria dilution level:" %>
-        <%= f.number_field :actinobacteria_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Fungi -->
-    <div class="flex-centre centre-text fungi">
-      <div class="sample-history-title">
-        <h3>Fungi</h3>
-      </div>
-
-      <div class="flex-centre centre-text fungi">
-        <div class="sample-history-item">
-          <%= f.label "Number of fungi:" %>
-          <%= f.number_field :fungi %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Fungi Diameter:" %>
-          <%= f.number_field :fungi_diameter %>
-        </div>
-      </div>
-
-      <div class="flex-centre centre-text fungi">
-        <div class="sample-history-item">
-          <%= f.label "Fungi colour:" %>
-          <%= f.text_field :fungi_colour %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Fungi dilution level:" %>
-          <%= f.number_field :fungi_dilution %>
-        </div>
-      </div>
-    </div>
-
-    <!-- ****** Oomycetes -->
-    <div class="flex-centre centre-text oomycetes">
-      <div class="sample-history-title">
-        <h3>Oomycetes</h3>
-      </div>
-
-      <div class="flex-centre centre-text oomycetes">
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Number:" %>
-          <%= f.number_field :oomycetes %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Diameter:" %>
-          <%= f.number_field :oomycetes_diameter %>
-        </div>
-      </div>
-    
-      <div class="flex-centre centre-text oomycetes">
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Colour:" %>
-          <%= f.text_field :oomycetes_colour %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Dilution Level:" %>
-          <%= f.number_field :oomycetes_dilution %>
-        </div>
-      </div>
-    </div>
-
-    <!-- ****** Flagellate -->
-    <div class="flex-centre centre-text flagellate">
-      <div class="sample-history-title">
-        <h3>Flagellate</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Flagellate number:" %>
-        <%= f.number_field :flagellate %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Flagellate dilution level:" %>
-        <%= f.number_field :flagellate_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Amoeba -->
-    <div class="flex-centre centre-text amoeba">
-      <div class="sample-history-title">
-        <h3>Amoeba</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Amoeba number:" %>
-        <%= f.number_field :amoebae %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Amoeba dilution level:" %>
-        <%= f.number_field :amoebae_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Ciliates -->
-    <div class="flex-centre centre-text ciliates">
-      <div class="sample-history-title">
-        <h3>Ciliates</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Ciliates number:" %>
-        <%= f.number_field :ciliates %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Ciliates dilution level:" %>
-        <%= f.number_field :ciliates_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Nematodes -->
-    <div class="flex-centre centre-text nematodes">
-      <div class="sample-history-title">
-        <h3>Nematodes</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Nematodes number:" %>
-        <%= f.number_field :nematodes %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Nematodes dilution level:" %>
-        <%= f.number_field :nematodes_dilution %>
-      </div>
-    </div>
-
-    <div class="flex-centre centre-text nematodes">
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    </div>
-  <% end %>
-
-</div>
 
 <!--NEW FORM-->
 
+<%= form_for(samples[0]) do |s| %>
 <table>
 
   <tr class="form_titles">
@@ -243,448 +21,59 @@
     <th>Flagellate</th>
     <th>Amoebae</th>
     <th>Ciliates</th>
-
   </tr>
 
-  <br >
-
-  <tr>
-
-    <th>1</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>2</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-  
-  <br >
-
-  <tr>
-
-    <th>3</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>4</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>5</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>6</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>7</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>8</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>9</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>10</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>11</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>12</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>13</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-  
-  <br >
-
-  <tr>
-
-    <th>14</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>15</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>16</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>17</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>18</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>19</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>20</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>Dilution</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
-
-  <br >
-
-  <tr>
-
-    <th>Standard<br > Deviation</th>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-
-  </tr>
+<% samples.each do |r|%>
+  <%= s.fields_for r do |x| %>
+    <tr>
+    <td>
+    <%=x.label :reading_number, r.reading_number%>
+    </td>
+
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][bacterial_number]", r.bacterial_number %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][bacterial_size_shape]", r.bacterial_size_shape %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][actinobacteria]", r.actinobacteria %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][fungi]", r.fungi %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][fungi_diameter]", r.fungi_diameter %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][fungi_colour]", r.fungi_colour %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][oomycetes]", r.oomycetes %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][oomycetes_diameter]", r.oomycetes_diameter %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][oomycetes_colour]", r.oomycetes_colour %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][flagellate]", r.flagellate %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][amoebae]", r.amoebae %>
+    </td>
+    <td>
+      <%=text_field_tag "samples[#{r.reading_number}][ciliates]", r.ciliates %>
+    </td>
+
+   </tr>
+
+  <% end %>
+
+  <% end %>
+
+  <%= s.submit %>
 
 </table>
 
@@ -757,17 +146,16 @@
     everything can be
     recorded and kept
     incase this is usefull for
-    future reference. Just
-    copy and past over the *
-    and we will be able to
-    see it once emailed.
+    future reference.
     </th>
   </tr>
 
   <tr>
     <td><input></td>
   </tr>
-
+  
 </table>
 
 </div>
+
+<%end%>
