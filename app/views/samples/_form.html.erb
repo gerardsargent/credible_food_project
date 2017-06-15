@@ -1,14 +1,7 @@
 <div class="container">
 
-<%= form_for(:sample) do |s| %>
-  <form style="display:hidden" id="hidden_form">
-   <input type="text" name="hidden-input">
-  </form>
-<% end %>
-
 <!--NEW FORM-->
 
-<%= form_for(samples[0]) do |s| %>
 <table>
 
   <tr class="form_titles">
@@ -27,58 +20,59 @@
     <th>Amoebae</th>
     <th>Ciliates</th>
   </tr>
+  <% samples.each do |s| %>
+    <tr>
+    </tr>
+  <% end %>
 
-<% samples.each do |r|%>
-  <%= s.fields_for r do |x| %>
+<%= form_for(samples[samples.length - 1]) do |s| %>
+<!-- normal form for one sample -->
+
     <tr>
     <td>
-    <%=x.label :reading_number, r.reading_number%>
+    <%=s.label :reading_number, :reading_number%>
     </td>
 
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][bacterial_number]", r.bacterial_number %>
+      <%=s.text_field :bacterial_number %>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][bacterial_size_shape]", r.bacterial_size_shape %>
+      <%=s.text_field :bacterial_size_shape%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][actinobacteria]", r.actinobacteria %>
+      <%=s.text_field :actinobacteria%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][fungi]", r.fungi %>
+      <%=s.text_field :fungi%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][fungi_diameter]", r.fungi_diameter %>
+      <%=s.text_field :fungi_diameter%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][fungi_colour]", r.fungi_colour %>
+      <%=s.text_field :fungi_colour%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][oomycetes]", r.oomycetes %>
+      <%=s.text_field :oomycetes%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][oomycetes_diameter]", r.oomycetes_diameter %>
+      <%=s.text_field :oomycetes_diameter%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][oomycetes_colour]", r.oomycetes_colour %>
+      <%=s.text_field :oomycetes_colour%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][flagellate]", r.flagellate %>
+      <%=s.text_field :flagellate%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][amoebae]", r.amoebae %>
+      <%=s.text_field :amoebae%>
     </td>
     <td>
-      <%=text_field_tag "samples[#{r.reading_number}][ciliates]", r.ciliates %>
+      <%=s.text_field :ciliates%>
     </td>
-
    </tr>
 
+    <%= s.submit %>
   <% end %>
-
-  <% end %>
-
-  <%= s.submit %>
 
 </table>
 
@@ -145,7 +139,7 @@
     Feel free to write any
     further information you
     feel important or
-    usefull, and any
+    useful, and any
     questions you might
     have such that
     everything can be
@@ -162,9 +156,3 @@
 </table>
 
 </div>
-
-<script>
-  document.getElementById("hidden_form").defaultValue = "Hidden_Data";
-</script>
-
-<%end%>

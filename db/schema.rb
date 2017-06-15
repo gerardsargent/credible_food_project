@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170601171813) do
-=======
-ActiveRecord::Schema.define(version: 20170523144917) do
 
   create_table "readings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "land_name"
@@ -22,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170523144917) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
->>>>>>> readings_page
 
   create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -33,7 +29,6 @@ ActiveRecord::Schema.define(version: 20170523144917) do
     t.float    "bacterial_mean",                     limit: 24
     t.float    "bacterial_standard_deviation",       limit: 24
     t.integer  "bacterial_dilution"
-    t.bigint   "no_bacteria_per_gram"
     t.integer  "actinobacteria"
     t.float    "actinobacteria_mean",                limit: 24
     t.float    "actinobacterial_standard_deviation", limit: 24
@@ -80,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170523144917) do
     t.float    "oomycetes_average_diameter_in_um",   limit: 24
     t.float    "oomycetes_average_diameter_in_cm",   limit: 24
     t.float    "gps",                                limit: 24
+    t.bigint   "no_bacteria_per_gram"
     t.bigint   "micrograms"
     t.bigint   "actinobacteria_length_cm"
     t.bigint   "actinobacteria_micrograms"

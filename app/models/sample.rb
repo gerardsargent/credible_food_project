@@ -1,6 +1,6 @@
 class Sample < ApplicationRecord
 
-    before_save :do_calc
+    # before_save :do_calc
 
     def do_calc
         bacterial_mean_calc
