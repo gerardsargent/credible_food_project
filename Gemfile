@@ -27,6 +27,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -47,6 +48,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Ruby library that pretty prints Ruby objects in full color exposing their internal structure with proper indentation. Useful for debugging calculations dependent on variables being passed between actions
+  gem 'awesome_print', '~> 1.7'
+
+  # Calculates descriptive statistics including measures of central tendency (e.g. mean, median mode), dispersion (e.g. range, and quartiles), and spread (e.g variance and standard deviation).
+  gem 'descriptive-statistics', '~> 2.1', '>= 2.1.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

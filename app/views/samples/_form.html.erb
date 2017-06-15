@@ -1,0 +1,227 @@
+<div class="container">
+
+  <%= form_for(sample) do |f| %>
+
+    <% if sample.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
+
+        <ul>
+        <% sample.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- ****** Header Row 1 -->
+    <div class="flex-centre centre-text form-header">
+      <div class="sample-history-item">
+        <%= f.label "User ID Number:" %>
+        <%= f.number_field :user_id %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Sample ID Number:" %>
+        <%= f.number_field :sample_id %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Reading No:" %>
+        <%= reading_number_types = [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        f.select :reading_number, reading_number_types %>
+      </div>
+    </div>
+
+    <!-- ****** Header Row 2 -->
+    <div class="flex-centre centre-text form-header">
+      <div class="sample-history-item">
+        <%= f.label "GPS Co-Ordinates:" %>
+        <%= f.text_field :gps %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Date Sample Taken:" %>
+        <%= f.date_select :sample_date %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Coverslip Size:" %>
+        <%= coverslip_types = [2038, 2491, 3044]
+        f.select :coverslip, coverslip_types %>
+      </div>
+    </div>
+
+    <!-- ****** Bacteria -->
+    <div class="flex-centre centre-text bacteria">
+      <div class="sample-history-title">
+        <h3>Bacteria</h3>
+      </div>
+      <div class="sample-history-item">
+        <%= f.label "Number of Bacteria:" %>
+        <%= f.number_field :bacterial_number %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Bacterial Size & Shape:" %>
+        <%= f.text_field :bacterial_size_shape %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Bacterial Dilution Level:" %>
+        <%= f.number_field :bacterial_dilution %>
+      </div>
+    </div>
+
+    <!-- ****** Actinobacteria -->
+    <div class="flex-centre centre-text actinobacteria">
+      <div class="sample-history-title">
+        <h3>Actinobacteria</h3>
+      </div>
+      <div class="sample-history-item">
+        <%= f.label "Number of actinobacteria:" %>
+        <%= f.number_field :actinobacteria %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Actinobacteria dilution level:" %>
+        <%= f.number_field :actinobacteria_dilution %>
+      </div>
+    </div>
+
+    <!-- ****** Fungi -->
+    <div class="flex-centre centre-text fungi">
+      <div class="sample-history-title">
+        <h3>Fungi</h3>
+      </div>
+
+      <div class="flex-centre centre-text fungi">
+        <div class="sample-history-item">
+          <%= f.label "Number of fungi:" %>
+          <%= f.number_field :fungi %>
+        </div>
+
+        <div class="sample-history-item">
+          <%= f.label "Fungi Diameter:" %>
+          <%= f.number_field :fungi_diameter %>
+        </div>
+      </div>
+
+      <div class="flex-centre centre-text fungi">
+        <div class="sample-history-item">
+          <%= f.label "Fungi colour:" %>
+          <%= f.text_field :fungi_colour %>
+        </div>
+
+        <div class="sample-history-item">
+          <%= f.label "Fungi dilution level:" %>
+          <%= f.number_field :fungi_dilution %>
+        </div>
+      </div>
+    </div>
+
+    <!-- ****** Oomycetes -->
+    <div class="flex-centre centre-text oomycetes">
+      <div class="sample-history-title">
+        <h3>Oomycetes</h3>
+      </div>
+
+      <div class="flex-centre centre-text oomycetes">
+        <div class="sample-history-item">
+          <%= f.label "Oomycetes Number:" %>
+          <%= f.number_field :oomycetes %>
+        </div>
+
+        <div class="sample-history-item">
+          <%= f.label "Oomycetes Diameter:" %>
+          <%= f.number_field :oomycetes_diameter %>
+        </div>
+      </div>
+    
+      <div class="flex-centre centre-text oomycetes">
+        <div class="sample-history-item">
+          <%= f.label "Oomycetes Colour:" %>
+          <%= f.text_field :oomycetes_colour %>
+        </div>
+
+        <div class="sample-history-item">
+          <%= f.label "Oomycetes Dilution Level:" %>
+          <%= f.number_field :oomycetes_dilution %>
+        </div>
+      </div>
+    </div>
+
+    <!-- ****** Flagellate -->
+    <div class="flex-centre centre-text flagellate">
+      <div class="sample-history-title">
+        <h3>Flagellate</h3>
+      </div>
+      <div class="sample-history-item">
+        <%= f.label "Flagellate number:" %>
+        <%= f.number_field :flagellate %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Flagellate dilution level:" %>
+        <%= f.number_field :flagellate_dilution %>
+      </div>
+    </div>
+
+    <!-- ****** Amoeba -->
+    <div class="flex-centre centre-text amoeba">
+      <div class="sample-history-title">
+        <h3>Amoeba</h3>
+      </div>
+      <div class="sample-history-item">
+        <%= f.label "Amoeba number:" %>
+        <%= f.number_field :amoebae %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Amoeba dilution level:" %>
+        <%= f.number_field :amoebae_dilution %>
+      </div>
+    </div>
+
+    <!-- ****** Ciliates -->
+    <div class="flex-centre centre-text ciliates">
+      <div class="sample-history-title">
+        <h3>Ciliates</h3>
+      </div>
+      <div class="sample-history-item">
+        <%= f.label "Ciliates number:" %>
+        <%= f.number_field :ciliates %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Ciliates dilution level:" %>
+        <%= f.number_field :ciliates_dilution %>
+      </div>
+    </div>
+
+    <!-- ****** Nematodes -->
+    <div class="flex-centre centre-text nematodes">
+      <div class="sample-history-title">
+        <h3>Nematodes</h3>
+      </div>
+      <div class="sample-history-item">
+        <%= f.label "Nematodes number:" %>
+        <%= f.number_field :nematodes %>
+      </div>
+
+      <div class="sample-history-item">
+        <%= f.label "Nematodes dilution level:" %>
+        <%= f.number_field :nematodes_dilution %>
+      </div>
+    </div>
+
+    <div class="flex-centre centre-text nematodes">
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </div>
+  <% end %>
+
+
+
+</div>
