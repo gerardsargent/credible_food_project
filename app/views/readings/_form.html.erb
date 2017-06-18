@@ -1,0 +1,72 @@
+<%= form_for(reading) do |f| %>
+  <% if reading.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h2>
+
+      <ul>
+      <% reading.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :client %>
+    <%= f.text_field :client %>
+  </div>
+
+  <div class="field">
+    <%= f.label :organisation %>
+    <%= f.text_field :organisation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_collected %>
+    <%= f.datetime_select :date_collected %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_observed %>
+    <%= f.datetime_select :date_observed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :plants_present %>
+    <%= f.text_field :plants_present %>
+  </div>
+
+  <div class="field">
+    <%= f.label :plants_desired %>
+    <%= f.text_field :plants_desired %>
+  </div>
+
+  <div class="field">
+    <%= f.label :other_notes %>
+    <%= f.text_area :other_notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :observed_by %>
+    <%= f.text_field :observed_by %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lt_id %>
+    <%= f.number_field :lt_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cust_id %>
+    <%= f.number_field :cust_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @reading.client %>
+</p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @reading.organisation %>
+</p>
+
+<p>
+  <strong>Date collected:</strong>
+  <%= @reading.date_collected %>
+</p>
+
+<p>
+  <strong>Date observed:</strong>
+  <%= @reading.date_observed %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @reading.location %>
+</p>
+
+<p>
+  <strong>Plants present:</strong>
+  <%= @reading.plants_present %>
+</p>
+
+<p>
+  <strong>Plants desired:</strong>
+  <%= @reading.plants_desired %>
+</p>
+
+<p>
+  <strong>Other notes:</strong>
+  <%= @reading.other_notes %>
+</p>
+
+<p>
+  <strong>Observed by:</strong>
+  <%= @reading.observed_by %>
+</p>
+
+<p>
+  <strong>Lt:</strong>
+  <%= @reading.lt_id %>
+</p>
+
+<p>
+  <strong>Cust:</strong>
+  <%= @reading.cust_id %>
+</p>
+
+<%= link_to 'Edit', edit_reading_path(@reading) %> |
+<%= link_to 'Back', readings_path %>

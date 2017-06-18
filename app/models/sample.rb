@@ -1,6 +1,7 @@
 class Sample < ApplicationRecord
 
     validates_presence_of :user_id, :sample_id, :gps
+    belongs_to :reading
     before_save :do_calc
 
     def do_calc

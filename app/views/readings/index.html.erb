@@ -1,0 +1,7 @@
+<h1>Hi, <%= current_user.first_name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<%= render :partial=>"reading_list", :locals=>{:readings=> @user_readings } %>
+
+<%= render :partial=>"new_reading", :locals=>{:reading=>Reading.new(:user_id=>@user_id)} %>
