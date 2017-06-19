@@ -1,6 +1,6 @@
 class Sample < ApplicationRecord
 
-    validates_presence_of :user_id, :sample_id, :gps
+    validates_presence_of :reading_id, presence: true
     belongs_to :reading
     before_save :do_calc
 

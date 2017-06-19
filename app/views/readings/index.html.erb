@@ -5,6 +5,5 @@
 <% if current_user.is_a?(GuestUser) %>
   <p>Welcome to the Credible Food Project. Please log in.</p>
 <% else %>
-  <%= render :partial=>"reading_list", :locals=>{:readings => @user_readings, :samples => @linked_sample } %>
-  <%= render :partial=>"new_reading", :locals=>{:reading=>Reading.new(:user_id=> @user_id)} %>
+  <%= render 'reading_list', readings: @user_readings %>
 <% end %>
