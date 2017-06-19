@@ -1,6 +1,9 @@
-<h1>Readings</h1>
+<h1>Readings History</h1>
 
 <% if readings.present? %>
+
+<p>Below is a list of your readings history. Click on a reading to edit details or add sample data.</p>
+
   <table>
     <thead>
       <tr>
@@ -36,6 +39,10 @@
           <td><%= link_to 'Show', reading %></td>
           <td><%= link_to 'Edit', edit_reading_path(reading) %></td>
           <td><%= link_to 'Delete', reading, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><% samples.each do |sample| %>
+                <%= link_to 'View Sample', sample %>
+              <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

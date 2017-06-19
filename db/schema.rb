@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618191800) do
+ActiveRecord::Schema.define(version: 20170619154933) do
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",            null: false
@@ -106,7 +106,9 @@ ActiveRecord::Schema.define(version: 20170618191800) do
     t.bigint   "nematodes_protozoa"
     t.bigint   "oomycetes_strands_cm"
     t.integer  "location_id"
+    t.integer  "reading_id"
     t.index ["location_id"], name: "index_samples_on_location_id", using: :btree
+    t.index ["reading_id"], name: "index_samples_on_reading_id", using: :btree
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_samples_on_user_id", using: :btree
@@ -133,4 +135,5 @@ ActiveRecord::Schema.define(version: 20170618191800) do
 
   add_foreign_key "locations", "users", column: "users_id"
   add_foreign_key "samples", "locations"
+  add_foreign_key "samples", "readings"
 end

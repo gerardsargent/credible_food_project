@@ -7,10 +7,6 @@ class ReadingsController < ApplicationController
     @readings = Reading.all
     @user_readings = current_user.readings
     @user_id = current_user.id
-    puts "******************"
-    puts "@user_id:"
-    puts @user_id
-    puts "******************"
   end
 
   # GET /readings/1
