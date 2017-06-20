@@ -1,0 +1,66 @@
+  <div class="container">
+    <div class="flex-centre"
+      <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
+    </div>
+  </div>
+
+  <% if samples.blank? %>
+    <div class="container centre-text">
+      <h3>No sample records have been uploaded. Please upload the first sample below...</h3>
+    </div>
+  <% else %>
+    <% samples.each do |sample| %>
+
+      <div class="container">
+
+        <!-- Header -->
+        <div class="sample-history flex-wrap sample-summary">
+
+          <div class="sample-history-inner">
+
+            <div class="sample-history-item">
+              <h3>User ID:</h3>
+              <p><%= sample.user_id %></p>
+            </div>
+
+            <div class="sample-history-item">
+              <h3>Sample ID:</h3>
+              <p><%= sample.sample_id %></p>
+            </div>
+
+            <div class="sample-history-item">
+              <h3>Reading Number:</h3>
+              <p><%= sample.reading_number %></p>
+            </div>
+            
+          </div>
+
+          <div class="sample-history-inner">
+            <div class="sample-history-item">
+              <h3>Date taken:</h3>
+              <p><%= sample.sample_date %></p>
+            </div>
+
+            <div class="sample-history-item">
+              <h3>GPS Location of Sample:</h3>
+              <p><%= sample.gps %></p>
+            </div>
+
+          </div> <!-- End of sample-history-inner div -->
+
+          <!-- This is where the old code was originally -->
+
+          <!-- CRUD Options -->
+          <div class="sample-history-inner crud-options">
+            <div class="sample-history-item"><%= link_to 'View Record', sample %></div>
+            <div class="sample-history-item"><%= link_to 'Edit Record', edit_sample_path(sample) if logged_in?(:site_admin) %></div>
+            <div class="sample-history-item"><%= link_to 'Delete Record', sample, method: :delete, data: { confirm: 'Are you sure?' }  if logged_in?(:site_admin) %></div>
+          </div> <!-- End of CRUD div -->
+
+        </div> <!-- End of sample-history div -->
+        
+      </div> <!-- End of container div -->
+
+    <% end %> <!-- End of sample loop -->
+  
+  <% end %> <!-- End of if statement -->

@@ -39,7 +39,6 @@
     </tbody>
   </table>
 
-  <%= @reading.samples.each do |sample| %>
-    <%= sample.reading_number %>
-  <% end %>
+  <%= render 'sample_show', samples: @samples %>
+
 <br>
