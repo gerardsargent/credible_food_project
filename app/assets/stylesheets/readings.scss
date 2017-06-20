@@ -1,3 +1,169 @@
 // Place all the styles related to the readings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$dark-green: #213921;
+$margin-padding-desktop: 25px;
+$sample-background: #BFC24B;
+$biomass-background: #C1A065;
+$form-background: #C19F6D;
+$border-radius: 7.64px;
+
+a {
+    text-decoration: none;
+    color: $dark-green;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1E2831;
+}
+
+footer, header {
+    text-align: center;
+}
+
+.amoeba {
+    background-color: lighten( $biomass-background, 20% )
+}
+
+.bacteria {
+    background-color: $sample-background;
+}
+
+.biomass {
+    background-color: $biomass-background;
+}
+
+.centre-text {
+    text-align: center;
+}
+
+.crud-options {
+    text-align: center;
+}
+
+.actinobacteria {
+    background-color: lighten( $sample-background, 10% );
+}
+
+.ciliates {
+    background-color: lighten( $biomass-background, 30%);
+}
+
+.flagellate {
+    background-color: lighten( $biomass-background, 10%);
+}
+
+.fungi {
+    background-color: lighten( $sample-background, 20% );
+}
+
+.nematodes {
+    background-color: lighten( $biomass-background, 40%);
+}
+
+.oomycetes {
+    background-color: lighten( $sample-background, 30% );
+}
+
+.others {
+    background-color: lighten( $sample-background, 40% );
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.flex-centre {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.flex-no-wrap-lg {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.form-header {
+    background-color: $form-background;
+}
+
+.sample-history {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+    margin: $margin-padding-desktop auto;
+    border-radius: $border-radius;
+}
+
+.sample-history-inner {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.sample-history-item {
+    display: inline-block;
+    margin: $margin-padding-desktop;
+}
+
+.sample-history-title {
+    width: 100%;
+    text-align: center;
+    // padding: $margin-padding-desktop;
+}
+
+.sample-notice {
+    background-color: #96D4FF;
+    border: 1px solid #96C8F2;
+    padding: $margin-padding-desktop;
+    text-align: center;
+} 
+
+.sample-summary {
+    background-color: $form-background;
+}
+
+@media (min-width: 480px) {
+    .sample-history-inner {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (min-width: 1200px) {
+    .flex-no-wrap-lg {
+        flex-wrap: nowrap;
+    }
+
+    .sample-history-inner {
+        margin: $margin-padding-desktop;
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 200px;
+    }
+}

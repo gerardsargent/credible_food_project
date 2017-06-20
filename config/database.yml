@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: cfp
-  password: password
-  socket: /tmp/mysql.sock
+  # username: cfp
+  # password: password
+  # socket: /tmp/mysql.sock
   url: <%= ENV.fetch("JAWSDB_URL") %>
 development:
   <<: *default
