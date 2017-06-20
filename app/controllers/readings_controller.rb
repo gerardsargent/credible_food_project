@@ -10,6 +10,7 @@ class ReadingsController < ApplicationController
 
   # GET /readings/1
   def show
+    @samples = @reading.samples
   end
 
   # GET /readings/new

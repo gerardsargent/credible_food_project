@@ -38,4 +38,8 @@
         </tr>
     </tbody>
   </table>
+
+  <%= @reading.samples.each do |sample| %>
+    <%= sample.reading_number %>
+  <% end %>
 <br>

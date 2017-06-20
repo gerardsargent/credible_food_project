@@ -1,6 +1,6 @@
 class Sample < ApplicationRecord
 
-    validates_presence_of :reading_id, presence: true
+    # validates_presence_of :reading_id, presence: true
     belongs_to :reading
     before_save :do_calc
 
