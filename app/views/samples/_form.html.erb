@@ -6,7 +6,7 @@
 
   <tr class="form_titles">
 
-    <th>Field</th>
+    <th>#</th>
     <th>Bacteria</th>
     <th>Size/Shape</th>
     <th>Actinobacteria</th>
@@ -22,15 +22,17 @@
   </tr>
   <% samples.each do |s| %>
     <tr>
+    <td><%=s.reading_number - 1%></td>
+    <td><%=s.bacterial_number%></td>
     </tr>
   <% end %>
 
-<%= form_for(samples[samples.length - 1]) do |s| %>
+<%= form_for(@sample) do |s| %>
 <!-- normal form for one sample -->
 
     <tr>
     <td>
-    <%=s.label :reading_number, :reading_number%>
+    <%=s.label :reading_number, @sample.reading_number%>
     </td>
 
     <td>
