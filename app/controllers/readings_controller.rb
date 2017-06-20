@@ -1,12 +1,11 @@
 class ReadingsController < ApplicationController
-  before_action :set_reading, only: [:show, :edit, :update, :destroy]
+  before_action :set_reading, :set_user, only: [:show, :edit, :update, :destroy]
   access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
 
   # GET /readings
   def index
     @readings = Reading.all
     @user_readings = current_user.readings
-    @user_id = current_user.id
   end
 
   # GET /readings/1
@@ -25,11 +24,12 @@ class ReadingsController < ApplicationController
   # POST /readings
   def create
     @reading = Reading.new(reading_params)
+    @reading.user = current_user
 
     if @reading.save
       redirect_to @reading, notice: 'Reading was successfully created.'
     else
-      render :new
+      render :new, notice: 'An error occured. Try submitting your record again.'
     end
   end
 
@@ -52,6 +52,10 @@ class ReadingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_reading
       @reading = Reading.find(params[:id])
+    end
+
+    def set_user
+      @user_id = current_user.id
     end
 
     # Only allow a trusted parameter "white list" through.
