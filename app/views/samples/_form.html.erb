@@ -16,29 +16,20 @@
 
     <!-- ****** Header Row 1 -->
     <div class="flex-centre centre-text form-header">
-      <div class="sample-history-item">
-        <%= f.label "User ID Number:" %>
-        <%= f.number_field :user_id %>
-      </div>
 
       <div class="sample-history-item">
         <%= f.label "Sample ID Number:" %>
-        <%= f.number_field :sample_id %>
+        <%= f.select :sample_id, (1..4) %>
       </div>
 
       <div class="sample-history-item">
         <%= f.label "Reading No:" %>
-        <%= reading_number_types = [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-        f.select :reading_number, reading_number_types %>
+        <%= f.select :reading_number, (1..20) %>
       </div>
     </div>
 
     <!-- ****** Header Row 2 -->
     <div class="flex-centre centre-text form-header">
-      <div class="sample-history-item">
-        <%= f.label "GPS Co-Ordinates:" %>
-        <%= f.text_field :gps %>
-      </div>
 
       <div class="sample-history-item">
         <%= f.label "Date Sample Taken:" %>

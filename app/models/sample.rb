@@ -3,6 +3,23 @@ class Sample < ApplicationRecord
     # validates_presence_of :reading_id, presence: true
     belongs_to :reading
     before_save :do_calc
+    validates   :bacterial_number, 
+                :bacterial_dilution, 
+                :actinobacteria,
+                :actinobacteria_dilution,
+                :fungi,
+                :fungi_dilution,
+                :oomycetes,
+                :oomycetes_dilution,
+                :flagellate,
+                :flagellate_dilution,
+                :amoebae,
+                :amoebae_dilution,
+                :ciliates,
+                :ciliates_dilution,
+                :nematodes,
+                :nematodes_dilution,
+                presence: true;
 
     def do_calc
         bacterial_mean_calc

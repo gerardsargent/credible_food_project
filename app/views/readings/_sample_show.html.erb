@@ -1,12 +1,11 @@
-  <div class="container">
-    <div class="flex-centre"
-      <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
-    </div>
-  </div>
-
   <% if samples.blank? %>
     <div class="container centre-text">
-      <h3>No sample records have been uploaded. Please upload the first sample below...</h3>
+      <h3>No sample records have been uploaded that are associated with this particular reading. Please upload the first sample below...</h3>
+    </div>
+    <div class="container">
+      <div class="flex-centre"
+        <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
+      </div>
     </div>
   <% else %>
 
@@ -63,7 +62,32 @@
             <td>Row 5 Column 5 - Content</td>
             <td>Row 5 Column 6 - Content</td>
         </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><!-- CRUD Options -->
+              <% samples.each do |sample| %>
+                <div class="sample-history-inner crud-options">
+                  <div class="sample-history-item"><%= link_to 'View Sample', sample %></div>
+                  <div class="sample-history-item"><%= link_to 'Edit Sample', edit_sample_path(sample) if logged_in?(:site_admin) %></div>
+                  <div class="sample-history-item"><%= link_to 'Delete Sample', sample, method: :delete, data: { confirm: 'Are you sure?' }  if logged_in?(:site_admin) %></div>
+                </div> <!-- End of CRUD div -->
+              <% end %> <!-- End of sample loop -->
+            </td>
+            <td>Row 5 Column 4 - Content</td>
+            <td>Row 5 Column 5 - Content</td>
+            <td>Row 5 Column 6 - Content</td>
+        </tr>
     </table>
+
+    <br>
+    
+
+    <div class="container">
+      <div class="flex-centre"
+        <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
+      </div>
+    </div>
 
     <% samples.each do |sample| %>
 
@@ -108,9 +132,9 @@
 
           <!-- CRUD Options -->
           <div class="sample-history-inner crud-options">
-            <div class="sample-history-item"><%= link_to 'View Record', sample %></div>
-            <div class="sample-history-item"><%= link_to 'Edit Record', edit_sample_path(sample) if logged_in?(:site_admin) %></div>
-            <div class="sample-history-item"><%= link_to 'Delete Record', sample, method: :delete, data: { confirm: 'Are you sure?' }  if logged_in?(:site_admin) %></div>
+            <div class="sample-history-item"><%= link_to 'View Sample', sample %></div>
+            <div class="sample-history-item"><%= link_to 'Edit Sample', edit_sample_path(sample) if logged_in?(:site_admin) %></div>
+            <div class="sample-history-item"><%= link_to 'Delete Sample', sample, method: :delete, data: { confirm: 'Are you sure?' }  if logged_in?(:site_admin) %></div>
           </div> <!-- End of CRUD div -->
 
         </div> <!-- End of sample-history div -->
