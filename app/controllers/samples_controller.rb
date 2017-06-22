@@ -21,7 +21,7 @@ class SamplesController < ApplicationController
     @sample_id = 42
 
    # get existing readings from database   
-     @samples = Sample.where(sample_id: @sample_id).to_a
+    @samples = Sample.where(sample_id: @sample_id).to_a
 
     # add new item to array for next reading number if < 20
     @sample = Sample.new
@@ -37,30 +37,14 @@ class SamplesController < ApplicationController
   # POST /samples
   # POST /samples.json
   def create
-    @sample = Sample.new(sample_params)
+    # @sample = Sample.new(sample_params)
+    # @sample.save
 
-    respond_to do |format|
-      puts "-----------------------"
-      puts "sample_params = "
-      sample_params.each do |k, v|
-        puts(k)
-        puts(v)
-      end
-      puts "-----------------------"
-      if @sample.save
-        format.html { redirect_to @sample, notice: 'Sample was successfully created.' }
-        format.json { render :show, status: :created, location: @sample }
-      else
-        format.html { render :new }
-        format.json { render json: @sample.errors, status: :unprocessable_entity }
-      end
+       sample_params.each do |reading_number,sample|
+      @sample = Sample.new(sample)
+      @sample.reading_number = reading_number
+      @sample.save
     end
-
-    #   sample_params.each do |reading_number,sample|
-    #  @sample = Sample.new(sample)
-    #  @sample.reading_number = reading_number
-   #   @sample.save
-  #  end
 
 
  #   respond_to do |format|
