@@ -20,10 +20,22 @@
     <th>Amoebae</th>
     <th>Ciliates</th>
   </tr>
+
   <% samples.each do |s| %>
     <tr>
     <td><%=s.reading_number - 1%></td>
     <td><%=s.bacterial_number%></td>
+    <td><%=s.bacterial_size_shape%></td>
+    <td><%=s.actinobacteria%></td>
+    <td><%=s.fungi%></td>
+    <td><%=s.fungi_diameter%></td>
+    <td><%=s.fungi_colour%></td>
+    <td><%=s.oomycetes%></td>
+    <td><%=s.oomycetes_diameter%></td>
+    <td><%=s.oomycetes_colour%></td>
+    <td><%=s.flagellate%></td>
+    <td><%=s.amoebae%></td>
+    <td><%=s.ciliates%></td>
     </tr>
   <% end %>
 
