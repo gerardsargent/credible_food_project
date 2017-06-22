@@ -16,29 +16,20 @@
 
     <!-- ****** Header Row 1 -->
     <div class="flex-centre centre-text form-header">
-      <div class="sample-history-item">
-        <%= f.label "User ID Number:" %>
-        <%= f.number_field :user_id %>
-      </div>
 
       <div class="sample-history-item">
         <%= f.label "Sample ID Number:" %>
-        <%= f.number_field :sample_id %>
+        <%= f.select :sample_id, (1..4) %>
       </div>
 
       <div class="sample-history-item">
         <%= f.label "Reading No:" %>
-        <%= reading_number_types = [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-        f.select :reading_number, reading_number_types %>
+        <%= f.select :reading_number, (1..20) %>
       </div>
     </div>
 
     <!-- ****** Header Row 2 -->
     <div class="flex-centre centre-text form-header">
-      <div class="sample-history-item">
-        <%= f.label "GPS Co-Ordinates:" %>
-        <%= f.text_field :gps %>
-      </div>
 
       <div class="sample-history-item">
         <%= f.label "Date Sample Taken:" %>
@@ -64,7 +55,8 @@
 
       <div class="sample-history-item">
         <%= f.label "Bacterial Size & Shape:" %>
-        <%= f.text_field :bacterial_size_shape %>
+        <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
+        f.select :bacterial_size_shape, bacterial_size_shape_types %>
       </div>
 
       <div class="sample-history-item">
@@ -79,8 +71,8 @@
         <h3>Actinobacteria</h3>
       </div>
       <div class="sample-history-item">
-        <%= f.label "Number of actinobacteria:" %>
-        <%= f.number_field :actinobacteria %>
+        <%= f.label "Actinobacteria Length:" %>
+        <%= f.number_field :actinobacteria, :step => 0.1  %>
       </div>
 
       <div class="sample-history-item">
@@ -97,20 +89,22 @@
 
       <div class="flex-centre centre-text fungi">
         <div class="sample-history-item">
-          <%= f.label "Number of fungi:" %>
-          <%= f.number_field :fungi %>
+          <%= f.label "Fungi Length:" %>
+          <%= f.number_field :fungi, :step => 0.1 %>
         </div>
 
         <div class="sample-history-item">
           <%= f.label "Fungi Diameter:" %>
-          <%= f.number_field :fungi_diameter %>
+          <%= fungi_diameter_types = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          f.select :fungi_diameter, fungi_diameter_types %>
         </div>
       </div>
 
       <div class="flex-centre centre-text fungi">
         <div class="sample-history-item">
           <%= f.label "Fungi colour:" %>
-          <%= f.text_field :fungi_colour %>
+          <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
+          f.select :fungi_colour, fungi_colour_types %>
         </div>
 
         <div class="sample-history-item">
@@ -128,20 +122,22 @@
 
       <div class="flex-centre centre-text oomycetes">
         <div class="sample-history-item">
-          <%= f.label "Oomycetes Number:" %>
-          <%= f.number_field :oomycetes %>
+          <%= f.label "Oomycetes Length:" %>
+          <%= f.number_field :oomycetes, :step => 0.1  %>
         </div>
 
         <div class="sample-history-item">
           <%= f.label "Oomycetes Diameter:" %>
-          <%= f.number_field :oomycetes_diameter %>
+          <%= oomycetes_diameter_types = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          f.select :oomycetes_diameter, oomycetes_diameter_types %>
         </div>
       </div>
     
       <div class="flex-centre centre-text oomycetes">
         <div class="sample-history-item">
           <%= f.label "Oomycetes Colour:" %>
-          <%= f.text_field :oomycetes_colour %>
+          <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
+          f.select :oomycetes_colour, oomycetes_colour_types %>
         </div>
 
         <div class="sample-history-item">
@@ -158,7 +154,7 @@
       </div>
       <div class="sample-history-item">
         <%= f.label "Flagellate number:" %>
-        <%= f.number_field :flagellate %>
+        <%= f.number_field :flagellate, min: 0, max: 100 %>
       </div>
 
       <div class="sample-history-item">
@@ -174,7 +170,7 @@
       </div>
       <div class="sample-history-item">
         <%= f.label "Amoeba number:" %>
-        <%= f.number_field :amoebae %>
+        <%= f.number_field :amoebae, min: 0, max: 100 %>
       </div>
 
       <div class="sample-history-item">
@@ -190,7 +186,7 @@
       </div>
       <div class="sample-history-item">
         <%= f.label "Ciliates number:" %>
-        <%= f.number_field :ciliates %>
+        <%= f.number_field :ciliates, min: 0, max: 100 %>
       </div>
 
       <div class="sample-history-item">
@@ -206,7 +202,7 @@
       </div>
       <div class="sample-history-item">
         <%= f.label "Nematodes number:" %>
-        <%= f.number_field :nematodes %>
+        <%= f.number_field :nematodes, min: 0, max: 100 %>
       </div>
 
       <div class="sample-history-item">
@@ -221,7 +217,5 @@
       </div>
     </div>
   <% end %>
-
-
 
 </div>

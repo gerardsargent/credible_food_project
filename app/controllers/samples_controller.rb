@@ -1,5 +1,6 @@
 class SamplesController < ApplicationController
   before_action :set_sample, only: [:show, :edit, :update, :destroy]
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
   layout "sample"
 
   # GET /samples

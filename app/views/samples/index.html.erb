@@ -66,8 +66,8 @@
           <!-- CRUD Options -->
           <div class="sample-history-inner crud-options">
             <div class="sample-history-item"><%= link_to 'View Record', sample %></div>
-            <div class="sample-history-item"><%= link_to 'Edit Record', edit_sample_path(sample) %></div>
-            <div class="sample-history-item"><%= link_to 'Delete Record', sample, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+            <div class="sample-history-item"><%= link_to 'Edit Record', edit_sample_path(sample) if logged_in?(:site_admin) %></div>
+            <div class="sample-history-item"><%= link_to 'Delete Record', sample, method: :delete, data: { confirm: 'Are you sure?' }  if logged_in?(:site_admin) %></div>
           </div> <!-- End of CRUD div -->
 
         </div> <!-- End of sample-history div -->
