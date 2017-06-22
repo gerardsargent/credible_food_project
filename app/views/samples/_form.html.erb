@@ -1,221 +1,172 @@
 <div class="container">
 
-  <%= form_for(sample) do |f| %>
+<!--NEW FORM-->
 
-    <% if sample.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
+<table>
 
-        <ul>
-        <% sample.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <tr class="form_titles">
 
-    <!-- ****** Header Row 1 -->
-    <div class="flex-centre centre-text form-header">
+    <th>#</th>
+    <th>Bacteria</th>
+    <th>Size/Shape</th>
+    <th>Actinobacteria</th>
+    <th>Fungi</th>
+    <th>Diameter</th>
+    <th>Color</th>
+    <th>Oomycetes</th>
+    <th>Diameter</th>
+    <th>Color</th>
+    <th>Flagellate</th>
+    <th>Amoebae</th>
+    <th>Ciliates</th>
+  </tr>
 
-      <div class="sample-history-item">
-        <%= f.label "Sample ID Number:" %>
-        <%= f.select :sample_id, (1..4) %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Reading No:" %>
-        <%= f.select :reading_number, (1..20) %>
-      </div>
-    </div>
-
-    <!-- ****** Header Row 2 -->
-    <div class="flex-centre centre-text form-header">
-
-      <div class="sample-history-item">
-        <%= f.label "Date Sample Taken:" %>
-        <%= f.date_select :sample_date %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Coverslip Size:" %>
-        <%= coverslip_types = [2038, 2491, 3044]
-        f.select :coverslip, coverslip_types %>
-      </div>
-    </div>
-
-    <!-- ****** Bacteria -->
-    <div class="flex-centre centre-text bacteria">
-      <div class="sample-history-title">
-        <h3>Bacteria</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Number of Bacteria:" %>
-        <%= f.number_field :bacterial_number %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Bacterial Size & Shape:" %>
-        <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
-        f.select :bacterial_size_shape, bacterial_size_shape_types %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Bacterial Dilution Level:" %>
-        <%= f.number_field :bacterial_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Actinobacteria -->
-    <div class="flex-centre centre-text actinobacteria">
-      <div class="sample-history-title">
-        <h3>Actinobacteria</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Actinobacteria Length:" %>
-        <%= f.number_field :actinobacteria, :step => 0.1  %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Actinobacteria dilution level:" %>
-        <%= f.number_field :actinobacteria_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Fungi -->
-    <div class="flex-centre centre-text fungi">
-      <div class="sample-history-title">
-        <h3>Fungi</h3>
-      </div>
-
-      <div class="flex-centre centre-text fungi">
-        <div class="sample-history-item">
-          <%= f.label "Fungi Length:" %>
-          <%= f.number_field :fungi, :step => 0.1 %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Fungi Diameter:" %>
-          <%= fungi_diameter_types = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-          f.select :fungi_diameter, fungi_diameter_types %>
-        </div>
-      </div>
-
-      <div class="flex-centre centre-text fungi">
-        <div class="sample-history-item">
-          <%= f.label "Fungi colour:" %>
-          <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-          f.select :fungi_colour, fungi_colour_types %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Fungi dilution level:" %>
-          <%= f.number_field :fungi_dilution %>
-        </div>
-      </div>
-    </div>
-
-    <!-- ****** Oomycetes -->
-    <div class="flex-centre centre-text oomycetes">
-      <div class="sample-history-title">
-        <h3>Oomycetes</h3>
-      </div>
-
-      <div class="flex-centre centre-text oomycetes">
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Length:" %>
-          <%= f.number_field :oomycetes, :step => 0.1  %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Diameter:" %>
-          <%= oomycetes_diameter_types = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-          f.select :oomycetes_diameter, oomycetes_diameter_types %>
-        </div>
-      </div>
-    
-      <div class="flex-centre centre-text oomycetes">
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Colour:" %>
-          <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-          f.select :oomycetes_colour, oomycetes_colour_types %>
-        </div>
-
-        <div class="sample-history-item">
-          <%= f.label "Oomycetes Dilution Level:" %>
-          <%= f.number_field :oomycetes_dilution %>
-        </div>
-      </div>
-    </div>
-
-    <!-- ****** Flagellate -->
-    <div class="flex-centre centre-text flagellate">
-      <div class="sample-history-title">
-        <h3>Flagellate</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Flagellate number:" %>
-        <%= f.number_field :flagellate, min: 0, max: 100 %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Flagellate dilution level:" %>
-        <%= f.number_field :flagellate_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Amoeba -->
-    <div class="flex-centre centre-text amoeba">
-      <div class="sample-history-title">
-        <h3>Amoeba</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Amoeba number:" %>
-        <%= f.number_field :amoebae, min: 0, max: 100 %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Amoeba dilution level:" %>
-        <%= f.number_field :amoebae_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Ciliates -->
-    <div class="flex-centre centre-text ciliates">
-      <div class="sample-history-title">
-        <h3>Ciliates</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Ciliates number:" %>
-        <%= f.number_field :ciliates, min: 0, max: 100 %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Ciliates dilution level:" %>
-        <%= f.number_field :ciliates_dilution %>
-      </div>
-    </div>
-
-    <!-- ****** Nematodes -->
-    <div class="flex-centre centre-text nematodes">
-      <div class="sample-history-title">
-        <h3>Nematodes</h3>
-      </div>
-      <div class="sample-history-item">
-        <%= f.label "Nematodes number:" %>
-        <%= f.number_field :nematodes, min: 0, max: 100 %>
-      </div>
-
-      <div class="sample-history-item">
-        <%= f.label "Nematodes dilution level:" %>
-        <%= f.number_field :nematodes_dilution %>
-      </div>
-    </div>
-
-    <div class="flex-centre centre-text nematodes">
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    </div>
+  <% samples.each do |s| %>
+    <tr>
+    <td><%=s.reading_number - 1%></td>
+    <td><%=s.bacterial_number%></td>
+    <td><%=s.bacterial_size_shape%></td>
+    <td><%=s.actinobacteria%></td>
+    <td><%=s.fungi%></td>
+    <td><%=s.fungi_diameter%></td>
+    <td><%=s.fungi_colour%></td>
+    <td><%=s.oomycetes%></td>
+    <td><%=s.oomycetes_diameter%></td>
+    <td><%=s.oomycetes_colour%></td>
+    <td><%=s.flagellate%></td>
+    <td><%=s.amoebae%></td>
+    <td><%=s.ciliates%></td>
+    </tr>
   <% end %>
+
+<%= form_for(@sample) do |s| %>
+<!-- normal form for one sample -->
+
+    <tr>
+    <td>
+    <%=s.label :reading_number, @sample.reading_number%>
+    </td>
+
+    <td>
+      <%=s.text_field :bacterial_number %>
+    </td>
+    <td>
+      <%=s.text_field :bacterial_size_shape%>
+    </td>
+    <td>
+      <%=s.text_field :actinobacteria%>
+    </td>
+    <td>
+      <%=s.text_field :fungi%>
+    </td>
+    <td>
+      <%=s.text_field :fungi_diameter%>
+    </td>
+    <td>
+      <%=s.text_field :fungi_colour%>
+    </td>
+    <td>
+      <%=s.text_field :oomycetes%>
+    </td>
+    <td>
+      <%=s.text_field :oomycetes_diameter%>
+    </td>
+    <td>
+      <%=s.text_field :oomycetes_colour%>
+    </td>
+    <td>
+      <%=s.text_field :flagellate%>
+    </td>
+    <td>
+      <%=s.text_field :amoebae%>
+    </td>
+    <td>
+      <%=s.text_field :ciliates%>
+    </td>
+   </tr>
+
+    <%= s.submit %>
+  <% end %>
+
+</table>
+
+<hr >
+
+<!--Nematodes-->
+
+<div class="second_section">
+
+<table class="nematodes">
+
+  <tr>
+    <th></th>
+    <th>Nematodes</th>
+  </tr>
+
+  <tr>
+    <th>Bacteria</th>
+    <td><input></td>
+  </tr>
+
+  <tr>
+    <th>Fungal</th>
+    <td><input></td>
+  </tr>
+
+  <tr>
+    <th>Predator</th>
+    <td><input></td>
+  </tr>
+
+  <tr>
+    <th>Root</th>
+    <td><input></td>
+  </tr>
+
+  <tr>
+    <th>Brrix</th>
+    <td><input></td>
+  </tr>
+
+  <tr>
+    <th>PH</th>
+    <td><input></td>
+  </tr>
+
+  <tr>
+    <th>Moisture</th>
+    <td><input></td>
+  </tr>
+
+</table>
+
+<!--Comments Section-->
+
+<table class="notes">
+
+  <tr>
+    <th>Notes/Questions</th>
+  </tr>
+
+  <tr>
+    <th>
+    Feel free to write any
+    further information you
+    feel important or
+    useful, and any
+    questions you might
+    have such that
+    everything can be
+    recorded and kept
+    incase this is usefull for
+    future reference.
+    </th>
+  </tr>
+
+  <tr>
+    <td><input></td>
+  </tr>
+  
+</table>
 
 </div>
