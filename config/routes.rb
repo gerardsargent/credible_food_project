@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   # patch '/readings/:id', to: 'readings#update'
   # delete '/readings/:id', to: 'readings#destroy'
 
-  resources :readings
-  resources :samples
+  resources :readings do
+    resources :samples
+  end
   
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   

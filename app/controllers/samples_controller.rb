@@ -20,6 +20,7 @@ class SamplesController < ApplicationController
   def new
     # this is temporary until it works then we can put it in the route - this is probably the edit view
     @sample_id = 42
+    @reading = Reading.find(params[:reading_id])
 
    # get existing readings from database   
     @samples = Sample.where(sample_id: @sample_id).to_a

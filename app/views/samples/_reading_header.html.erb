@@ -1,0 +1,34 @@
+<h1>Location Entry</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Organisation</th>
+        <th>Date collected</th>
+        <th>Date observed</th>
+        <th>Location</th>
+        <th>Plants present</th>
+        <th>Plants desired</th>
+        <th>Other notes</th>
+        <th>Observed by</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+          <td><%= reading.client %></td>
+          <td><%= reading.organisation %></td>
+          <td><%= reading.date_collected %></td>
+          <td><%= reading.date_observed %></td>
+          <td><%= reading.location %></td>
+          <td><%= reading.plants_present %></td>
+          <td><%= reading.plants_desired %></td>
+          <td><%= reading.other_notes %></td>
+          <td><%= reading.observed_by %></td>
+          <td><%= link_to 'Edit', edit_reading_path(reading) %></td>
+          <td><%= link_to 'Back', readings_path  %></td>
+        </tr>
+    </tbody>
+  </table>
