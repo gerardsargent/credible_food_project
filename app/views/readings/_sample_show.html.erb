@@ -25,7 +25,7 @@
         <tr>
             <td><strong>Bacterial</strong></td>
             <td>μg/g or mL</td>
-            <td>Row 1 Column 3 - Content</td>
+            <td><%= @sample.micrograms %></td>
             <td>Row 1 Column 4 - Content</td>
             <td>Row 1 Column 5 - Content</td>
             <td>Row 1 Column 6 - Content</td>
@@ -33,7 +33,7 @@
         <tr>
             <td><strong>Actinobacteria</strong></td>
             <td>μg/g or mL</td>
-            <td>Row 2 Column 3 - Content</td>
+            <td><%= @sample.actinobacteria_micrograms %></td>
             <td>Row 2 Column 4 - Content</td>
             <td>Row 2 Column 5 - Content</td>
             <td>Row 2 Column 6 - Content</td>
@@ -41,7 +41,7 @@
         <tr>
             <td><strong>Fungi</strong></td>
             <td>μg/g or mL</td>
-            <td>Row 3 Column 3 - Content</td>
+            <td><%= @sample.fungi_micrograms %></td>
             <td>Row 3 Column 4 - Content</td>
             <td>Row 3 Column 5 - Content</td>
             <td>Row 3 Column 6 - Content</td>
@@ -49,7 +49,7 @@
         <tr>
             <td><strong>Oomycetes</strong></td>
             <td>μg/g or mL</td>
-            <td>Row 4 Column 3 - Content</td>
+            <td><%= @sample.oomycetes_micrograms %></td>
             <td>Row 4 Column 4 - Content</td>
             <td>Row 4 Column 5 - Content</td>
             <td>Row 4 Column 6 - Content</td>
@@ -57,10 +57,74 @@
         <tr>
             <td><strong>Flagellate (Protozoa)</strong></td>
             <td>Per gram</td>
-            <td>Row 5 Column 3 - Content</td>
+            <td><%= @sample.flagellate_protozoa %></td>
             <td>Row 5 Column 4 - Content</td>
             <td>Row 5 Column 5 - Content</td>
             <td>Row 5 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Amoebae (Protozoa)</strong></td>
+            <td>Per gram</td>
+            <td><%= @sample.amoebae_protozoa %></td>
+            <td>Row 6 Column 4 - Content</td>
+            <td>Row 6 Column 5 - Content</td>
+            <td>Row 6 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Ciliates (Protozoa)</strong></td>
+            <td>Per gram</td>
+            <td><%= @sample.ciliates_protozoa %></td>
+            <td>Row 7 Column 4 - Content</td>
+            <td>Row 7 Column 5 - Content</td>
+            <td>Row 7 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Bacterial (Nematodes)</strong></td>
+            <td>Per gram</td>
+            <td>Row 8 Column 3 - Content</td>
+            <td>Row 8 Column 4 - Content</td>
+            <td>Row 8 Column 5 - Content </td>
+            <td>Row 8 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Fungal (Nematodes)</strong></td>
+            <td>Per gram</td>
+            <td>Row 9 Column 3 - Content</td>
+            <td>Row 9 Column 4 - Content</td>
+            <td>Row 9 Column 5 - Content </td>
+            <td>Row 9 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Root (Nematodes)</strong></td>
+            <td>Per gram</td>
+            <td>Row 10 Column 3 - Content</td>
+            <td>Row 10 Column 4 - Content</td>
+            <td>Row 10 Column 5 - Content </td>
+            <td>Row 10 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Predatory (Nematodes)</strong></td>
+            <td>Per gram</td>
+            <td>Row 9 Column 3 - Content</td>
+            <td>Row 9 Column 4 - Content</td>
+            <td>Row 9 Column 5 - Content </td>
+            <td>Row 9 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Nematode Overall</strong></td>
+            <td>Per gram</td>
+            <td>Row 9 Column 3 - Content</td>
+            <td>Row 9 Column 4 - Content</td>
+            <td>Row 9 Column 5 - Content </td>
+            <td>Row 9 Column 6 - Content</td>
+        </tr>
+        <tr>
+            <td><strong>Fungal:bacterial ratio F:B</strong></td>
+            <td> </td>
+            <td>Row 9 Column 3 - Content</td>
+            <td>Row 9 Column 4 - Content</td>
+            <td>Row 9 Column 5 - Content </td>
+            <td>Row 9 Column 6 - Content</td>
         </tr>
         <tr>
             <td></td>

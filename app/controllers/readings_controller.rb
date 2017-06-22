@@ -11,6 +11,7 @@ class ReadingsController < ApplicationController
   # GET /readings/1
   def show
     @samples = @reading.samples
+    @sample = Sample.find_by sample_id: 1
   end
 
   # GET /readings/new
