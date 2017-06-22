@@ -12,9 +12,9 @@ class SamplesController < ApplicationController
 
   # GET /samples/1
   # GET /samples/1.json
-  # def show
-  #   @page_title = @sample.sample_id
-  # end
+  def show
+    @page_title = @sample.sample_id
+  end
 
   # GET /samples/new
   def new
