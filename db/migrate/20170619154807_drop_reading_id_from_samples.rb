@@ -1,5 +1,13 @@
 class DropReadingIdFromSamples < ActiveRecord::Migration[5.0]
-  def change
-    remove_column :samples, :reading_id
+  def down
+    remove_column :samples, :actinobacteria
+    remove_column :samples, :fungi
+    remove_column :samples, :oomycetes
+  end
+
+  def up
+    add_column :samples, :actinobacteria, :float
+    add_column :samples, :fungi, :float
+    add_column :samples, :oomycetes, :float
   end
 end

@@ -71,8 +71,8 @@
         <h3>Actinobacteria</h3>
       </div>
       <div class="sample-history-item">
-        <%= f.label "Number of actinobacteria:" %>
-        <%= f.number_field :actinobacteria %>
+        <%= f.label "Actinobacteria Length:" %>
+        <%= f.number_field :actinobacteria, :step => 0.1  %>
       </div>
 
       <div class="sample-history-item">
@@ -89,8 +89,8 @@
 
       <div class="flex-centre centre-text fungi">
         <div class="sample-history-item">
-          <%= f.label "Number of fungi:" %>
-          <%= f.number_field :fungi %>
+          <%= f.label "Fungi Length:" %>
+          <%= f.number_field :fungi, :step => 0.1 %>
         </div>
 
         <div class="sample-history-item">
@@ -122,8 +122,8 @@
 
       <div class="flex-centre centre-text oomycetes">
         <div class="sample-history-item">
-          <%= f.label "Oomycetes Number:" %>
-          <%= f.number_field :oomycetes %>
+          <%= f.label "Oomycetes Length:" %>
+          <%= f.number_field :oomycetes, :step => 0.1  %>
         </div>
 
         <div class="sample-history-item">
