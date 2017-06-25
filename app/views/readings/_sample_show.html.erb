@@ -132,9 +132,9 @@
             <td><!-- CRUD Options -->
               <% samples.each do |sample| %>
                 <div class="sample-history-inner crud-options">
-                  <div class="sample-history-item"><%= link_to 'View Sample', sample %></div>
-                  <div class="sample-history-item"><%= link_to 'Edit Sample', edit_sample_path(sample) if logged_in?(:site_admin) %></div>
-                  <div class="sample-history-item"><%= link_to 'Delete Sample', sample, method: :delete, data: { confirm: 'Are you sure?' }  if logged_in?(:site_admin) %></div>
+                  <div class="sample-history-item"><%= link_to 'View Sample', new_reading_sample_path(@reading) %></div>
+                  <div class="sample-history-item"><%= link_to 'Edit Sample', edit_reading_sample_path(@reading) if logged_in?(:site_admin) %></div>
+                  
                 </div> <!-- End of CRUD div -->
               <% end %> <!-- End of sample loop -->
             </td>
@@ -149,7 +149,7 @@
 
     <div class="container">
       <div class="flex-centre"
-        <div class="sample-history-item"><%= link_to 'New Sample', new_sample_path %></div>
+        <div class="sample-history-item"><%= link_to 'New Sample', new_reading_sample_path(@reading) %></div>
       </div>
     </div>
 
@@ -196,9 +196,8 @@
 
           <!-- CRUD Options -->
           <div class="sample-history-inner crud-options">
-            <div class="sample-history-item"><%= link_to 'View Sample', sample %></div>
-            <div class="sample-history-item"><%= link_to 'Edit Sample', edit_sample_path(sample) if logged_in?(:site_admin) %></div>
-            <div class="sample-history-item"><%= link_to 'Delete Sample', sample, method: :delete, data: { confirm: 'Are you sure?' }  if logged_in?(:site_admin) %></div>
+            <div class="sample-history-item"><%= link_to 'View Sample', new_reading_sample_path(@reading) %></div>
+            <div class="sample-history-item"><%= link_to 'Edit Sample', edit_reading_sample_path(@reading) if logged_in?(:site_admin) %></div>
           </div> <!-- End of CRUD div -->
 
         </div> <!-- End of sample-history div -->
