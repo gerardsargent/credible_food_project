@@ -48,7 +48,7 @@ class Sample < ApplicationRecord
         ciliates_mean_calc
         ciliates_protozoa_calc
         nematodes_sum_calc
-        nematodes_protozoa_calc
+        # nematodes_protozoa_calc
         biomass_ratio_calc
     end
  
@@ -67,6 +67,21 @@ class Sample < ApplicationRecord
             bacterial_mean = @bacterial_array.extend(DescriptiveStatistics)
             @bacterial_mean = bacterial_mean.mean
         end
+
+        puts "*********************************"
+        puts "@bacterial_mean.round(2):"
+        puts @bacterial_mean.round(2)
+        puts "*********************************"
+
+        puts "*********************************"
+        puts "self.bacterial_dilution:"
+        puts self.bacterial_dilution
+        puts "*********************************"      
+
+        puts "*********************************"
+        puts "self.coverslip:"
+        puts self.coverslip
+        puts "*********************************"
 
         bacterial_st_dev_calc
 

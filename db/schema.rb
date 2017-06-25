@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20170622184607) do
 
+  create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.float    "lat",        limit: 24
+    t.float    "lng",        limit: 24
+    t.integer  "users_id"
+    t.index ["users_id"], name: "index_locations_on_users_id", using: :btree
+  end
+
   create_table "readings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "client"
     t.string   "organisation"
@@ -27,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_readings_on_user_id", using: :btree
   end
 
   create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -38,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.float    "bacterial_mean",                     limit: 24
     t.float    "bacterial_standard_deviation",       limit: 24
     t.integer  "bacterial_dilution"
+    t.bigint   "no_bacteria_per_gram"
     t.float    "actinobacteria_mean",                limit: 24
     t.float    "actinobacterial_standard_deviation", limit: 24
     t.integer  "actinobacteria_dilution"
@@ -80,7 +91,6 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.float    "oomycetes_average_diameter_in_um",   limit: 24
     t.float    "oomycetes_average_diameter_in_cm",   limit: 24
     t.float    "gps",                                limit: 24
-    t.bigint   "no_bacteria_per_gram"
     t.bigint   "micrograms"
     t.bigint   "actinobacteria_length_cm"
     t.bigint   "actinobacteria_micrograms"
@@ -93,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.bigint   "ciliates_protozoa"
     t.bigint   "nematodes_protozoa"
     t.bigint   "oomycetes_strands_cm"
+    t.integer  "location_id"
     t.integer  "reading_id"
     t.float    "actinobacteria",                     limit: 24
     t.float    "fungi",                              limit: 24
@@ -101,6 +112,8 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.integer  "fungal_nematodes"
     t.integer  "predator_nematodes"
     t.integer  "root_nematodes"
+    t.index ["location_id"], name: "index_samples_on_location_id", using: :btree
+    t.index ["reading_id"], name: "index_samples_on_reading_id", using: :btree
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_samples_on_user_id", using: :btree
@@ -125,4 +138,8 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "locations", "users", column: "users_id"
+  add_foreign_key "readings", "users"
+  add_foreign_key "samples", "locations"
+  add_foreign_key "samples", "readings"
 end
