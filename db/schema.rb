@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622184503) do
+ActiveRecord::Schema.define(version: 20170626174936) do
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "sample"
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(version: 20170622184503) do
     t.integer  "nematodes_dilution"
     t.bigint   "nematodes_protozoa"
     t.float    "fb_biomass_ratio",                   limit: 24
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "coverslip"
     t.integer  "user_id"
     t.integer  "sample_id"
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20170622184503) do
     t.float    "actinobacteria",                     limit: 24
     t.float    "fungi",                              limit: 24
     t.float    "oomycetes",                          limit: 24
+    t.text     "notes",                              limit: 65535
     t.index ["location_id"], name: "index_samples_on_location_id", using: :btree
     t.index ["reading_id"], name: "index_samples_on_reading_id", using: :btree
-    t.text     "notes",                              limit: 65535
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_samples_on_user_id", using: :btree

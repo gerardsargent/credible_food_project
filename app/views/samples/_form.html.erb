@@ -61,7 +61,7 @@
   <% end %>
 
 <% if !@sample.nil? 
- form_for [@reading, @sample] do |s| %>
+  form_for [@reading, @sample] do |s| %>
 <!-- normal form for one sample -->
   <% if @sample.errors.any? %>
     <div id="error_explanation">
@@ -147,48 +147,44 @@
       <%=s.text_field :nematodes_dilution%>
     </td>
   </tr>
+
+  <hr >
+  <div class="sample_submit"><%= s.submit %></div>
+  <hr >
+
+  <hr >
+
+  <div class="second_section">
+
+  <!--Comments Section-->
+
+  <table class="notes">
+
+    <tr>
+      <th>Notes/Questions</th>
+    </tr>
+
+    <tr>
+      <th>
+      Feel free to write any
+      further information you
+      feel important or
+      useful, and any
+      questions you might
+      have that may be useful for
+      future reference.
+      </th>
+    </tr>
+
+    <tr>
+      <td><%=s.text_field :notes%></td>
+    </tr>
+    
+  </table>
   <% end %>
-<% end %>
-    <hr >
-    <div class="sample_submit"><%= s.submit %></div>
-    <hr >
-
-</table>
-
-<hr >
-
-<div class="second_section">
-
-<!--Comments Section-->
-
-<table class="notes">
-
-  <tr>
-    <th>Notes/Questions</th>
-  </tr>
-
-  <tr>
-    <th>
-    Feel free to write any
-    further information you
-    feel important or
-    useful, and any
-    questions you might
-    have that may be useful for
-    future reference.
-    </th>
-  </tr>
-
-  <tr>
-    <td><%=s.text_field :notes%></td>
-  </tr>
   
+<% end %>
+
 </table>
 
-<<<<<<< HEAD
 </div>
-=======
-</div>
-
-<% end %>
->>>>>>> 000e5941442dfcf1aeb09d643b32b83c84c4ed16
