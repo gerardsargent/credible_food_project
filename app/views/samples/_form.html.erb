@@ -60,7 +60,7 @@
     </tr>
   <% end %>
 
-<% if !@sample.nil? 
+<% if !@sample.nil?
   form_for [@reading, @sample] do |s| %>
 <!-- normal form for one sample -->
   <% if @sample.errors.any? %>

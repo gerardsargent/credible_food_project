@@ -46,9 +46,9 @@ class SamplesController < ApplicationController
     @reading = Reading.find(params[:reading_id])
     @samples = Sample.where(sample_id: params[:reading_id]).to_a
 
-      @sample = Sample.new(sample_params)
-      @sample.sample_id = params[:reading_id]
-      @sample.reading_number = @samples.length + 1
+    @sample = Sample.new(sample_params)
+    @sample.sample_id = params[:reading_id]
+    @sample.reading_number = @samples.length + 1
 
    # respond_to do |format|
    #   puts "-----------------------"
@@ -64,14 +64,14 @@ class SamplesController < ApplicationController
         format.html { redirect_to new_reading_sample_path, notice: 'Sample was successfully created.' }
         format.json { render :show, status: :created, location: @sample }
         redirect_to new_reading_sample_path
-       # format.html { redirect_to @sample, notice: 'Sample was successfully created.' }
-       # format.json { render :show, status: :created, location: @sample }
+        # format.html { redirect_to @sample, notice: 'Sample was successfully created.' }
+        # format.json { render :show, status: :created, location: @sample }
       else
         redirect_to new_reading_sample_path
-       # format.html { redirect_to new_reading_sample_path, notice: "Please fill in all fields" }
-       # format.json { render json: @sample.errors, status: :unprocessable_entity }
+        # format.html { redirect_to new_reading_sample_path, notice: "Please fill in all fields" }
+        # format.json { render json: @sample.errors, status: :unprocessable_entity }
       end
-   # end
+    # end
   end
 
   # PATCH/PUT /samples/1
