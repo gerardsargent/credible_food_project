@@ -11,138 +11,94 @@
 
     <h3>Sample Report</h3>
 
-    <table class="sample-report">
-        <thead>
+    <div class="report-container">
+
+      <table class="sample-report">      
+          <th>Organisms in the Soil Food Web</th>
+          <th>Units</th>
           <tr>
-            <th>Organisms in the Soil Food Web</th>
-            <th>Units</th>
-            <th>Sample 1</th>
-            <th>Sample 2</th>
-            <th>Sample 3</th>
-            <th>Sample 4</th>
+              <td><strong>Bacterial</strong></td>
+              <td>μg/g or mL</td>
           </tr>
-        </thead>
-        <tr>
-            <td><strong>Bacterial</strong></td>
-            <td>μg/g or mL</td>
-            <td><%= @sample.micrograms %></td>
-            <td>Row 1 Column 4 - Content</td>
-            <td>Row 1 Column 5 - Content</td>
-            <td>Row 1 Column 6 - Content</td>
-        </tr>
-        <tr>
+          <tr>
             <td><strong>Actinobacteria</strong></td>
             <td>μg/g or mL</td>
-            <td><%= @sample.actinobacteria_micrograms %></td>
-            <td>Row 2 Column 4 - Content</td>
-            <td>Row 2 Column 5 - Content</td>
-            <td>Row 2 Column 6 - Content</td>
-        </tr>
-        <tr>
+          </tr>
+              <tr>
             <td><strong>Fungi</strong></td>
             <td>μg/g or mL</td>
-            <td><%= @sample.fungi_micrograms %></td>
-            <td>Row 3 Column 4 - Content</td>
-            <td>Row 3 Column 5 - Content</td>
-            <td>Row 3 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Oomycetes</strong></td>
             <td>μg/g or mL</td>
-            <td><%= @sample.oomycetes_micrograms %></td>
-            <td>Row 4 Column 4 - Content</td>
-            <td>Row 4 Column 5 - Content</td>
-            <td>Row 4 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Flagellate (Protozoa)</strong></td>
             <td>Per gram</td>
-            <td><%= @sample.flagellate_protozoa %></td>
-            <td>Row 5 Column 4 - Content</td>
-            <td>Row 5 Column 5 - Content</td>
-            <td>Row 5 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Amoebae (Protozoa)</strong></td>
             <td>Per gram</td>
-            <td><%= @sample.amoebae_protozoa %></td>
-            <td>Row 6 Column 4 - Content</td>
-            <td>Row 6 Column 5 - Content</td>
-            <td>Row 6 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Ciliates (Protozoa)</strong></td>
             <td>Per gram</td>
-            <td><%= @sample.ciliates_protozoa %></td>
-            <td>Row 7 Column 4 - Content</td>
-            <td>Row 7 Column 5 - Content</td>
-            <td>Row 7 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Bacterial (Nematodes)</strong></td>
             <td>Per gram</td>
-            <td>Row 8 Column 3 - Content</td>
-            <td>Row 8 Column 4 - Content</td>
-            <td>Row 8 Column 5 - Content </td>
-            <td>Row 8 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Fungal (Nematodes)</strong></td>
             <td>Per gram</td>
-            <td>Row 9 Column 3 - Content</td>
-            <td>Row 9 Column 4 - Content</td>
-            <td>Row 9 Column 5 - Content </td>
-            <td>Row 9 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Root (Nematodes)</strong></td>
             <td>Per gram</td>
-            <td>Row 10 Column 3 - Content</td>
-            <td>Row 10 Column 4 - Content</td>
-            <td>Row 10 Column 5 - Content </td>
-            <td>Row 10 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Predatory (Nematodes)</strong></td>
             <td>Per gram</td>
-            <td>Row 9 Column 3 - Content</td>
-            <td>Row 9 Column 4 - Content</td>
-            <td>Row 9 Column 5 - Content </td>
-            <td>Row 9 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Nematode Overall</strong></td>
             <td>Per gram</td>
-            <td>Row 9 Column 3 - Content</td>
-            <td>Row 9 Column 4 - Content</td>
-            <td>Row 9 Column 5 - Content </td>
-            <td>Row 9 Column 6 - Content</td>
         </tr>
         <tr>
             <td><strong>Fungal:bacterial ratio F:B</strong></td>
             <td> </td>
-            <td>Row 9 Column 3 - Content</td>
-            <td>Row 9 Column 4 - Content</td>
-            <td>Row 9 Column 5 - Content </td>
-            <td>Row 9 Column 6 - Content</td>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td><!-- CRUD Options -->
+      </table>
+
+      <table class="sample-report">
+          <thead>
+            <tr>
+              <th>Sample 1</th>
+              <th>Sample 2</th>
+              <th>Sample 3</th>
+              <th>Sample 4</th>
+            </tr>
+          </thead>
+          <% @samples.collect{|s| [s.micrograms, s.actinobacteria_micrograms, s.fungi_micrograms, s.oomycetes_micrograms, s.flagellate_protozoa, s.amoebae_protozoa, s.ciliates_protozoa, s.bacterial_nematodes, s.fungal_nematodes, s.predator_nematodes, s.root_nematodes, s.nematodes, s.fb_biomass_ratio]}.transpose.each do|line| %>
+            <tr>
+              <% line.each do |cell| %>
+                <td><%= cell %></td>
+              <% end %>
+            </tr>
+          <% end %>
+            <tr>
               <% samples.each do |sample| %>
-                <div class="sample-history-inner crud-options">
-                  <div class="sample-history-item"><%= link_to 'View Sample', new_reading_sample_path(@reading) %></div>
-                  <div class="sample-history-item"><%= link_to 'Edit Sample', edit_reading_sample_path(@reading) if logged_in?(:site_admin) %></div>
-                  
-                </div> <!-- End of CRUD div -->
+                <td><!-- CRUD Options -->
+                    <div class="sample-history-inner crud-options">
+                      <div class="sample-history-item"><%= link_to 'View Sample', reading_sample_path(@reading, sample) %></div>
+                      <div class="sample-history-item"><%= link_to 'Edit Sample', new_reading_sample_path(@reading, sample) if logged_in?(:site_admin) %></div>
+                    </div> <!-- End of CRUD div -->
+                </td>
               <% end %> <!-- End of sample loop -->
-            </td>
-            <td>Row 5 Column 4 - Content</td>
-            <td>Row 5 Column 5 - Content</td>
-            <td>Row 5 Column 6 - Content</td>
-        </tr>
-    </table>
+          </tr>
+      </table>
+
+    </div>
 
     <br>
     

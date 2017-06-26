@@ -1,4 +1,3 @@
-
 <div class="container">
 
 <!--NEW FORM-->
@@ -61,7 +60,8 @@
     </tr>
   <% end %>
 
-<%= form_for [@reading, @sample] do |s| %>
+<% if !@sample.nil? 
+ form_for [@reading, @sample] do |s| %>
 <!-- normal form for one sample -->
   <% if @sample.errors.any? %>
     <div id="error_explanation">
@@ -150,6 +150,7 @@
 
     <%= s.submit %>
   <% end %>
+<% end %>
 
 </table>
 

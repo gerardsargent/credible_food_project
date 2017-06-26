@@ -10,8 +10,8 @@ class ReadingsController < ApplicationController
 
   # GET /readings/1
   def show
-    @samples = @reading.samples
-    @sample = Sample.find_by sample_id: 1
+#    @samples = @reading.samples
+    @samples = Sample.where(sample_id: params[:id])
   end
 
   # GET /readings/new

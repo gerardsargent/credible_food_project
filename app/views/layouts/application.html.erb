@@ -13,24 +13,28 @@
 
   <body>
 
-    <div>
+    <div class="container">
+
       <div>
-        <h1>The Credible Food Project</h1>
+        <div>
+          <h1>The Credible Food Project</h1>
+        </div>
       </div>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <% if current_user.is_a?(GuestUser) %>
+        <%= link_to "Register", new_user_registration_path %>
+        <br>
+        <%= link_to "Login", new_user_session_path %>
+      <% else %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% end %>
+
+      <%= yield %>
+
     </div>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <% if current_user.is_a?(GuestUser) %>
-      <%= link_to "Register", new_user_registration_path %>
-      <br>
-      <%= link_to "Login", new_user_session_path %>
-    <% else %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% end %>
-
-    <%= yield %>
 
   </body>
 </html>

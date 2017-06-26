@@ -182,7 +182,7 @@ table {
 
 th, td {
     //width: 1.2%;
-    border: 1px solid blue;
+    border: 1px solid #082937;
 }
 
 input {
@@ -194,10 +194,23 @@ table th, td {
     font-size: 0.5em;
 }
 
+th {
+  background: #D9E6EC;
+  color: #333;
+  font-weight: bold;
+}
+
+tr:nth-of-type(odd) {
+  background: #D9E6EC;
+}
+
+tr:nth-of-type(even) {
+  background: #fff;
+}
+
 .second_section {
     display: flex;
     justify-content: space-around;
-    
 }
 
 .nematodes {

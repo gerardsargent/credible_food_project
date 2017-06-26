@@ -11,3 +11,20 @@ table, th, td {
     border: 1px solid black;
     padding: 10px;
 }
+
+tr {
+    height: 40px;
+}
+
+tr:nth-of-type(odd) {
+    background: #F0F0F0;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.report-container {
+    display: flex;
+}

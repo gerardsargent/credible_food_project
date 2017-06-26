@@ -13,7 +13,11 @@ class SamplesController < ApplicationController
   # GET /samples/1
   # GET /samples/1.json
   def show
-    @page_title = @sample.sample_id
+    @reading = Reading.find(params[:reading_id])
+    @samples = Sample.where(sample_id: params[:reading_id])
+    @page_title = "????"
+
+    @sample = nil
   end
 
   # GET /samples/new
@@ -33,6 +37,7 @@ class SamplesController < ApplicationController
 
   # GET /samples/1/edit
   def edit
+
   end
 
   # POST /samples
@@ -56,7 +61,7 @@ class SamplesController < ApplicationController
 
   
       if @sample.save
-        format.html { redirect_to new_sample_path, notice: 'Sample was successfully created.' }
+        format.html { redirect_to new_reading_sample_path, notice: 'Sample was successfully created.' }
         format.json { render :show, status: :created, location: @sample }
       else
         format.html { render :new }
@@ -92,7 +97,8 @@ class SamplesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sample
-      @sample = Sample.find(params[:id])
+      # @sample = Sample.find(params[:id])
+      @sample = Sample.where(sample_id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
