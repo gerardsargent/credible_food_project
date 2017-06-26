@@ -75,7 +75,7 @@
     </div>
   <% end %>
 
-  <tr>
+  <tr class="sample_input">
     <td>
     <%=s.label :reading_number, @sample.reading_number%>
     </td>
@@ -148,60 +148,15 @@
     </td>
   </tr>
 
-    <%= s.submit %>
-  <% end %>
+    <hr >
+    <div class="sample_submit"><%= s.submit %></div>
+    <hr >
 
 </table>
 
 <hr >
 
-<!--Nematodes-->
-
 <div class="second_section">
-
-<table class="nematodes">
-
-  <tr>
-    <th></th>
-    <th>Nematodes</th>
-  </tr>
-
-  <tr>
-    <th>Bacteria</th>
-    <td><input></td>
-  </tr>
-
-  <tr>
-    <th>Fungal</th>
-    <td><input></td>
-  </tr>
-
-  <tr>
-    <th>Predator</th>
-    <td><input></td>
-  </tr>
-
-  <tr>
-    <th>Root</th>
-    <td><input></td>
-  </tr>
-
-  <tr>
-    <th>Brrix</th>
-    <td><input></td>
-  </tr>
-
-  <tr>
-    <th>PH</th>
-    <td><input></td>
-  </tr>
-
-  <tr>
-    <th>Moisture</th>
-    <td><input></td>
-  </tr>
-
-</table>
 
 <!--Comments Section-->
 
@@ -224,9 +179,11 @@
   </tr>
 
   <tr>
-    <td><input></td>
+    <td><%=s.text_field :notes%></td>
   </tr>
   
 </table>
 
 </div>
+
+<% end %>

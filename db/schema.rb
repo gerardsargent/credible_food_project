@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622184607) do
+ActiveRecord::Schema.define(version: 20170626174936) do
 
   create_table "readings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "client"
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.integer  "nematodes_dilution"
     t.float    "fb_biomass_ratio",                   limit: 24
     t.date     "sample_date"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "coverslip"
     t.float    "fungal_cm_length_for_calc",          limit: 24
     t.float    "fungi_average_diameter_in_um",       limit: 24
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170622184607) do
     t.integer  "fungal_nematodes"
     t.integer  "predator_nematodes"
     t.integer  "root_nematodes"
+    t.text     "notes",                              limit: 65535
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_samples_on_user_id", using: :btree

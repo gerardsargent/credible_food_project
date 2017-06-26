@@ -213,3 +213,12 @@ table th, td {
 .notes_2 th {
     max-width: 20%;
 }
+
+.sample_submit {
+    display: flex;
+    justify-content: center;
+}
+
+.sample_input input {
+    background-color: lightgrey;
+}

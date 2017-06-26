@@ -18,6 +18,7 @@ class Sample < ApplicationRecord
                 :ciliates_dilution,
                 :nematodes,
                 :nematodes_dilution,
+                :notes,
                 presence: true;
 
     def do_calc
