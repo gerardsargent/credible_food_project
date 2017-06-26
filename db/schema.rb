@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 20170622184503) do
     t.float    "oomycetes",                          limit: 24
     t.index ["location_id"], name: "index_samples_on_location_id", using: :btree
     t.index ["reading_id"], name: "index_samples_on_reading_id", using: :btree
+    t.text     "notes",                              limit: 65535
     t.index ["sample_date"], name: "index_samples_on_sample_date", using: :btree
     t.index ["sample_id"], name: "index_samples_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_samples_on_user_id", using: :btree

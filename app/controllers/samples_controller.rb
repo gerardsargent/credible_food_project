@@ -50,24 +50,28 @@ class SamplesController < ApplicationController
       @sample.sample_id = params[:reading_id]
       @sample.reading_number = @samples.length + 1
 
-    respond_to do |format|
-      puts "-----------------------"
-      puts "sample_params = "
-      sample_params.each do |k, v|
-        puts(k)
-        puts(v)
-      end
-      puts "-----------------------"
+   # respond_to do |format|
+   #   puts "-----------------------"
+   #   puts "sample_params = "
+   #   sample_params.each do |k, v|
+   #     puts(k)
+   #     puts(v)
+   #   end
+   #   puts "-----------------------"
 
   
       if @sample.save
         format.html { redirect_to new_reading_sample_path, notice: 'Sample was successfully created.' }
         format.json { render :show, status: :created, location: @sample }
+        redirect_to new_reading_sample_path
+       # format.html { redirect_to @sample, notice: 'Sample was successfully created.' }
+       # format.json { render :show, status: :created, location: @sample }
       else
-        format.html { render :new }
-        format.json { render json: @sample.errors, status: :unprocessable_entity }
+        redirect_to new_reading_sample_path
+       # format.html { redirect_to new_reading_sample_path, notice: "Please fill in all fields" }
+       # format.json { render json: @sample.errors, status: :unprocessable_entity }
       end
-    end
+   # end
   end
 
   # PATCH/PUT /samples/1
