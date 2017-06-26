@@ -28,12 +28,14 @@
     <th>Amoebae Dilution</th>
     <th>Ciliates</th>
     <th>Ciliates Dilution</th>
+    <th>Nematodes</th>
+    <th>Nematodes Dilution</th>
 
   </tr>
 
   <% samples.each do |s| %>
     <tr>
-      <td><%=s.reading_number - 1%></td>
+      <td><%=s.reading_number%></td>
       <td><%=s.coverslip%></td>
       <td><%=s.bacterial_number%></td>
       <td><%=s.bacterial_size_shape%></td>
@@ -54,6 +56,8 @@
       <td><%=s.amoebae_dilution%></td>
       <td><%=s.ciliates%></td>
       <td><%=s.ciliates_dilution%></td>
+      <td><%=s.nematodes%></td>
+      <td><%=s.nematodes_dilution%></td>
     </tr>
   <% end %>
 
@@ -135,6 +139,12 @@
     </td>
     <td>
       <%=s.text_field :ciliates_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :nematodes%>
+    </td>
+    <td>
+      <%=s.text_field :nematodes_dilution%>
     </td>
   </tr>
 
