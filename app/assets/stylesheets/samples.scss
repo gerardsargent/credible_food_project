@@ -120,17 +120,10 @@ footer, header {
 
 .sample-history-inner {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: center;
-    align-items: flex-start;
 }
 
 .sample-history-item {
-    display: inline-block;
-    width: 200px;
-    padding: $margin-padding-desktop;
+    padding: 5px 0;
 }
 
 .sample-history-title {
@@ -150,22 +143,9 @@ footer, header {
     background-color: $form-background;
 }
 
-@media (min-width: 480px) {
-    .sample-history-inner {
-        flex-wrap: nowrap;
-    }
-}
-
 @media (min-width: 1200px) {
     .flex-no-wrap-lg {
         flex-wrap: nowrap;
-    }
-
-    .sample-history-inner {
-        margin: $margin-padding-desktop;
-        flex-grow: 1;
-        flex-shrink: 0;
-        flex-basis: 200px;
     }
 }
 

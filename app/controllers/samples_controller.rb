@@ -18,6 +18,10 @@ class SamplesController < ApplicationController
     @page_title = "????"
 
     @sample = nil
+    puts "****************************"
+    puts "@reading = "
+    puts @reading.inspect
+    puts "****************************"
   end
 
   # GET /samples/new

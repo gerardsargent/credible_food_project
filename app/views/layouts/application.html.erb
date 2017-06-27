@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'samples', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'readings', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -16,24 +18,37 @@
     <div class="container">
 
       <div>
-        <div>
+        <div class="centre-text main-title">
           <h1>The Credible Food Project</h1>
         </div>
       </div>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class="landing-splash">
+        <%= image_tag("logo-transparent-735x800px.png", :alt => "logo", :class => "logo") %>
+      </div>
 
       <% if current_user.is_a?(GuestUser) %>
-        <%= link_to "Register", new_user_registration_path %>
-        <br>
-        <%= link_to "Login", new_user_session_path %>
+        <div class="landing-splash"></div>
+          <div class="login">
+            <div class="login-inner">
+              <%= link_to "Register", new_user_registration_path %>
+              <br>
+              <%= link_to "Login", new_user_session_path %>
+            </div>
+          </div>
+        </div>
       <% else %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <div class="landing-splash"></div>
+          <div class="login">
+            <div class="login-inner">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </div>
+          </div>
+        </div>
       <% end %>
 
       <%= yield %>
-
+    
     </div>
 
   </body>

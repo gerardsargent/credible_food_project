@@ -1,9 +1,17 @@
-<h1>Hi, <%= current_user.first_name %></h1>
+<div class="login">
 
-<p id="notice"><%= notice %></p>
+  <div class="login-inner">
 
-<% if current_user.is_a?(GuestUser) %>
-  <p>Welcome to the Credible Food Project. Please log in.</p>
-<% else %>
-  <%= render 'reading_list', readings: @user_readings %>
-<% end %>
+    <h1>Hello, <%= current_user.first_name %></h1>
+
+    <p id="notice"><%= notice %></p>
+
+    <% if current_user.is_a?(GuestUser) %>
+      <p>Welcome to the Credible Food Project. Please log in.</p>
+    <% else %>
+      <%= render 'reading_list', readings: @user_readings %>
+    <% end %>
+
+  </div>
+
+</div>
