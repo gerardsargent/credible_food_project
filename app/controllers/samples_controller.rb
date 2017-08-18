@@ -17,10 +17,15 @@ class SamplesController < ApplicationController
     @samples = Sample.where(sample_id: params[:reading_id])
     @page_title = "????"
 
-    @sample = nil
+    @sample = Sample.find_by_id(2)
     puts "****************************"
     puts "@reading = "
     puts @reading.inspect
+    puts "****************************"
+
+    puts "****************************"
+    puts "@sample = "
+    puts @sample.inspect
     puts "****************************"
   end
 

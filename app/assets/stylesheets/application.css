@@ -86,3 +86,7 @@ tr:nth-of-type(odd) {
     padding: 20px 0;
     display: none;
 }
+
+.remember-me {
+    width: 10%;
+}
