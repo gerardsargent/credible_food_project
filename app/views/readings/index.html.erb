@@ -1,17 +1,21 @@
-<div class="login">
+  <div class="login">
 
-  <div class="login-inner">
+      <% if current_user.is_a?(GuestUser) %>
 
-    <h1>Hello, <%= current_user.first_name %></h1>
+        <div class="login-inner-blurb">
+          <%= image_tag("credible-food-project-splash-1500px.jpg", :alt => "The Credible Food Project Farm, Jersey, Channel Islands", :class => "landing-splash-img") %>
+          <h2>What do we do?</h2>
+          <p>A Credible Food Soil Regeneration strategy helps countries REGENERATE their soils which come in No 11 in the top 100 most substantive solutions to reverse global warming, based on meticulous research by leading scientists and policymakers around the world.</p>
+          <h2>How is this beneficial?</h2>
+          <p>Growing Credible Food improves farmland restoration by DRAWINGDOWN carbon. Our educational program empowers farmers to understand their soils better for better productivity / reduced cost.<p>
+        </div>
 
-    <p id="notice"><%= notice %></p>
+      <% else %>
+        
+        <div class="login-inner">
+          <%= render 'reading_list', readings: @user_readings %>
+        <div>
 
-    <% if current_user.is_a?(GuestUser) %>
-      <p>Welcome to the Credible Food Project. Please log in.</p>
-    <% else %>
-      <%= render 'reading_list', readings: @user_readings %>
-    <% end %>
+      <% end %>
 
   </div>
-
-</div>

@@ -60,8 +60,7 @@
     </tr>
   <% end %>
 
-<% if !@sample.nil?
-  form_for [@reading, @sample] do |s| %>
+<% form_for [@reading, @sample] do |s| %>
 <!-- normal form for one sample -->
   <% if @sample.errors.any? %>
     <div id="error_explanation">
@@ -181,7 +180,6 @@
     </tr>
     
   </table>
-  <% end %>
   
 <% end %>
 

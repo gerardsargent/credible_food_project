@@ -17,10 +17,9 @@ class SamplesController < ApplicationController
     @samples = Sample.where(sample_id: params[:reading_id])
     @page_title = "????"
 
-    @sample = nil
+    @sample = @reading.samples.build
     puts "****************************"
-    puts "@reading = "
-    puts @reading.inspect
+    puts "@reading = #{@reading.inspect}"
     puts "****************************"
   end
 
@@ -47,7 +46,8 @@ class SamplesController < ApplicationController
   # POST /samples
   # POST /samples.json
   def create
-    @reading = Reading.find(params[:reading_id])
+    # @reading = Reading.find(params[:reading_id])
+    @reading = Reading.samples.new(sample_params)
     @samples = Sample.where(sample_id: params[:reading_id]).to_a
 
     @sample = Sample.new(sample_params)
