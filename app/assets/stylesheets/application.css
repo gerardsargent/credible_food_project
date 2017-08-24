@@ -1,10 +1,10 @@
 a {
-    color: #0A5271;
+    color: #8E5F34;
     text-decoration: none;
 }
 
 a:hover {
-    color: #97B3BF;
+    color: #213924;
     text-decoration: none;
 }
 
@@ -12,6 +12,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: #3A3A3C;
     margin: 0;
+    letter-spacing: 0.05em;
 }
 
 div {
@@ -19,13 +20,18 @@ div {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-    -webkit-margin-before: 10px;
-    -webkit-margin-after: 10px;
+    -webkit-margin-before: 25px;
+    -webkit-margin-after: 25px;
+}
+
+p {
+    line-height: 1.5em;
 }
 
 input#user_email, input#user_password {
     line-height: 2em;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
     color: #3A3A3C;
     font-size: 0.9em;
     border: 1px solid #97B3BF;
@@ -48,9 +54,13 @@ tr:nth-of-type(odd) {
     background: #F0F0F0;
 }
 
+.actions {
+    max-width: 100px;
+}
+
 .actions, .field {
     display: block;
-    padding: 10px 10px 10px 0;
+    padding: 10px;
 }
 
 .centre-text {
@@ -66,13 +76,53 @@ tr:nth-of-type(odd) {
     display: flex;
 }
 
+.landing-splash {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.landing-splash-img {
+    max-width: 100%;
+    display: block;
+    margin: 25px auto 50px;
+    border-radius: 7.67px;
+}
+
 .login {
     padding: 20px;
+}
+
+.login-top {
+    padding: 20px;
+    display: flex;
+}
+
+.login-top div {
+    padding: 0 10px;
 }
 
 .login-inner {
     margin: 0 auto;
     max-width: 90%;
+}
+
+.login-inner-blurb {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.login-inner h2 {
+    text-align: center;
+}
+
+.login-inner-top h3 {
+    padding: 20px;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+.login-input {
+    width: 100%;
 }
 
 .logo {
@@ -89,4 +139,9 @@ tr:nth-of-type(odd) {
 
 .remember-me {
     width: 10%;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
 }

@@ -1,34 +1,167 @@
 <div class="container">
 
-  <!--NEW FORM-->
-  
-  <table>
+<!--NEW FORM-->
 
-    <tr class="form_titles">
+<table>
 
-      <th>#</th>
-      <th>Coverslip Size</th>
-      <th>Bacterial Count</th>
-      <th>Size/Shape</th>
-      <th>Bacterial Dilution</th>
-      <th>Actinobacteria Length</th>
-      <th>Actinobacteria Dilution</th>
-      <th>Fungi Length</th>
-      <th>Fungi Diameter</th>
-      <th>Fungi Color</th>
-      <th>Fungi Dilution</th>
-      <th>Oomycetes</th>
-      <th>Oomycetes Diameter</th>
-      <th>Oomycetes Color</th>
-      <th>Oomycetes Dilution</th>
-      <th>Flagellate</th>
-      <th>Flagellate Dilution</th>
-      <th>Amoebae</th>
-      <th>Amoebae Dilution</th>
-      <th>Ciliates</th>
-      <th>Ciliates Dilution</th>
-      <th>Nematodes</th>
-      <th>Nematodes Dilution</th>
+  <tr class="form_titles">
+
+    <th>#</th>
+    <th>Coverslip Size</th>
+    <th>Bacterial Count</th>
+    <th>Size/Shape</th>
+    <th>Bacterial Dilution</th>
+    <th>Actinobacteria Length</th>
+    <th>Actinobacteria Dilution</th>
+    <th>Fungi Length</th>
+    <th>Fungi Diameter</th>
+    <th>Fungi Color</th>
+    <th>Fungi Dilution</th>
+    <th>Oomycetes</th>
+    <th>Oomycetes Diameter</th>
+    <th>Oomycetes Color</th>
+    <th>Oomycetes Dilution</th>
+    <th>Flagellate</th>
+    <th>Flagellate Dilution</th>
+    <th>Amoebae</th>
+    <th>Amoebae Dilution</th>
+    <th>Ciliates</th>
+    <th>Ciliates Dilution</th>
+    <th>Nematodes</th>
+    <th>Nematodes Dilution</th>
+
+  </tr>
+
+  <% samples.each do |s| %>
+    <tr>
+      <td><%=s.reading_number%></td>
+      <td><%=s.coverslip%></td>
+      <td><%=s.bacterial_number%></td>
+      <td><%=s.bacterial_size_shape%></td>
+      <td><%=s.bacterial_dilution%></td>
+      <td><%=s.actinobacteria%></td>
+      <td><%=s.actinobacteria_dilution%></td>    
+      <td><%=s.fungi%></td>
+      <td><%=s.fungi_diameter%></td>
+      <td><%=s.fungi_colour%></td>
+      <td><%=s.fungi_dilution%></td>
+      <td><%=s.oomycetes%></td>
+      <td><%=s.oomycetes_diameter%></td>
+      <td><%=s.oomycetes_colour%></td>
+      <td><%=s.oomycetes_dilution%></td>
+      <td><%=s.flagellate%></td>
+      <td><%=s.flagellate_dilution%></td>
+      <td><%=s.amoebae%></td>
+      <td><%=s.amoebae_dilution%></td>
+      <td><%=s.ciliates%></td>
+      <td><%=s.ciliates_dilution%></td>
+      <td><%=s.nematodes%></td>
+      <td><%=s.nematodes_dilution%></td>
+    </tr>
+  <% end %>
+
+<% form_for [@reading, @sample] do |s| %>
+<!-- normal form for one sample -->
+  <% if @sample.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
+
+      <ul>
+      <% @sample.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <tr class="sample_input">
+    <td>
+    <%=s.label :reading_number, @sample.reading_number%>
+    </td>
+
+    <td>
+      <%=s.text_field :bacterial_number%>
+    </td>
+    <td>
+      <%=s.text_field :coverslip%>
+    </td>
+    <td>
+      <%=s.text_field :bacterial_size_shape%>
+    </td>
+    <td>
+      <%=s.text_field :bacterial_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :actinobacteria%>
+    </td>
+    <td>
+      <%=s.text_field :actinobacteria_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :fungi%>
+    </td>
+    <td>
+      <%=s.text_field :fungi_diameter%>
+    </td>
+    <td>
+      <%=s.text_field :fungi_colour%>
+    </td>
+    <td>
+      <%=s.text_field :fungi_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :oomycetes%>
+    </td>
+    <td>
+      <%=s.text_field :oomycetes_diameter%>
+    </td>
+    <td>
+      <%=s.text_field :oomycetes_colour%>
+    </td>
+    <td>
+      <%=s.text_field :oomycetes_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :flagellate%>
+    </td>
+    <td>
+      <%=s.text_field :flagellate_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :amoebae%>
+    </td>
+    <td>
+      <%=s.text_field :amoebae_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :ciliates%>
+    </td>
+    <td>
+      <%=s.text_field :ciliates_dilution%>
+    </td>
+    <td>
+      <%=s.text_field :nematodes%>
+    </td>
+    <td>
+      <%=s.text_field :nematodes_dilution%>
+    </td>
+  </tr>
+
+  <hr >
+  <div class="sample_submit"><%= s.submit %></div>
+  <hr >
+
+  <hr >
+
+  <div class="second_section">
+
+  <!--Comments Section-->
+
+  <table class="notes">
+
+    <tr>
+      <th>Notes/Questions</th>
+    </tr>
 
     </tr>
 
@@ -146,6 +279,10 @@
         <%=s.text_field :nematodes_dilution%>
       </td>
     </tr>
+    
+  </table>
+  
+<% end %>
 
     <hr >
     <div class="sample_submit"><%= s.submit %></div>

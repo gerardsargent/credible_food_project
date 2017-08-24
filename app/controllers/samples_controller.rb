@@ -17,10 +17,9 @@ class SamplesController < ApplicationController
     @samples = Sample.where(sample_id: params[:reading_id])
     @page_title = "????"
 
-    @sample = Sample.find_by_id(2)
+    @sample = @reading.samples.build
     puts "****************************"
-    puts "@reading = "
-    puts @reading.inspect
+    puts "@reading = #{@reading.inspect}"
     puts "****************************"
 
     puts "****************************"
@@ -36,9 +35,13 @@ class SamplesController < ApplicationController
 
    # get existing readings from database   
     @samples = Sample.where(sample_id: params[:reading_id]).to_a
+     puts "-----------------------"
+     puts "@samples = "
+     p @samples
+     puts "-----------------------"
 
     # add new item to array for next reading number if < 20
-    @sample = Sample.new
+    @sample = @reading.samples.new
     @sample.reading_number = @samples.length + 1
     
     @page_title = "Input Sample Data"
@@ -52,10 +55,11 @@ class SamplesController < ApplicationController
   # POST /samples
   # POST /samples.json
   def create
-    @reading = Reading.find(params[:reading_id])
+    # @reading = Reading.find(params[:reading_id])
+    # @reading = Reading.samples.new(sample_params)
     @samples = Sample.where(sample_id: params[:reading_id]).to_a
 
-    @sample = Sample.new(sample_params)
+    @sample = Reading.samples.new(sample_params)
     @sample.sample_id = params[:reading_id]
     @sample.reading_number = @samples.length + 1
 
