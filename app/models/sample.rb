@@ -60,6 +60,7 @@ class Sample < ApplicationRecord
         @bacterial_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:bacterial_number)
         @bacterial_array.push(self.bacterial_number)
         
+        # If this is the first reading of the associated sample, then default mean value to the value input by user
         if @bacterial_array.length == 1
             self.bacterial_mean = @bacterial_array[0]
             @bacterial_mean = self.bacterial_mean
@@ -67,22 +68,28 @@ class Sample < ApplicationRecord
             #Use Descriptive Statistics gem to calculate values
             bacterial_mean = @bacterial_array.extend(DescriptiveStatistics)
             @bacterial_mean = bacterial_mean.mean
+            self.bacterial_mean = @bacterial_mean.round(2)
         end
 
-        puts "*********************************"
-        puts "@bacterial_mean.round(2):"
-        puts @bacterial_mean.round(2)
-        puts "*********************************"
+        # puts "*********************************"
+        # puts "@bacterial_array:"
+        # puts @bacterial_array.inspect
+        # puts "*********************************"
 
-        puts "*********************************"
-        puts "self.bacterial_dilution:"
-        puts self.bacterial_dilution
-        puts "*********************************"      
+        # puts "*********************************"
+        # puts "@bacterial_mean.round(2):"
+        # puts @bacterial_mean.round(2)
+        # puts "*********************************"
 
-        puts "*********************************"
-        puts "self.coverslip:"
-        puts self.coverslip
-        puts "*********************************"
+        # puts "*********************************"
+        # puts "self.bacterial_dilution:"
+        # puts self.bacterial_dilution
+        # puts "*********************************"      
+
+        # puts "*********************************"
+        # puts "self.coverslip:"
+        # puts self.coverslip
+        # puts "*********************************"
 
         bacterial_st_dev_calc
 
@@ -265,7 +272,8 @@ class Sample < ApplicationRecord
             self.oomycetes_mean = @oomycetes_mean.round(2)
         end
 
-        # oomycetes_st_dev_calc
+        oomycetes_st_dev_calc
+        
     end
 
     def oomycetes_st_dev_calc

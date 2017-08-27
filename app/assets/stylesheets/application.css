@@ -22,10 +22,12 @@ div {
 h1, h2, h3, h4, h5, h6, p {
     -webkit-margin-before: 25px;
     -webkit-margin-after: 25px;
+    color: #213924;
 }
 
 p {
     line-height: 1.5em;
+    color: #4E4E52;
 }
 
 input#user_email, input#user_password {

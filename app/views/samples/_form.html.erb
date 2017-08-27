@@ -8,7 +8,7 @@
     <th>#</th>
     <th>Coverslip Size</th>
     <th>Bacterial Count</th>
-    <th>Size/Shape</th>
+    <th>Bacterial Size/Shape</th>
     <th>Bacterial Dilution</th>
     <th>Actinobacteria Length</th>
     <th>Actinobacteria Dilution</th>
@@ -61,7 +61,7 @@
 
 <%= form_for [@reading, @sample] do |s| %>
 
-<!-- normal form for one sample -->
+  <!-- normal form for one sample -->
   <% if @sample.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
@@ -76,84 +76,105 @@
 
   <tr class="sample_input">
     <td>
-    <%=s.label :reading_number, @sample.reading_number%>
+      <%= s.label :reading_number, @sample.reading_number %>
+      <%= s.hidden_field :reading_number, :value => @sample.reading_number %>
     </td>
 
     <td>
-      <%=s.text_field :bacterial_number%>
+      <%= coverslip_types = [2048, 2491, 3044] 
+      s.select :coverslip, coverslip_types %>
     </td>
+
     <td>
-      <%=s.text_field :coverslip%>
+      <%= s.text_field :bacterial_number %>
     </td>
+
     <td>
-      <%=s.text_field :bacterial_size_shape%>
+      <%= s.text_field :bacterial_size_shape %>
     </td>
+
     <td>
-      <%=s.text_field :bacterial_dilution%>
+      <%= s.text_field :bacterial_dilution %>
     </td>
+
     <td>
-      <%=s.text_field :actinobacteria%>
+      <%= s.text_field :actinobacteria %>
     </td>
+
     <td>
-      <%=s.text_field :actinobacteria_dilution%>
+      <%= s.text_field :actinobacteria_dilution %>
     </td>
+
     <td>
-      <%=s.text_field :fungi%>
+      <%= s.text_field :fungi %>
     </td>
+
     <td>
-      <%=s.text_field :fungi_diameter%>
+      <%= s.text_field :fungi_diameter %>
     </td>
+
     <td>
-      <%=s.text_field :fungi_colour%>
+      <%= s.text_field :fungi_colour %>
     </td>
+
     <td>
-      <%=s.text_field :fungi_dilution%>
+      <%= s.text_field :fungi_dilution %>
     </td>
+
     <td>
-      <%=s.text_field :oomycetes%>
+      <%= s.text_field :oomycetes %>
     </td>
+
     <td>
-      <%=s.text_field :oomycetes_diameter%>
+      <%= s.text_field :oomycetes_diameter %>
     </td>
+
     <td>
-      <%=s.text_field :oomycetes_colour%>
+      <%= s.text_field :oomycetes_colour%>
     </td>
+
     <td>
-      <%=s.text_field :oomycetes_dilution%>
+      <%= s.text_field :oomycetes_dilution %>
     </td>
+
     <td>
-      <%=s.text_field :flagellate%>
+      <%= s.text_field :flagellate %>
     </td>
+
     <td>
-      <%=s.text_field :flagellate_dilution%>
+      <%= s.text_field :flagellate_dilution %>
     </td>
+
     <td>
-      <%=s.text_field :amoebae%>
+      <%= s.text_field :amoebae %>
     </td>
+
     <td>
-      <%=s.text_field :amoebae_dilution%>
+      <%= s.text_field :amoebae_dilution %>
     </td>
+
     <td>
-      <%=s.text_field :ciliates%>
+      <%= s.text_field :ciliates %>
     </td>
+
     <td>
-      <%=s.text_field :ciliates_dilution%>
+      <%= s.text_field :ciliates_dilution %>
     </td>
+
     <td>
-      <%=s.text_field :nematodes%>
+      <%= s.text_field :nematodes %>
     </td>
+
     <td>
-      <%=s.text_field :nematodes_dilution%>
+      <%= s.text_field :nematodes_dilution %>
     </td>
   </tr>
 
   <hr >
-  <div class="sample_submit"><%= s.submit %></div>
-  <hr >
 
-  <hr >
+</table>
 
-  <div class="second_section">
+<div class="second_section">
 
   <!--Comments Section-->
 
@@ -163,161 +184,27 @@
       <th>Notes/Questions</th>
     </tr>
 
+    <tr>
+      <th>
+        Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.
+      </th>
     </tr>
 
-    <% samples.each do |s| %>
-      <tr>
-        <td><%=s.reading_number%></td>
-        <td><%=s.coverslip%></td>
-        <td><%=s.bacterial_number%></td>
-        <td><%=s.bacterial_size_shape%></td>
-        <td><%=s.bacterial_dilution%></td>
-        <td><%=s.actinobacteria%></td>
-        <td><%=s.actinobacteria_dilution%></td>    
-        <td><%=s.fungi%></td>
-        <td><%=s.fungi_diameter%></td>
-        <td><%=s.fungi_colour%></td>
-        <td><%=s.fungi_dilution%></td>
-        <td><%=s.oomycetes%></td>
-        <td><%=s.oomycetes_diameter%></td>
-        <td><%=s.oomycetes_colour%></td>
-        <td><%=s.oomycetes_dilution%></td>
-        <td><%=s.flagellate%></td>
-        <td><%=s.flagellate_dilution%></td>
-        <td><%=s.amoebae%></td>
-        <td><%=s.amoebae_dilution%></td>
-        <td><%=s.ciliates%></td>
-        <td><%=s.ciliates_dilution%></td>
-        <td><%=s.nematodes%></td>
-        <td><%=s.nematodes_dilution%></td>
-      </tr>
-    <% end %>
-
-  <% form_for [@reading, @sample] do |s| %>
-  <!-- normal form for one sample -->
-    <% if @sample.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
-
-        <ul>
-        <% @sample.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <tr class="sample_input">
-      <td>
-      <%=s.label :reading_number, @sample.reading_number%>
-      </td>
-
-      <td>
-        <%=s.text_field :bacterial_number%>
-      </td>
-      <td>
-        <%=s.text_field :coverslip%>
-      </td>
-      <td>
-        <%=s.text_field :bacterial_size_shape%>
-      </td>
-      <td>
-        <%=s.text_field :bacterial_dilution%>
-      </td>
-      <td>
-        <%=s.text_field :actinobacteria%>
-      </td>
-      <td>
-        <%=s.text_field :actinobacteria_dilution%>
-      </td>
-      <td>
-        <%=s.text_field :fungi%>
-      </td>
-      <td>
-        <%=s.text_field :fungi_diameter%>
-      </td>
-      <td>
-        <%=s.text_field :fungi_colour%>
-      </td>
-      <td>
-        <%=s.text_field :fungi_dilution%>
-      </td>
-      <td>
-        <%=s.text_field :oomycetes%>
-      </td>
-      <td>
-        <%=s.text_field :oomycetes_diameter%>
-      </td>
-      <td>
-        <%=s.text_field :oomycetes_colour%>
-      </td>
-      <td>
-        <%=s.text_field :oomycetes_dilution%>
-      </td>
-      <td>
-        <%=s.text_field :flagellate%>
-      </td>
-      <td>
-        <%=s.text_field :flagellate_dilution%>
-      </td>
-      <td>
-        <%=s.text_field :amoebae%>
-      </td>
-      <td>
-        <%=s.text_field :amoebae_dilution%>
-      </td>
-      <td>
-        <%=s.text_field :ciliates%>
-      </td>
-      <td>
-        <%=s.text_field :ciliates_dilution%>
-      </td>
-      <td>
-        <%=s.text_field :nematodes%>
-      </td>
-      <td>
-        <%=s.text_field :nematodes_dilution%>
-      </td>
+    <tr>
+      <td><%= s.text_field :notes %></td>
     </tr>
     
   </table>
+
+  <hr >
+
+    <div class="sample_submit">
+      <%= s.submit %>
+    </div>
   
-<% end %>
-
-    <hr >
-    <div class="sample_submit"><%= s.submit %></div>
-    <hr >
-
-    <hr >
-
-    <div class="second_section">
-
-    <!--Comments Section-->
-
-    <table class="notes">
-
-      <tr>
-        <th>Notes/Questions</th>
-      </tr>
-
-      <tr>
-        <th>
-        Feel free to write any
-        further information you
-        feel important or
-        useful, and any
-        questions you might
-        have that may be useful for
-        future reference.
-        </th>
-      </tr>
-
-      <tr>
-        <td><%=s.text_field :notes%></td>
-      </tr>
-      
-    </table>
-    <% end %>
+  <hr >
+    
+  <% end %>
 
   </table>
 
