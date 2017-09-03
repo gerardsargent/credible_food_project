@@ -10,8 +10,55 @@ class ReadingsController < ApplicationController
 
   # GET /readings/1
   def show
-#    @samples = @reading.samples
+#   @samples = @reading.samples
+
     @samples = Sample.where(sample_id: params[:id])
+
+    # Report - Bacterial Micrograms (Samples 1-4) Cell Z13
+    @bacterial_microgram_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:micrograms).last
+    puts '************************'
+    puts '@reading.samples='
+    puts @reading.samples.inspect
+    puts '************************'
+    @bacterial_microgram_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:micrograms).last
+    @bacterial_microgram_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:micrograms).last
+    @bacterial_microgram_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:micrograms).last
+
+    # Report - Actinobacteria Micrograms (Samples 1-4) Cell Z18
+    @actinobacterial_microgram_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:actinobacteria_micrograms).last
+    @actinobacterial_microgram_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:actinobacteria_micrograms).last
+    @actinobacterial_microgram_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:actinobacteria_micrograms).last
+    @actinobacterial_microgram_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:actinobacteria_micrograms).last
+
+    # Report - Fungi Micrograms (Samples 1-4) Cell Z21
+    @fungi_microgram_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:fungi_micrograms).last
+    @fungi_microgram_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:fungi_micrograms).last
+    @fungi_microgram_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:fungi_micrograms).last
+    @fungi_microgram_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:fungi_micrograms).last
+
+    # Report - Oomycetes Micrograms (Samples 1-4) Cell Z28
+    @oomycetes_microgram_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:oomycetes_micrograms).last
+    @oomycetes_microgram_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:oomycetes_micrograms).last
+    @oomycetes_microgram_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:oomycetes_micrograms).last
+    @oomycetes_microgram_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:oomycetes_micrograms).last
+
+    # Report - Flagellate (Protozoa) (Samples 1-4) Cell Y35
+    @flagellate_protozoa_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:flagellate_protozoa).last
+    @flagellate_protozoa_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:flagellate_protozoa).last
+    @flagellate_protozoa_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:flagellate_protozoa).last
+    @flagellate_protozoa_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:flagellate_protozoa).last
+
+    # Report - Amoebae (Protozoa) (Samples 1-4) Cell Y36
+    @amoebae_protozoa_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:amoebae_protozoa).last
+    @amoebae_protozoa_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:amoebae_protozoa).last
+    @amoebae_protozoa_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:amoebae_protozoa).last
+    @amoebae_protozoa_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:amoebae_protozoa).last 
+
+    # Report - Ciliates (Protozoa) (Samples 1-4) Cell Y37
+    @ciliates_protozoa_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:ciliates_protozoa).last
+    @ciliates_protozoa_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:ciliates_protozoa).last
+    @ciliates_protozoa_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:ciliates_protozoa).last
+    @ciliates_protozoa_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:ciliates_protozoa).last 
   end
 
   # GET /readings/new
@@ -54,6 +101,7 @@ class ReadingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_reading
       @reading = Reading.find(params[:id])
+      @sample = Sample.where(sample_id: params[:id])
     end
 
     def set_user

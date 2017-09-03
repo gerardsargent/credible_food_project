@@ -6,6 +6,7 @@
   <tr class="form_titles">
 
     <th>#</th>
+    <th>Sample Group</th>
     <th>Coverslip Size</th>
     <th>Bacterial Count</th>
     <th>Bacterial Size/Shape</th>
@@ -26,15 +27,19 @@
     <th>Amoebae Dilution</th>
     <th>Ciliates</th>
     <th>Ciliates Dilution</th>
-    <th>Nematodes</th>
+    <th>Nematodes - Bacteria</th>
+    <th>Nematodes - Fungal</th>
+    <th>Nematodes - Predator</th>
+    <th>Nematodes - Root</th>
     <th>Nematodes Dilution</th>
-    <th style="width: 20%">Notes</th>
+    <th style="width: 20%">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
 
   </tr>
 
   <% samples.each do |s| %>
     <tr>
       <td><%=s.reading_number%></td>
+      <td><%=s.sample_gp%></td>
       <td><%=s.coverslip%></td>
       <td><%=s.bacterial_number%></td>
       <td><%=s.bacterial_size_shape%></td>
@@ -55,7 +60,10 @@
       <td><%=s.amoebae_dilution%></td>
       <td><%=s.ciliates%></td>
       <td><%=s.ciliates_dilution%></td>
-      <td><%=s.nematodes%></td>
+      <td><%=s.nematodes_bacteria%></td>
+      <td><%=s.nematodes_fungi%></td>
+      <td><%=s.nematodes_predator%></td>
+      <td><%=s.nematodes_root%></td>
       <td><%=s.nematodes_dilution%></td>
       <td><%=s.notes%></td>
     </tr>
@@ -83,7 +91,12 @@
     </td>
 
     <td>
-      <%= coverslip_types = [2048, 2491, 3044] 
+      <%= sample_gp_no = [1, 2, 3, 4] 
+      s.select :sample_gp, sample_gp_no %>
+    </td>
+
+    <td>
+      <%= coverslip_types = [2038, 2491, 3044] 
       s.select :coverslip, coverslip_types %>
     </td>
 
@@ -170,11 +183,27 @@
     </td>
 
     <td>
-      <%= s.text_field :nematodes %>
+      <%= s.text_field :nematodes_bacteria %>
+    </td>
+
+    <td>
+      <%= s.text_field :nematodes_fungi %>
+    </td>
+
+    <td>
+      <%= s.text_field :nematodes_predator %>
+    </td>
+
+    <td>
+      <%= s.text_field :nematodes_root %>
     </td>
 
     <td>
       <%= s.text_field :nematodes_dilution %>
+    </td>
+
+    <td>
+      <%= s.text_field :notes %>
     </td>
   </tr>
 
@@ -183,26 +212,6 @@
 </table>
 
 <div class="second_section">
-
-  <!--Comments Section-->
-
-  <table class="notes">
-
-    <tr>
-      <th>Notes/Questions</th>
-    </tr>
-
-    <tr>
-      <th>
-        Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.
-      </th>
-    </tr>
-
-    <tr>
-      <td><%= s.text_field :notes %></td>
-    </tr>
-    
-  </table>
 
   <hr >
 

@@ -1,0 +1,287 @@
+  <% if samples.blank? %>
+    <div class="container centre-text">
+      <h3>No sample records have been uploaded that are associated with this particular reading. Please upload the first sample below...</h3>
+    </div>
+    <div class="container">
+      <div class="flex-centre"
+        <div class="sample-history-item"><%= link_to 'New Sample', new_reading_sample_path(@reading) %></div>
+      </div>
+    </div>
+  <% else %>
+
+    <h2>Soil Report</h2>
+
+    <div class="report-container">
+
+      <table class="sample-report">      
+          <th>Organisms in the Soil Food Web</th>
+          <th>Units</th>
+          <tr>
+              <td><strong>Bacterial</strong></td>
+              <td>μg/g or mL</td>
+          </tr>
+          <tr>
+            <td><strong>Actinobacteria</strong></td>
+            <td>μg/g or mL</td>
+          </tr>
+              <tr>
+            <td><strong>Fungi</strong></td>
+            <td>μg/g or mL</td>
+        </tr>
+        <tr>
+            <td><strong>Oomycetes</strong></td>
+            <td>μg/g or mL</td>
+        </tr>
+        <tr>
+            <td><strong>Flagellate (Protozoa)</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Amoebae (Protozoa)</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Ciliates (Protozoa)</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Bacterial (Nematodes)</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Fungal (Nematodes)</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Root (Nematodes)</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Predatory (Nematodes)</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Nematode Overall</strong></td>
+            <td>Per gram</td>
+        </tr>
+        <tr>
+            <td><strong>Fungal:bacterial ratio F:B</strong></td>
+            <td> </td>
+        </tr>
+      </table>
+
+      <table class="sample-report">
+          <thead>
+            <tr>
+              <th>Sample 1</th>
+              <th>Sample 2</th>
+              <th>Sample 3</th>
+              <th>Sample 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Bacterial Micrograms Report Cell Z13-->
+            <tr>
+              <% if @bacterial_microgram_report_1 %>
+                <td><%= @bacterial_microgram_report_1 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @bacterial_microgram_report_2 %>
+                <td><%= @bacterial_microgram_report_2 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @bacterial_microgram_report_3 %>
+                <td><%= @bacterial_microgram_report_3 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @bacterial_microgram_report_4 %>
+                <td><%= @bacterial_microgram_report_4 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+            </tr>
+
+            <!-- Actinobacterial Micrograms Report Cell Z18-->
+            <tr>
+              <% if @actinobacterial_microgram_report_1 %>
+                <td><%= @actinobacterial_microgram_report_1 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @actinobacterial_microgram_report_2 %>
+                <td><%= @actinobacterial_microgram_report_2 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @actinobacterial_microgram_report_3 %>
+                <td><%= @actinobacterial_microgram_report_3 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @actinobacterial_microgram_report_4 %>
+                <td><%= @actinobacterial_microgram_report_4 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+            </tr>
+
+            <!-- Fungi Micrograms Report Cell Z21-->
+            <tr>
+              <% if @fungi_microgram_report_1 %>
+                <td><%= @fungi_microgram_report_1 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @fungi_microgram_report_2 %>
+                <td><%= @fungi_microgram_report_2 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @fungi_microgram_report_3 %>
+                <td><%= @fungi_microgram_report_3 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @fungi_microgram_report_4 %>
+                <td><%= @fungi_microgram_report_4 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+            </tr>    
+
+            <!-- Oomycetes Micrograms Report Cell Z21-->
+            <tr>
+              <% if @oomycetes_microgram_report_1 %>
+                <td><%= @oomycetes_microgram_report_1 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @oomycetes_microgram_report_2 %>
+                <td><%= @oomycetes_microgram_report_2 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @oomycetes_microgram_report_3 %>
+                <td><%= @oomycetes_microgram_report_3 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @oomycetes_microgram_report_4 %>
+                <td><%= @oomycetes_microgram_report_4 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+            </tr>
+
+            <!-- Flagellate Protozoa Report Cell Y35-->
+            <tr>
+              <% if @flagellate_protozoa_report_1 %>
+                <td><%= @flagellate_protozoa_report_1 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @flagellate_protozoa_report_2 %>
+                <td><%= @flagellate_protozoa_report_2 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @flagellate_protozoa_report_3 %>
+                <td><%= @flagellate_protozoa_report_3 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @flagellate_protozoa_report_4 %>
+                <td><%= @flagellate_protozoa_report_4 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+            </tr>                 
+
+            <!-- Amoebae Protozoa Report Cell Y36-->
+            <tr>
+              <% if @amoebae_protozoa_report_1 %>
+                <td><%= @amoebae_protozoa_report_1 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @amoebae_protozoa_report_2 %>
+                <td><%= @amoebae_protozoa_report_2 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @amoebae_protozoa_report_3 %>
+                <td><%= @amoebae_protozoa_report_3 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @amoebae_protozoa_report_4 %>
+                <td><%= @amoebae_protozoa_report_4 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+            </tr> 
+
+            <!-- Ciliates Protozoa Report Cell Y37-->
+            <tr>
+              <% if @ciliates_protozoa_report_1 %>
+                <td><%= @ciliates_protozoa_report_1 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @ciliates_protozoa_report_2 %>
+                <td><%= @ciliates_protozoa_report_2 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @ciliates_protozoa_report_3 %>
+                <td><%= @ciliates_protozoa_report_3 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+
+              <% if @ciliates_protozoa_report_4 %>
+                <td><%= @ciliates_protozoa_report_4 %></td>
+              <% else %>
+                <td>No data</td>
+              <% end %>
+            </tr> 
+
+          </tbody>
+            <tr>
+              <td><!-- CRUD Options -->
+                <div class="sample-history-inner crud-options">
+                  <div class="sample-history-item"><%= link_to 'View Sample', reading_sample_path(@reading, samples) %></div>
+
+                </div>
+              </td><!-- End of CRUD div -->
+          </tr>
+      </table>
+
+    </div>
+
+    <br>
+  
+  <% end %> <!-- End of if statement -->
