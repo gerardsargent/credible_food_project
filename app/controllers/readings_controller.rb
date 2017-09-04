@@ -59,6 +59,42 @@ class ReadingsController < ApplicationController
     @ciliates_protozoa_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:ciliates_protozoa).last
     @ciliates_protozoa_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:ciliates_protozoa).last
     @ciliates_protozoa_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:ciliates_protozoa).last 
+
+    # Report - Nematodes (Bacteria) (Samples 1-4) Cell B41
+    @nematodes_bacteria_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_bacteria).last 
+
+    # Report - Nematodes (Fungal) (Samples 1-4) Cell C41
+    @nematodes_fungi_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_fungi).last
+    @nematodes_fungi_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_fungi).last
+    @nematodes_fungi_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_fungi).last
+    @nematodes_fungi_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_fungi).last
+
+    # Report - Nematodes (Root) (Samples 1-4) Cell E41
+    @nematodes_root_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_root).last
+    @nematodes_root_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_root).last
+    @nematodes_root_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_root).last
+    @nematodes_root_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_root).last
+
+    # Report - Nematodes (Predator) (Samples 1-4) Cell D41
+    @nematodes_predator_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_predator).last
+    @nematodes_predator_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_predator).last
+    @nematodes_predator_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_predator).last
+    @nematodes_predator_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_predator).last
+
+    # Report - Nematodes (Total) (Samples 1-4) Cell V41
+    @nematodes_total_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_mean).last
+    @nematodes_total_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_mean).last
+    @nematodes_total_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_mean).last
+    @nematodes_total_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_mean).last
+
+    # Report - FB Biomass (Samples 1-4) Cell Z36
+    @fb_biomass_ratio_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:fb_biomass_ratio).last
+    @fb_biomass_ratio_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:fb_biomass_ratio).last
+    @fb_biomass_ratio_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:fb_biomass_ratio).last
+    @fb_biomass_ratio_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:fb_biomass_ratio).last
   end
 
   # GET /readings/new
