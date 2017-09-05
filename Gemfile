@@ -70,3 +70,6 @@ gem 'devise', '~> 4.2'
 
 # User authorisation
 gem 'petergate', '~> 1.7', '>= 1.7.5'
+
+# Bootstrap v4
+gem 'bootstrap', '~> 4.0.0.beta'
