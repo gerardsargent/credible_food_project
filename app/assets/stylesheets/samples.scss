@@ -50,12 +50,37 @@ footer, header {
     background-color: lighten( $biomass-background, 10%);
 }
 
+.form-control {
+    padding: 0.2em;
+    font-size: 0.5rem;
+}
+
 .fungi {
     background-color: lighten( $sample-background, 20% );
 }
 
+.nav-tabs {
+    margin: 10px;
+}
+
+.nav-tabs .active {
+    background: #DEDDDD;
+}
+
+.nav-tabs li {
+    padding: 10px 15px;
+    border: 1px solid #BFBFBF;
+    border-top-right-radius: 7.67px;
+    border-top-left-radius: 7.67px;
+    font-size: 0.8em;
+}
+
 .nematodes {
     background-color: lighten( $biomass-background, 40%);
+}
+
+.notes-head {
+    text-align: center;
 }
 
 .oomycetes {

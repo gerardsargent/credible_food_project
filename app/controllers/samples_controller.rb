@@ -14,8 +14,11 @@ class SamplesController < ApplicationController
   # GET /samples/1.json
   def show
     @reading = Reading.find(params[:reading_id])
-    @samples = Sample.where(sample_id: params[:reading_id])
-    @page_title = "????"
+    @sample_gp_1 = Sample.where(sample_id: params[:reading_id], :sample_gp => 1 )
+    @sample_gp_2 = Sample.where(sample_id: params[:reading_id], :sample_gp => 2 )
+    @sample_gp_3 = Sample.where(sample_id: params[:reading_id], :sample_gp => 3 )
+    @sample_gp_4 = Sample.where(sample_id: params[:reading_id], :sample_gp => 4 )
+    @page_title = "Input sample data"
 
     @sample = @reading.samples.build
   end
