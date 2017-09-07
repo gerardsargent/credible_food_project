@@ -28,7 +28,48 @@ class SamplesController < ApplicationController
     # this is temporary until it works then we can put it in the route - this is probably the edit view
     @reading = Reading.find(params[:reading_id])
 
-   # get existing readings from database   
+    @sample_gp_1 = Sample.where(sample_id: params[:reading_id], :sample_gp => 1 )
+    @sample_gp_2 = Sample.where(sample_id: params[:reading_id], :sample_gp => 2 )
+    @sample_gp_3 = Sample.where(sample_id: params[:reading_id], :sample_gp => 3 )
+    @sample_gp_4 = Sample.where(sample_id: params[:reading_id], :sample_gp => 4 )
+
+    # Nematodes (Bacteria) (Samples 1-4) Cell B41
+    @nematodes_bacteria_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_bacteria).last 
+
+    # Nematodes (Fungal) (Samples 1-4) Cell C41
+    @nematodes_fungi_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_fungi).last
+    @nematodes_fungi_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_fungi).last
+    @nematodes_fungi_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_fungi).last
+    @nematodes_fungi_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_fungi).last
+
+    # Nematodes (Root) (Samples 1-4) Cell E41
+    @nematodes_root_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_root).last
+    @nematodes_root_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_root).last
+    @nematodes_root_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_root).last
+    @nematodes_root_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_root).last
+
+    # Nematodes (Predator) (Samples 1-4) Cell D41
+    @nematodes_predator_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_predator).last
+    @nematodes_predator_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_predator).last
+    @nematodes_predator_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_predator).last
+    @nematodes_predator_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_predator).last
+
+    # Nematodes (Dilution) (Samples 1-4) Cell D41
+    @nematodes_dilution_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_dilution).last
+    @nematodes_dilution_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_dilution).last
+    @nematodes_dilution_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_dilution).last
+    @nematodes_dilution_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_dilution).last
+
+    # Notes (Samples 1-4)
+    @notes_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:notes).last
+    @notes_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:notes).last
+    @notes_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:notes).last
+    @notes_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:notes).last
+
+    # get existing readings from database   
     @samples = Sample.where(sample_id: params[:reading_id]).to_a
 
     # add new item to array for next reading number if < 20
@@ -67,13 +108,8 @@ class SamplesController < ApplicationController
   
       if @sample.save
         format.html { redirect_to new_reading_sample_path, notice: 'Sample was successfully created.' }
-        format.json { render :show, status: :created, location: @sample }
-        # format.html { redirect_to @sample, notice: 'Sample was successfully created.' }
-        # format.json { render :show, status: :created, location: @sample }
       else
         redirect_to new_reading_sample_path
-        # format.html { redirect_to new_reading_sample_path, notice: "Please fill in all fields" }
-        # format.json { render json: @sample.errors, status: :unprocessable_entity }
       end
     end
   end
