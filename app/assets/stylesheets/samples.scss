@@ -18,6 +18,11 @@ footer, header {
     text-align: center;
 }
 
+.active {
+    background-color: transparent !important;
+    font-weight: 600;
+}
+
 .amoeba {
     background-color: lighten( $biomass-background, 20% )
 }
@@ -60,7 +65,7 @@ footer, header {
 }
 
 .nav-tabs {
-    margin: 10px;
+    margin: 10px 0 0 0;
 }
 
 .nav-tabs .active {
@@ -69,7 +74,8 @@ footer, header {
 
 .nav-tabs li {
     padding: 10px 15px;
-    border: 1px solid #BFBFBF;
+    border: 1px solid #E6E6E6;
+    border-bottom: none;
     border-top-right-radius: 7.67px;
     border-top-left-radius: 7.67px;
     font-size: 0.8em;
@@ -159,6 +165,11 @@ footer, header {
 
 .sample-summary {
     background-color: $form-background;
+}
+
+.tab-pane {
+    background-color: #E6E6E6 !important;
+    padding: 10px;
 }
 
 @media (min-width: 1200px) {
