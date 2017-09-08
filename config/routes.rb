@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # get '/readings', to: 'readings#index'
   # post '/readings', to: 'readings#create'
   # get '/readings/new', to: 'readings#new', as: 'new_page_page'

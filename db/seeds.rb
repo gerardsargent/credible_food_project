@@ -5,11 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-3 times do |s|
-    Sample.create!(
-        reading_number: s+1,
-        sample_gp: 1
-    )
-end
 
-puts "3 Samples created"
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

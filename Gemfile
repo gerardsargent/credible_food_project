@@ -73,3 +73,9 @@ gem 'petergate', '~> 1.7', '>= 1.7.5'
 
 # Bootstrap v4
 gem 'bootstrap', '~> 4.0.0.beta'
+
+# ActiveAdmin
+gem 'activeadmin'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
