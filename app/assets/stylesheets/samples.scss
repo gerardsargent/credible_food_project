@@ -97,11 +97,6 @@ footer, header {
     background-color: lighten( $sample-background, 40% );
 }
 
-.container {
-    margin: 0 auto;
-    max-width: 90%;
-}
-
 .flex-centre {
     display: flex;
     justify-content: center;
@@ -129,6 +124,11 @@ footer, header {
 
 .form-header {
     background-color: $form-background;
+}
+
+.sample-container {
+    max-width: 95%;
+    margin: 0 auto;
 }
 
 .sample-history {
