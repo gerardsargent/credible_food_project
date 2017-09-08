@@ -187,7 +187,7 @@ class Sample < ApplicationRecord
     def fungi_cm_for_calculation_calc
         # Cell V22
         fungi_cm_for_calculation_calc = (self.fungi_mean * 0.045)
-        @fungi_cm_for_calculation_calc_round = fungi_cm_for_calculation_calc.round(3)
+        @fungi_cm_for_calculation_calc_round = fungi_cm_for_calculation_calc #.round(3)
 
         self.fungal_cm_length_for_calc = @fungi_cm_for_calculation_calc_round
     end
@@ -195,6 +195,7 @@ class Sample < ApplicationRecord
     def fungal_strands_cm_calc
         # Cell Y21
         @fungal_strands_cm = (((@fungi_cm_for_calculation_calc_round*self.fungi_dilution)*self.coverslip)*22)
+
 
         puts '@fungi_cm_for_calculation_calc_round:'
         puts @fungi_cm_for_calculation_calc_round
