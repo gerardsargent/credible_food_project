@@ -1,6 +1,28 @@
 class Sample < ApplicationRecord
 
+    belongs_to :reading
     before_save :do_calc
+    validates   :bacterial_number, 
+                :bacterial_dilution, 
+                :actinobacteria,
+                :actinobacteria_dilution,
+                :fungi,
+                :fungi_dilution,
+                :oomycetes,
+                :oomycetes_dilution,
+                :flagellate,
+                :flagellate_dilution,
+                :amoebae,
+                :amoebae_dilution,
+                :ciliates,
+                :ciliates_dilution,
+                :nematodes_bacteria,
+                :nematodes_fungi,
+                :nematodes_predator,
+                :nematodes_root,
+                :nematodes_dilution,
+                :notes,
+                presence: true;
 
     def do_calc
         bacterial_mean_calc
@@ -30,7 +52,7 @@ class Sample < ApplicationRecord
         ciliates_mean_calc
         ciliates_protozoa_calc
         nematodes_sum_calc
-        nematodes_protozoa_calc
+        # nematodes_protozoa_calc
         biomass_ratio_calc
     end
  
@@ -41,6 +63,7 @@ class Sample < ApplicationRecord
         @bacterial_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:bacterial_number)
         @bacterial_array.push(self.bacterial_number)
         
+        # If this is the first reading of the associated sample, then default mean value to the value input by user
         if @bacterial_array.length == 1
             self.bacterial_mean = @bacterial_array[0]
             @bacterial_mean = self.bacterial_mean
@@ -48,6 +71,7 @@ class Sample < ApplicationRecord
             #Use Descriptive Statistics gem to calculate values
             bacterial_mean = @bacterial_array.extend(DescriptiveStatistics)
             @bacterial_mean = bacterial_mean.mean
+            self.bacterial_mean = @bacterial_mean.round(2)
         end
 
         bacterial_st_dev_calc
@@ -55,6 +79,7 @@ class Sample < ApplicationRecord
     end
 
     def bacterial_st_dev_calc
+        # If this is the first reading of the sample, then standard deviation must be set to 0
         if @bacterial_array.length == 1
             @bacterial_st_dev = 0
         else
@@ -65,7 +90,7 @@ class Sample < ApplicationRecord
     end
 
     def bacteria_per_gm_calc 
-        @bacteria_per_gm = (((@bacterial_mean.round(2) * self.bacterial_dilution) * self.coverslip)*22)
+        @bacteria_per_gm = (((@bacterial_mean*self.bacterial_dilution)*self.coverslip)*22)
         self.no_bacteria_per_gram = @bacteria_per_gm
     end
 
@@ -114,6 +139,7 @@ class Sample < ApplicationRecord
     end
 
     def actinobacteria_micrograms_calc
+        # Cell Z18
         @actinobacteria_micrograms = (@actino_cm_length*(3.14*((0.00005*0.00005)*230000)))
         self.actinobacteria_micrograms = @actinobacteria_micrograms
     end
@@ -153,19 +179,36 @@ class Sample < ApplicationRecord
     def fungi_do_not_use_this_row_calc
         # Refers row 26 
         @fungi_do_not_use_this_row_calc = self.fungi * self.fungi_diameter
+
         self.fungi_calculation = @fungi_do_not_use_this_row_calc
+
     end
 
     def fungi_cm_for_calculation_calc
         # Cell V22
-        @fungi_cm_for_calculation_calc = (self.fungi_mean * 0.045)
-        self.fungal_cm_length_for_calc = @fungi_cm_for_calculation_calc.round(3)
+        fungi_cm_for_calculation_calc = (self.fungi_mean * 0.045)
+        @fungi_cm_for_calculation_calc_round = fungi_cm_for_calculation_calc.round(3)
+
+        self.fungal_cm_length_for_calc = @fungi_cm_for_calculation_calc_round
     end
 
     def fungal_strands_cm_calc
         # Cell Y21
-        @fungal_strands_cm = (((@fungi_cm_for_calculation_calc.round(3) * self.fungi_dilution) * self.coverslip) * 22)
+        @fungal_strands_cm = (((@fungi_cm_for_calculation_calc_round*self.fungi_dilution)*self.coverslip)*22)
+
+        puts '@fungi_cm_for_calculation_calc_round:'
+        puts @fungi_cm_for_calculation_calc_round
+        puts 'self.fungi_dilution:'
+        puts self.fungi_dilution
+        puts 'self.coverslip:'
+        puts self.coverslip
+        puts '@fungal_strands_cm:'
+        puts @fungal_strands_cm
+
         self.fungal_strands_cm = @fungal_strands_cm
+
+        puts 'self.fungal_strands_cm:'
+        puts self.fungal_strands_cm
     end
 
     def fungi_average_diameter_in_um_calc
@@ -175,9 +218,7 @@ class Sample < ApplicationRecord
 
         fungi_array.push(self.fungi)
 
-        fungi_array_compact = fungi_array.compact
-
-        fungi_sum = fungi_array.compact.sum
+        fungi_sum = fungi_array.sum.round(1)
 
         # Take all the values from the fungi 'do not use this row' calculations
         fungi_do_not_use_this_row_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:fungi_calculation)
@@ -185,12 +226,12 @@ class Sample < ApplicationRecord
         fungi_do_not_use_this_row_array.push(@fungi_do_not_use_this_row_calc)
 
         # Remove any nil values so the array can be calculated
-        fungi_compact = fungi_do_not_use_this_row_array.compact
+        fungi_do_not_use_this_row_array_compact = fungi_do_not_use_this_row_array.compact
 
         # Add together all the values in the compacted array
-        fungi_calc_sum = fungi_compact.sum
+        fungi_do_not_use_this_row_array_calc_sum = fungi_do_not_use_this_row_array_compact.sum   
 
-        fungi_av_diameter_final = fungi_calc_sum / fungi_sum
+        fungi_av_diameter_final = fungi_do_not_use_this_row_array_calc_sum / fungi_sum
         @fungi_av_di_final = fungi_av_diameter_final.round(1)
         self.fungi_average_diameter_in_um = @fungi_av_di_final
     end
@@ -231,7 +272,8 @@ class Sample < ApplicationRecord
             self.oomycetes_mean = @oomycetes_mean.round(2)
         end
 
-        # oomycetes_st_dev_calc
+        oomycetes_st_dev_calc
+        
     end
 
     def oomycetes_st_dev_calc
@@ -419,16 +461,26 @@ class Sample < ApplicationRecord
     end
 
     def ciliates_protozoa_calc
-        # Cell Y36
+        # Cell Y37
         self.ciliates_protozoa = (((@ciliates_mean*self.ciliates_dilution)*self.coverslip)*22)
     end
 
     def nematodes_sum_calc
         # Cell V41 - this is actually a SUM in the original spreadsheet. I have kept the name 'mean' as it was already written in the spreadsheet but this will need changing later
-        @nematodes_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:nematodes)
-        @nematodes_array.push(self.nematodes)
-        @nematodes_array_compact = @nematodes_array.compact
-        @nematodes_sum = @nematodes_array_compact.sum
+
+        nematodes_array = [self.nematodes_bacteria, self.nematodes_fungi, self.nematodes_predator, self.nematodes_root]
+
+        puts '*****************'
+        puts 'nematodes_array = '
+        puts nematodes_array.inspect
+        puts '*****************'
+
+        @nematodes_sum = nematodes_array.inject(0){|sum,x| sum + x }
+
+        puts '*****************'
+        puts '@nematodes_sum = '
+        puts @nematodes_sum
+        puts '*****************'
 
         self.nematodes_mean = @nematodes_sum
     end

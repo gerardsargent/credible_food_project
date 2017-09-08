@@ -1,8 +1,10 @@
-<h2><%= @readings.land_name %></h2>
-<p>Please enter your new information below.</p>
+<div class="container">
 
-<h1>Edit Post</h1>
+    <h1>Editing Reading</h1>
 
-<%= render 'form', readings: @readings %>
+    <%= render 'form', reading: @reading %>
 
-<p><%= link_to 'Return', readings_path %></p>
+    <%= link_to 'Show', @reading %> |
+    <%= link_to 'Back', readings_path %>
+
+</div>

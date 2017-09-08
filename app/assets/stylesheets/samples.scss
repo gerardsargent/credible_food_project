@@ -1,6 +1,4 @@
-// Place all the styles related to the Samples controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
 
 $dark-green: #213921;
 $margin-padding-desktop: 25px;
@@ -8,11 +6,6 @@ $sample-background: #BFC24B;
 $biomass-background: #C1A065;
 $form-background: #C19F6D;
 $border-radius: 7.64px;
-
-a {
-    text-decoration: none;
-    color: $dark-green;
-}
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -23,6 +16,12 @@ body {
 
 footer, header {
     text-align: center;
+    margin: 20px 0;
+}
+
+.active {
+    background-color: transparent !important;
+    font-weight: 600;
 }
 
 .amoeba {
@@ -35,6 +34,10 @@ footer, header {
 
 .biomass {
     background-color: $biomass-background;
+}
+
+.btn {
+    font-size: 0.8em;
 }
 
 .centre-text {
@@ -57,12 +60,38 @@ footer, header {
     background-color: lighten( $biomass-background, 10%);
 }
 
+.form-control {
+    padding: 0.2em;
+    font-size: 0.5rem;
+}
+
 .fungi {
     background-color: lighten( $sample-background, 20% );
 }
 
+.nav-tabs {
+    margin: 10px 0 0 0;
+}
+
+.nav-tabs .active {
+    background: #DEDDDD;
+}
+
+.nav-tabs li {
+    padding: 10px 15px;
+    border: 1px solid #E6E6E6;
+    border-bottom: none;
+    border-top-right-radius: 7.67px;
+    border-top-left-radius: 7.67px;
+    font-size: 0.8em;
+}
+
 .nematodes {
     background-color: lighten( $biomass-background, 40%);
+}
+
+.notes-head {
+    text-align: center;
 }
 
 .oomycetes {
@@ -71,11 +100,6 @@ footer, header {
 
 .others {
     background-color: lighten( $sample-background, 40% );
-}
-
-.container {
-    margin: 0 auto;
-    max-width: 90%;
 }
 
 .flex-centre {
@@ -107,6 +131,11 @@ footer, header {
     background-color: $form-background;
 }
 
+.sample-container {
+    max-width: 95%;
+    margin: 0 auto;
+}
+
 .sample-history {
     width: 100%;
     display: flex;
@@ -120,17 +149,10 @@ footer, header {
 
 .sample-history-inner {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: center;
-    align-items: flex-start;
 }
 
 .sample-history-item {
-    display: inline-block;
-    width: 200px;
-    padding: $margin-padding-desktop;
+    padding: 5px 0;
 }
 
 .sample-history-title {
@@ -150,21 +172,75 @@ footer, header {
     background-color: $form-background;
 }
 
-@media (min-width: 480px) {
-    .sample-history-inner {
-        flex-wrap: nowrap;
-    }
+.tab-pane {
+    background-color: #E6E6E6 !important;
+    padding: 10px;
 }
 
 @media (min-width: 1200px) {
     .flex-no-wrap-lg {
         flex-wrap: nowrap;
     }
+}
 
-    .sample-history-inner {
-        margin: $margin-padding-desktop;
-        flex-grow: 1;
-        flex-shrink: 0;
-        flex-basis: 200px;
-    }
+// Samples Form Mk.II CSS - Below
+
+.form_title {
+    display: flex;
+    flex-grow: 12;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    //width: 1.2%;
+    border: 1px solid #082937;
+}
+
+table th, td {
+    font-size: 0.5em;
+}
+
+th {
+  background: #D9E6EC;
+  color: #333;
+  font-weight: bold;
+}
+
+tr:nth-of-type(odd) {
+  background: #D9E6EC;
+}
+
+tr:nth-of-type(even) {
+  background: #fff;
+}
+
+.second_section {
+    // display: flex;
+    // justify-content: space-around;
+}
+
+.nematodes {
+    flex-grow: 1;
+    max-width: 20%;
+}
+
+.notes {
+    // flex-grow: 3;
+    // max-width: 70%;
+}
+
+.notes_2 th {
+    max-width: 20%;
+}
+
+.sample_submit {
+    display: flex;
+    justify-content: center;
+}
+
+.sample_input input {
+    background-color: lightgrey;
 }

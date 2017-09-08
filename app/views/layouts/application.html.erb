@@ -4,22 +4,66 @@
     <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
 
-    <meta name="keywords" content="<%= @seo_keywords %>"
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <meta name="keywords" content="<%= @seo_keywords %>">
+    <link href="https://fonts.googleapis.com/css?family=Monserrat" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'samples', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'readings', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  
-    <div>
+
+    <div class="container">
+
       <div>
-        <h1>The Credible Food Project</h1>
+        <div class="centre-text main-title">
+          <h1>The Credible Food Project</h1>
+        </div>
       </div>
-    </div>
+
+      <div class="top">
+
+        <% if current_user.is_a?(GuestUser) %>
+          <div class="landing-splash">
+            <div class="login-top">
+              <div>
+                <%= link_to "Register", new_user_registration_path %>
+              </div>
+              <div>
+                <%= link_to "Login", new_user_session_path %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="landing-splash">
+            <div class="login-top">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="landing-splash">
+            <div class="login-inner-top">
+              <h3>Hello, <%= current_user.first_name %></h3>
+              <p id="notice"><%= notice %></p>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="landing-splash">
+        <%= link_to root_path do %>
+          <%= image_tag("logo-transparent-02-735x800px.png", :alt => "logo", :class => "logo") %>
+        <% end %>
+      </div>
+
+      <div class="container">
+        <%= yield %>
+      </div>
     
-    <%= yield %>
+    </div>
 
   </body>
 </html>

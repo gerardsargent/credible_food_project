@@ -1,0 +1,165 @@
+@import "bootstrap";
+
+a {
+    color: #8E5F34;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #213924;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #3A3A3C;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+div {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    -webkit-margin-before: 25px;
+    -webkit-margin-after: 25px;
+    color: #213924;
+}
+
+p {
+    line-height: 1.5em;
+    color: #4E4E52;
+}
+
+input#user_email, input#user_password {
+    line-height: 2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    color: #3A3A3C;
+    font-size: 0.9em;
+    border: 1px solid #97B3BF;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+tr {
+    height: 40px;
+}
+
+tr:nth-of-type(odd) {
+    background: #F0F0F0;
+}
+
+.actions {
+    max-width: 100px;
+}
+
+.actions, .field {
+    display: block;
+    padding: 10px;
+}
+
+.centre-text {
+    text-align: center;
+}
+
+.container {
+    margin: 0 10px;
+    max-width: 100%;
+}
+
+.report-container {
+    display: flex;
+}
+
+.landing-splash {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.landing-splash-img {
+    max-width: 100%;
+    display: block;
+    margin: 25px auto 50px;
+    border-radius: 7.67px;
+}
+
+.login {
+    padding: 0;
+}
+
+.login-top {
+    padding: 20px;
+    display: flex;
+}
+
+.login-top div {
+    padding: 0 10px;
+}
+
+.login-inner {
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.login-inner-blurb {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.login-inner h2 {
+    text-align: center;
+}
+
+.login-inner-top h3 {
+    padding: 20px;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+.login-input {
+    width: 100%;
+}
+
+.logo {
+    margin: 0 auto;
+    max-width: 150px;
+    display: block;
+}
+
+.main-title {
+    background: #97B3BF;
+    padding: 20px 0;
+    display: none;
+}
+
+.remember-me {
+    width: 10%;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width: 464px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .landing-splash-img {
+        max-width: 75%;
+    }
+
+    .login {
+        padding: 20px;
+    }
+}

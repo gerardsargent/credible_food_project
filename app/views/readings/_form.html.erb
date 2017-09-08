@@ -1,20 +1,64 @@
-<%= form_for :readings, url: readings_path do |r| %>
-    <p>
-        <%= r.label :land_name %><br>
-        <%= r.text_field :land_name %>
-    </p>
+<%= form_for(reading) do |f| %>
+  <% if reading.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h2>
 
-    <p>
-        <%= r.label :crop_growing %><br>
-        <%= r.text_field :crop_growing %>
-    </p>
+      <ul>
+      <% reading.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <p>
-        <%= r.label :gps %><br>
-        <%= r.text_field :gps %>
-    </p>
+  <table class="reading-input">
+    <tr>
+      <th><%= f.label :client %></th>
+      <td><%= f.text_field :client %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :organisation %></th>
+      <td><%= f.text_field :organisation %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :date_collected %></th>
+      <td><%= f.datetime_select :date_collected %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :date_observed %></th>
+      <td><%= f.datetime_select :date_observed %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :location %></th>
+      <td><%= f.text_field :location %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :plants_present %></th>
+      <td><%= f.text_field :plants_present %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :plants_desired %></th>
+      <td><%= f.text_field :plants_desired %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :other_notes %></th>
+      <td><%= f.text_area :other_notes %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :observed_by %></th>
+      <td><%= f.text_field :observed_by %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "LT Id:" %></th>
+      <td><%= f.number_field :lt_id %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "Cust Id:" %></th>
+      <td><%= f.number_field :cust_id %></td>
+    </tr>
+    <tr>
+      <th colspan="2"><%= f.submit %></th>
+    </tr>
+  </table>
 
-    <p>
-        <%= r.submit %>
-    </p>
 <% end %>

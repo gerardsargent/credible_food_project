@@ -1,14 +1,21 @@
-<h1>Readings</h1>
+<div class="login">
 
-<h2>Options</h2>
+  <% if current_user.is_a?(GuestUser) %>
 
-    <p><%= link_to "Add", new_reading_path %></p>
+    <div class="login-inner-blurb">
+      <%= image_tag("credible-food-project-splash-1500px.jpg", :alt => "The Credible Food Project Farm, Jersey, Channel Islands", :class => "landing-splash-img") %>
+      <h2>What do we do?</h2>
+      <p>A Credible Food Soil Regeneration strategy helps countries REGENERATE their soils which come in No 11 in the top 100 most substantive solutions to reverse global warming, based on meticulous research by leading scientists and policymakers around the world.</p>
+      <h2>How is this beneficial?</h2>
+      <p>Growing Credible Food improves farmland restoration by DRAWING DOWN carbon. Our educational program empowers farmers to understand their soils better for better productivity / reduced cost.<p>
+    </div>
 
-<% @readings.each do |reading| %>
+  <% else %>
+    
+    <div class="login-inner">
+      <%= render 'reading_list', readings: @user_readings %>
+    <div>
 
-    <h3><%= reading.land_name %></h3>
-    <p><%= reading.crop_growing %></p>
-    <p><%= reading.gps %></p>
-    <p><%= link_to 'View', reading_path(reading) %></p>
+  <% end %>
 
-<% end %>
+</div>

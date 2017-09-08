@@ -1,11 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  land_name: MyString
-  crop_growing: MyString
-  gps: MyString
+  client: MyString
+  organisation: MyString
+  date_collected: 2017-06-18 19:40:16
+  date_observed: 2017-06-18 19:40:16
+  location: MyString
+  plants_present: MyString
+  plants_desired: MyString
+  other_notes: MyText
+  observed_by: MyString
+  lt_id: 1
+  cust_id: 1
 
 two:
-  land_name: MyString
-  crop_growing: MyString
-  gps: MyString
+  client: MyString
+  organisation: MyString
+  date_collected: 2017-06-18 19:40:16
+  date_observed: 2017-06-18 19:40:16
+  location: MyString
+  plants_present: MyString
+  plants_desired: MyString
+  other_notes: MyText
+  observed_by: MyString
+  lt_id: 1
+  cust_id: 1

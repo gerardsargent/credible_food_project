@@ -1,11 +1,38 @@
 <div class="container centre-text">
 
-    <h1>New Sample</h1>
+    <h2>Sample Data</h2>
 
 </div class>
 
-<%= render 'form', sample: @sample %>
+<%= render 'reading_header', reading: @reading %>
 
-<div class="container">
-    <%= link_to 'Back', samples_path %>
-</div>
+<%= render 'form', 
+    sample_gp_1: @sample_gp_1, 
+    sample_gp_2: @sample_gp_2, 
+    sample_gp_3: @sample_gp_3, 
+    sample_gp_4: @sample_gp_4, 
+    nematodes_bacteria_last_1: @nematodes_bacteria_last_1, 
+    nematodes_bacteria_last_2: @nematodes_bacteria_last_2, 
+    nematodes_bacteria_last_3: @nematodes_bacteria_last_3, 
+    nematodes_bacteria_last_4: @nematodes_bacteria_last_4, 
+    nematodes_fungi_last_1: @nematodes_fungi_last_1, 
+    nematodes_fungi_last_2: @nematodes_fungi_last_2, 
+    nematodes_fungi_last_3: @nematodes_fungi_last_3, 
+    nematodes_fungi_last_4: @nematodes_fungi_last_4, 
+    nematodes_root_last_1: @nematodes_root_last_1, 
+    nematodes_root_last_2: @nematodes_root_last_2, 
+    nematodes_root_last_3: @nematodes_root_last_3, 
+    nematodes_root_last_4: @nematodes_root_last_4, 
+    nematodes_predator_last_1: @nematodes_predator_last_1, 
+    nematodes_predator_last_2: @nematodes_predator_last_2, 
+    nematodes_predator_last_3: @nematodes_predator_last_3, 
+    nematodes_predator_last_4: @nematodes_predator_last_4, 
+    nematodes_dilution_last_1: @nematodes_dilution_last_1, 
+    nematodes_dilution_last_2: @nematodes_dilution_last_2, 
+    nematodes_dilution_last_3: @nematodes_dilution_last_3, 
+    nematodes_dilution_last_4: @nematodes_dilution_last_4, 
+    notes_last_1: @notes_last_1, 
+    notes_last_2: @notes_last_2, 
+    notes_last_3: @notes_last_3, 
+    notes_last_4: @notes_last_4, 
+    reading: @reading %>
