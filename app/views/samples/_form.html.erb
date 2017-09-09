@@ -7,7 +7,7 @@
     <div class="col-md-12">
 
       <!--Tab headers-->
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs sample-header-tabs">
         <li class="active">
           <a data-toggle="tab" href="#sample-1">Sample 1</a>
         </li>
@@ -26,7 +26,6 @@
       <div class="tab-content">
         <!-- Sample 1 -->
         <div role="tabpanel" class="tab-pane fade active show" id="sample-1">
-          <h4>Sample 1</h4>
 
           <table>
             <tr class="form_titles">
@@ -81,196 +80,191 @@
                   <td><%=s.ciliates_dilution%></td>
                 </tr>
               <% end %>
-              <% else %>
-                <tr>
-                  <td>Please input your first data for Sample 1</td>
-                </tr>
-              <% end %>
-
-          <%= form_for [@reading, @sample] do |s| %>
-
-            <!-- normal form for one sample -->
-            <% if @sample.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@sample.errors.count, "error") %> prevented this sample from being saved:</h2>
-
-                <ul>
-                <% @sample.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-                </ul>
-              </div>
+            <% else %>
+              <tr>
+                <td>Please input your first data for Sample 1</td>
+              </tr>
             <% end %>
 
-            <tr class="sample_input form-group">
-              <td>
-                <%= s.label :reading_number, @sample.reading_number %>
-                <%= s.hidden_field :reading_number, :value => @sample.reading_number %>
-                <%= s.hidden_field :sample_gp, :value => 1 %>
-              </td>
+            <%= form_for [@reading, @sample] do |s| %>
 
-              <td>
-                <%= coverslip_types = [2038, 2491, 3044] 
-                s.select :coverslip, coverslip_types, class: 'form-control' %>
-              </td>
+              <!-- normal form for one sample -->
+              <% if @sample.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@sample.errors.count, "error") %> prevented this sample from being saved:</h2>
 
-              <td>
-                <%= s.text_field :bacterial_number, class: 'form-control' %>
-              </td>
+                  <ul>
+                  <% @sample.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-              <td>
-                <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
-                  s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control' %>
-              </td>
+              <tr class="sample_input form-group">
+                <td>
+                  <%= s.label :reading_number, @sample.reading_number %>
+                  <%= s.hidden_field :reading_number, :value => @sample.reading_number %>
+                  <%= s.hidden_field :sample_gp, :value => 1 %>
+                </td>
 
-              <td>
-                <%= s.text_field :bacterial_dilution, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= coverslip_types = [2038, 2491, 3044] 
+                  s.select :coverslip, coverslip_types, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= actinobacteria_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :actinobacteria, actinobacteria_lengths, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :bacterial_number, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :actinobacteria_dilution, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
+                    s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= fungi_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :fungi, fungi_lengths, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :bacterial_dilution, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :fungi_diameter, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= actinobacteria_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+                  s.select :actinobacteria, actinobacteria_lengths, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :fungi_colour, fungi_colour_types, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :actinobacteria_dilution, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :fungi_dilution, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= fungi_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+                  s.select :fungi, fungi_lengths, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= oomycetes_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :oomycetes, oomycetes_lengths, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :fungi_diameter, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :oomycetes_diameter, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
+                      s.select :fungi_colour, fungi_colour_types, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :fungi_dilution, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :oomycetes_dilution, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= oomycetes_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+                  s.select :oomycetes, oomycetes_lengths, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :flagellate, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :oomycetes_diameter, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :flagellate_dilution, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
+                      s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :amoebae, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :oomycetes_dilution, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :amoebae_dilution, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :flagellate, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :ciliates, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :flagellate_dilution, class: 'form-control' %>
+                </td>
 
-              <td>
-                <%= s.text_field :ciliates_dilution, class: 'form-control' %>
-              </td>
+                <td>
+                  <%= s.text_field :amoebae, class: 'form-control' %>
+                </td>
 
-            </tr>
+                <td>
+                  <%= s.text_field :amoebae_dilution, class: 'form-control' %>
+                </td>
 
-          </table>
+                <td>
+                  <%= s.text_field :ciliates, class: 'form-control' %>
+                </td>
 
-          <hr >
+                <td>
+                  <%= s.text_field :ciliates_dilution, class: 'form-control' %>
+                </td>
+
+              </tr>
+
+            </table>
 
           <div class="second_section">
 
-          <table>
+            <table>
 
-            <tr>
-              <th>Nematodes - Bacteria</th>
-              <th>Nematodes - Fungal</th>
-              <th>Nematodes - Predator</th>
-              <th>Nematodes - Root</th>
-              <th>Nematodes Dilution</th>
-            </tr>
+              <tr>
+                <th>Nematodes - Bacteria</th>
+                <th>Nematodes - Fungal</th>
+                <th>Nematodes - Predator</th>
+                <th>Nematodes - Root</th>
+                <th>Nematodes Dilution</th>
+              </tr>
 
-            <tr class="sample_input form-group">
-              <td>
-                <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_1 %>
-              </td>
+              <tr class="sample_input form-group">
+                <td>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_1 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_1 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_1 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_1 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_1 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_1 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_1 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_1 %>
-              </td>
-            </tr>
+                <td>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_1 %>
+                </td>
+              </tr>
 
-          </table>
+            </table>
 
-          <hr>
+          </div>
 
-          <table>
-            <tr>
-              <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
-            </tr>
+          <div class="third-section">
 
-            <tr>
-              <td>
-                <%= s.text_field :notes, class: 'form-control', value: notes_last_1 %>
-              </td>
-            </tr>
-          </table>
+            <table>
+              <tr>
+                <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
+              </tr>
 
-          <hr >
+              <tr>
+                <td>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_1, :size =>"25x10" %>
+                </td>
+              </tr>
+            </table>
+
+          </div>
 
           <div class="sample_submit form-group">
             <%= s.submit "Add Sample", class: 'btn btn-success' %>
           </div>
-            
-          <hr >
               
           <% end %>
 
-            </table>
-
-          </div> 
+          </table>
 
         </div> <!--End of .tab-pane-->
 
         <!--Sample 2-->
         <div role="tabpanel" class="tab-pane fade" id="sample-2">
-          <h4>Sample 2</h4>
 
           <table>
             <tr class="form_titles">
@@ -444,76 +438,72 @@
 
           </table>
 
-          <hr >
-
           <div class="second_section">
 
-          <table>
+            <table>
 
-            <tr>
-              <th>Nematodes - Bacteria</th>
-              <th>Nematodes - Fungal</th>
-              <th>Nematodes - Predator</th>
-              <th>Nematodes - Root</th>
-              <th>Nematodes Dilution</th>
-            </tr>
+              <tr>
+                <th>Nematodes - Bacteria</th>
+                <th>Nematodes - Fungal</th>
+                <th>Nematodes - Predator</th>
+                <th>Nematodes - Root</th>
+                <th>Nematodes Dilution</th>
+              </tr>
 
-            <tr class="sample_input form-group">
-              <td>
-                <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_2 %>
-              </td>
+              <tr class="sample_input form-group">
+                <td>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_2 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_2 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_2 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_2 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_2 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_2 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_2 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_2 %>
-              </td>
-            </tr>
+                <td>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_2 %>
+                </td>
+              </tr>
 
-          </table>
+            </table>
 
-          <hr>
+          </div> <!-- End of .second_section -->
 
-          <table>
-            <tr>
-              <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
-            </tr>
-            <tr>
-              <td>
-                <%= s.text_field :notes, class: 'form-control', value: notes_last_2 %>
-              </td>
-            </tr>
-          </table>
+          <div class="third-section">
 
-          <hr >
+            <table>
+              <tr>
+                <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_2, :size =>"25x10" %>
+                </td>
+              </tr>
+            </table>
+
+          </div> <!-- End of third-section -->
 
           <div class="sample_submit form-group">
             <%= s.submit "Add Sample", class: 'btn btn-success' %>
           </div>
-            
-          <hr >
               
           <% end %>
 
-            </table>
-
-          </div> 
+          </table>
 
         </div> <!--End of .tab-pane--> 
 
         <!--Sample 3-->
         <div role="tabpanel" class="tab-pane fade" id="sample-3">
-          <h4>Sample 3</h4>
 
           <table>
             <tr class="form_titles">
@@ -687,76 +677,74 @@
 
           </table>
 
-          <hr >
-
           <div class="second_section">
 
-          <table>
+            <table>
 
-            <tr>
-              <th>Nematodes - Bacteria</th>
-              <th>Nematodes - Fungal</th>
-              <th>Nematodes - Predator</th>
-              <th>Nematodes - Root</th>
-              <th>Nematodes Dilution</th>
-            </tr>
+              <tr>
+                <th>Nematodes - Bacteria</th>
+                <th>Nematodes - Fungal</th>
+                <th>Nematodes - Predator</th>
+                <th>Nematodes - Root</th>
+                <th>Nematodes Dilution</th>
+              </tr>
 
-            <tr class="sample_input form-group">
-              <td>
-                <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_3 %>
-              </td>
+              <tr class="sample_input form-group">
+                <td>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_3 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_3 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_3 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_3 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_3 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_3 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_3 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_3 %>
-              </td>
-            </tr>
+                <td>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_3 %>
+                </td>
+              </tr>
 
-          </table>
+            </table>
 
-          <hr>
+          </div> <!-- End of second_section -->
 
-          <table>
-            <tr>
-              <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
-            </tr>
-            <tr>
-              <td>
-                <%= s.text_field :notes, class: 'form-control', value: notes_last_3 %>
-              </td>
-            </tr>
-          </table>
+          <div class="third-section">
 
-          <hr >
+            <table>
+              <tr>
+                <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_3, :size =>"25x10" %>
+                </td>
+              </tr>
+            </table>
+
+          </div> <!-- End of third-section -->
 
           <div class="sample_submit form-group">
             <%= s.submit "Add Sample", class: 'btn btn-success' %>
           </div>
             
-          <hr >
+          
               
           <% end %>
 
-            </table>
-
-          </div>
+          </table>
 
         </div> <!--End of .tab-pane-->
 
         <!--Sample 4-->
         <div role="tabpanel" class="tab-pane fade" id="sample-4">
-          <h4>Sample 4</h4>
 
           <table>
             <tr class="form_titles">
@@ -930,70 +918,67 @@
 
           </table>
 
-          <hr >
-
           <div class="second_section">
 
-          <table>
+            <table>
 
-            <tr>
-              <th>Nematodes - Bacteria</th>
-              <th>Nematodes - Fungal</th>
-              <th>Nematodes - Predator</th>
-              <th>Nematodes - Root</th>
-              <th>Nematodes Dilution</th>
-            </tr>
+              <tr>
+                <th>Nematodes - Bacteria</th>
+                <th>Nematodes - Fungal</th>
+                <th>Nematodes - Predator</th>
+                <th>Nematodes - Root</th>
+                <th>Nematodes Dilution</th>
+              </tr>
 
-            <tr class="sample_input form-group">
-              <td>
-                <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_4 %>
-              </td>
+              <tr class="sample_input form-group">
+                <td>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_4 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_4 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_4 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_4 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_4 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_4 %>
-              </td>
+                <td>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_4 %>
+                </td>
 
-              <td>
-                <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_4 %>
-              </td>
-            </tr>
-
-          </table>
-
-          <hr>
-
-          <table>
-            <tr>
-              <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
-            </tr>
-            <tr>
-              <td>
-                <%= s.text_field :notes, class: 'form-control', value: notes_last_4 %>
-              </td>
-            </tr>
-          </table>
-
-          <hr >
-
-          <div class="sample_submit form-group">
-            <%= s.submit "Add Sample", class: 'btn btn-success sample-submit-btn' %>
-          </div>
-            
-          <hr >
-              
-          <% end %>
+                <td>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_4 %>
+                </td>
+              </tr>
 
             </table>
 
           </div>
+
+          <div class="third-section">
+
+            <table>
+              <tr>
+                <th class="notes-head">Notes. <br>Feel free to write any further information you feel important or useful, and any questions you might have that may be useful for future reference.</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_4, :size =>"25x10" %>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+
+          <div class="sample_submit form-group">
+            <%= s.submit "Add Sample", class: 'btn btn-success sample-submit-btn' %>
+          </div>
+              
+          <% end %>
+
+          </table>
 
         </div> <!--End of .tab-pane-->
 
@@ -1003,8 +988,4 @@
   
   </div> <!--End of .row-->
 
-</div>
-
-<script>
-
-</script>
+</div> <!-- End of .sample-container -->

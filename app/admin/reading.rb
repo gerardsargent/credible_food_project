@@ -12,4 +12,7 @@ ActiveAdmin.register Reading do
 #   permitted
 # end
 
+permit_params :client, :organisation, :location, 
+tags_attributes: [:samples, :_true]
+
 end

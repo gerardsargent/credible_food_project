@@ -19,5 +19,12 @@ table.sample-report, .reading-header {
 }
 
 tr:nth-of-type(odd) {
-  background: #D9E6EC;
+  background: #f4f5f5;
+}
+
+td {
+  vertical-align: top;
+  border: 0;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 0.45em;
 }

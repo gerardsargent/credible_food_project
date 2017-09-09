@@ -1,5 +1,14 @@
 ActiveAdmin.register_page "Dashboard" do
 
+  # section "Recent Sample Entries" do
+  #   table_for Sample.order("created_at desc").limit(5) do
+  #     column :sample_id
+  #     column :bacterial_mean
+  #     column :bacterial_standard_deviation
+  #   end
+  #   strong { link_to "View all Samples", admin_samples_path }
+  # end
+
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do

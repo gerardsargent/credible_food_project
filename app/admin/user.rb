@@ -11,5 +11,12 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+permit_params :email, :name, :roles
 
+    index do
+        column :email
+        column :name
+        column :roles
+        actions
+    end
 end
