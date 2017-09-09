@@ -2,7 +2,7 @@ class Sample < ApplicationRecord
 
     belongs_to :reading
     before_save :do_calc
-    validates   :bacterial_number, 
+    validates_presence_of :bacterial_number, 
                 :bacterial_dilution, 
                 :actinobacteria,
                 :actinobacteria_dilution,
@@ -22,7 +22,6 @@ class Sample < ApplicationRecord
                 :nematodes_root,
                 :nematodes_dilution,
                 :notes,
-                presence: true;
 
     def do_calc
         bacterial_mean_calc

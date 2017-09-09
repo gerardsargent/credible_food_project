@@ -12,7 +12,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :name
+  validates_presence_of :name, :email, :password, :address_line_1, :address_line_2, :city, :state_province_region, :zip_postcode, :country, :telephone, :mobile
 
   has_many :readings
 
