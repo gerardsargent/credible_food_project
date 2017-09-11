@@ -32,13 +32,14 @@ class Sample < ApplicationRecord
         ciliates_mean_calc
         ciliates_protozoa_calc
         nematodes_sum_calc
-        # nematodes_protozoa_calc
+        nematodes_protozoa_calc
         biomass_ratio_calc
     end
  
     private
 
     def bacterial_mean_calc
+        # Cell V13
         # Take all of the readings for sample x and put them into an array
         @bacterial_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:bacterial_number)
         @bacterial_array.push(self.bacterial_number)
@@ -59,6 +60,7 @@ class Sample < ApplicationRecord
     end
 
     def bacterial_st_dev_calc
+        # Cell W13
         # If this is the first reading of the sample, then standard deviation must be set to 0
         if @bacterial_array.length == 1
             @bacterial_st_dev = 0
@@ -69,17 +71,20 @@ class Sample < ApplicationRecord
         self.bacterial_standard_deviation = @bacterial_st_dev.round(2)
     end
 
-    def bacteria_per_gm_calc 
+    def bacteria_per_gm_calc
+        # Cell Y13 
         @bacteria_per_gm = (((@bacterial_mean*self.bacterial_dilution)*self.coverslip)*22)
         self.no_bacteria_per_gram = @bacteria_per_gm
     end
 
     def bacterial_micrograms_calc
+        # Cell Z13
         @bacterial_micrograms = ((@bacteria_per_gm * 0.000002))
         self.micrograms = @bacterial_micrograms
     end
 
     def actinobacteria_mean_calc
+        # Cell V18
         # Take all of the readings for sample x and put them into an array
         actinobacteria_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:actinobacteria)
         actinobacteria_array.push(self.actinobacteria)
@@ -104,6 +109,7 @@ class Sample < ApplicationRecord
     end
 
     def actinobacteria_st_dev_calc
+        # Cell W18
         if @actinobacteria_array_compact.length == 1
             @actinobacteria_st_dev = 0
         else
@@ -114,6 +120,7 @@ class Sample < ApplicationRecord
     end
 
     def actinobacteria_cm_length_calc
+        # Cell Y18
         @actino_cm_length = (((@actinobacteria_mean * self.actinobacteria_dilution) * self.coverslip)*22)
         self.actinobacteria_length_cm = @actino_cm_length
     end
@@ -125,6 +132,7 @@ class Sample < ApplicationRecord
     end
 
     def fungi_mean_calc
+        # Cell V21
         # Take all of the readings for sample x and put them into an array
         fungi_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:fungi)
         fungi_array.push(self.fungi)
@@ -147,6 +155,7 @@ class Sample < ApplicationRecord
     end
 
     def fungi_st_dev_calc
+        # Cell W21
         if @fungi_array_compact.length == 1
             @fungi_st_dev = 0
         else
@@ -167,7 +176,7 @@ class Sample < ApplicationRecord
     def fungi_cm_for_calculation_calc
         # Cell V22
         fungi_cm_for_calculation_calc = (self.fungi_mean * 0.045)
-        @fungi_cm_for_calculation_calc_round = fungi_cm_for_calculation_calc #.round(3)
+        @fungi_cm_for_calculation_calc_round = fungi_cm_for_calculation_calc.round(3)
 
         self.fungal_cm_length_for_calc = @fungi_cm_for_calculation_calc_round
     end
@@ -177,16 +186,18 @@ class Sample < ApplicationRecord
         @fungal_strands_cm = (((@fungi_cm_for_calculation_calc_round*self.fungi_dilution)*self.coverslip)*22)
 
 
-        puts '@fungi_cm_for_calculation_calc_round:'
-        puts @fungi_cm_for_calculation_calc_round
-        puts 'self.fungi_dilution:'
-        puts self.fungi_dilution
-        puts 'self.coverslip:'
-        puts self.coverslip
-        puts '@fungal_strands_cm:'
-        puts @fungal_strands_cm
+        # puts '@fungi_cm_for_calculation_calc_round:'
+        # puts @fungi_cm_for_calculation_calc_round
+        # puts 'self.fungi_dilution:'
+        # puts self.fungi_dilution
+        # puts 'self.coverslip:'
+        # puts self.coverslip
+        # puts '@fungal_strands_cm:'
+        # puts @fungal_strands_cm
 
         self.fungal_strands_cm = @fungal_strands_cm
+
+        # NOTE - Incorrect value produced. Appears to be a discrepancy between how Rails and Excel calculate nested sums
 
         puts 'self.fungal_strands_cm:'
         puts self.fungal_strands_cm
@@ -228,10 +239,13 @@ class Sample < ApplicationRecord
 
         @fungi_micrograms = (@fungal_strands_cm*((3.14*((0.5*@fungi_av_di_cm)*(0.5*@fungi_av_di_cm)))*3300000))
 
+        # NOTE - incorrect value at present due to discrepancy in fungal_strands_cm_calc above
+
         self.fungi_micrograms = @fungi_micrograms
     end
 
     def oomycetes_mean_calc
+        # Cell V28
         # Take all of the readings for sample x and put them into an array
         oomycetes_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:oomycetes)
         oomycetes_array.push(self.oomycetes)
@@ -272,7 +286,13 @@ class Sample < ApplicationRecord
         # Refers to row 33 
         @oomycetes_do_not_use_this_row_calc = self.oomycetes * self.oomycetes_diameter
 
+        puts "@oomycetes_do_not_use_this_row_calc:"
+        puts @oomycetes_do_not_use_this_row_calc
+
         self.oomycetes_calculation = @oomycetes_do_not_use_this_row_calc
+
+        puts "self.oomycetes_calculation:"
+        puts self.oomycetes_calculation
     end
 
     def oomycetes_cm_for_calculation_calc
@@ -284,6 +304,8 @@ class Sample < ApplicationRecord
     def oomycetes_strands_cm_calc
         # Cell Y28
 
+        # NOTE - Incorrect value produced. Appears to be a discrepancy between how Rails and Excel calculate nested sums
+
         @oomycetes_strands_cm = (((@oomycetes_cm_for_calculation_calc.round(3) * self.oomycetes_dilution) * self.coverslip) * 22)
         self.oomycetes_strands_cm = @oomycetes_strands_cm
  
@@ -291,20 +313,48 @@ class Sample < ApplicationRecord
 
     def oomycetes_average_diameter_in_um_calc
         # Cell V33
+
+        # Take all of the readings for sample x and put them into an array. This is a reproduction of the formula in fungi_mean_calc above to enable the @fungi_av_di_final calculation at the end of this method
+        oomycetes_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:oomycetes)
+
+        oomycetes_array.push(self.oomycetes)
+
+        # puts 'oomycetes_array:'
+        # puts oomycetes_array.inspect
+
+        oomycetes_sum = oomycetes_array.sum.round(1)
+
+        # puts 'oomycetes_sum:'
+        # puts oomycetes_sum
+
         # Take all the values from the oomycetes 'do not use this row' calculations
         oomycetes_do_not_use_this_row_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:oomycetes_calculation)
 
         oomycetes_do_not_use_this_row_array.push(@oomycetes_do_not_use_this_row_calc)
 
-
         # Remove any nil values so the array can be calculated
-        oomycetes_do_not_use_this_row_compact = oomycetes_do_not_use_this_row_array.compact
+        oomycetes_do_not_use_this_row_array_compact = oomycetes_do_not_use_this_row_array.compact
+
+        # puts 'oomycetes_do_not_use_this_row_array:'
+        # puts oomycetes_do_not_use_this_row_array.inspect
+
         # Add together all the values in the compacted array
-        oomycetes_do_not_use_this_row_compact_sum = oomycetes_do_not_use_this_row_compact.sum
-     
-        oomycetes_av_diameter_final = oomycetes_do_not_use_this_row_compact_sum / @oomycetes_sum
-        @oomycetes_av_di_final = oomycetes_av_diameter_final
+        oomycetes_do_not_use_this_row_array_calc_sum = oomycetes_do_not_use_this_row_array_compact.sum
+
+        # puts 'oomycetes_do_not_use_this_row_array_calc_sum:'
+        # puts oomycetes_do_not_use_this_row_array_calc_sum
+
+        oomycetes_av_diameter_final = oomycetes_do_not_use_this_row_array_calc_sum / oomycetes_sum
+        @oomycetes_av_di_final = oomycetes_av_diameter_final.round(1)
         self.oomycetes_average_diameter_in_um = @oomycetes_av_di_final
+
+        # puts 'oomycetes_av_diameter_final:'
+        # puts oomycetes_av_diameter_final
+        # puts '@oomycetes_av_di_final (pre-round):'
+        # puts @oomycetes_av_di_final
+        # puts 'self.oomycetes_average_diameter_in_um:'
+        # puts self.oomycetes_average_diameter_in_um        
+
     end
 
     def oomycetes_average_diameter_cm_calc
@@ -317,6 +367,16 @@ class Sample < ApplicationRecord
     def oomycetes_micrograms_calc
         # Cell Z28
         @oomycetes_mg = (@oomycetes_strands_cm*((3.14 * ((0.5 * @oomycetes_av_di_cm) * (0.5 * @oomycetes_av_di_cm))) * 3300000))
+
+        puts '@oomycetes_strands_cm = '
+        puts @oomycetes_strands_cm
+        puts '@oomycetes_av_di_cm = '
+        puts @oomycetes_av_di_cm
+        puts '@oomycetes_mg = '        
+        puts @oomycetes_mg
+        puts 'self.oomycetes_micrograms = '
+        puts self.oomycetes_micrograms
+
         self.oomycetes_micrograms = @oomycetes_mg
     end
 
@@ -467,7 +527,7 @@ class Sample < ApplicationRecord
     end
 
     def nematodes_protozoa_calc
-        # Cell Y36
+        # Cell Y41
         self.nematodes_protozoa = (@nematodes_sum * self.nematodes_dilution) * 20
     end
 

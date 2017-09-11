@@ -79,3 +79,6 @@ gem 'activeadmin'
 gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
+
+# Country list for new user signup
+gem 'country_select', require: 'country_select_without_sort_alphabetical'

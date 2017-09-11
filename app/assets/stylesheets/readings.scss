@@ -1,5 +1,11 @@
 @import "bootstrap";
 
+form input:focus, form textarea:focus {
+  border: 1px solid #99a2aa !important;
+  -webkit-box-shadow: 0 0 4px #99a2aa !important;
+  box-shadow: 0 0 4px #99a2aa !important;
+}
+
 .flex-form {
   display: flex;
   flex-wrap: wrap;
