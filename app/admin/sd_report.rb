@@ -21,7 +21,7 @@ ActiveAdmin.register Sample, as: 'StandardDeviationReport' do
 
 index do
     column "Sample" do |sample|
-        link_to sample.id, admin_samples_path(sample)
+        link_to sample.id, admin_reading_samples_path(sample)
     end
     column "Reading", :reading_id, sortable: 'readings.organisation'
     column "Bacteria", :bacterial_standard_deviation

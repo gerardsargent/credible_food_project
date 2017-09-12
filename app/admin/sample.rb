@@ -26,9 +26,6 @@ ActiveAdmin.register Sample do
     #     column 'Sample ID', :sample_id
     #     column 'Location ID', :location_id
     #     column 'Sample No (1-4)', :sample_gp
-    #     column :reading_number
-    #     column :bacterial_mean
-    #     column :bacterial_standard_deviation
     #     actions
     # end
 end
