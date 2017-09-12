@@ -2,62 +2,62 @@
 
   <div class="login-inner">
 
-    <h2>Sign up</h2>
+    <h3>Sign up</h3>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :name %><br />
         <%= f.text_field :name %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :address_line_1 %><br />
         <%= f.text_field :address_line_1 %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :address_line_2 %><br />
         <%= f.text_field :address_line_2 %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :city %><br />
         <%= f.text_field :city %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label "State/Province/Region" %><br />
         <%= f.text_field :state_province_region %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label "Zip/Postcode" %><br />
         <%= f.text_field :zip_postcode %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :country %><br />
         <%= f.country_select :country %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :telephone %><br />
         <%= f.text_field :telephone %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :mobile %><br />
         <%= f.text_field :mobile %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -65,13 +65,13 @@
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
-      <div class="user-reg-field">
+      <div class="cfp-field">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up" %>
+      <div class="action">
+        <%= f.submit "Sign up", class: 'btn btn-success' %>
       </div>
     <% end %>
 

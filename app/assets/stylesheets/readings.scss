@@ -13,6 +13,9 @@ form input:focus, form textarea:focus {
 
 .report-container {
     display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
     width: 100%;
 }
 

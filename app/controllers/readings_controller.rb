@@ -16,10 +16,6 @@ class ReadingsController < ApplicationController
 
     # Report - Bacterial Micrograms (Samples 1-4) Cell Z13
     @bacterial_microgram_report_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:micrograms).last
-    puts '************************'
-    puts '@reading.samples='
-    puts @reading.samples.inspect
-    puts '************************'
     @bacterial_microgram_report_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:micrograms).last
     @bacterial_microgram_report_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:micrograms).last
     @bacterial_microgram_report_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:micrograms).last

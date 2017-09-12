@@ -1,7 +1,7 @@
 <%= form_for(reading) do |f| %>
   <% if reading.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h2>
+      <h3><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h3>
 
       <ul>
       <% reading.errors.full_messages.each do |message| %>
@@ -14,50 +14,50 @@
   <table class="reading-input">
     <tr>
       <th><%= f.label :client %></th>
-      <td><%= f.text_field :client %></td>
+      <td class="cfp-field"><%= f.text_field :client %></td>
     </tr>
     <tr>
       <th><%= f.label :organisation %></th>
-      <td><%= f.text_field :organisation %></td>
+      <td class="cfp-field"><%= f.text_field :organisation %></td>
     </tr>
     <tr>
       <th><%= f.label :date_collected %></th>
-      <td><%= f.datetime_select :date_collected %></td>
+      <td class="cfp-field"><%= f.datetime_select :date_collected %></td>
     </tr>
     <tr>
       <th><%= f.label :date_observed %></th>
-      <td><%= f.datetime_select :date_observed %></td>
+      <td class="cfp-field"><%= f.datetime_select :date_observed %></td>
     </tr>
     <tr>
       <th><%= f.label :location %></th>
-      <td><%= f.text_field :location %></td>
+      <td class="cfp-field"><%= f.text_field :location %></td>
     </tr>
     <tr>
       <th><%= f.label :plants_present %></th>
-      <td><%= f.text_field :plants_present %></td>
+      <td class="cfp-field"><%= f.text_field :plants_present %></td>
     </tr>
     <tr>
       <th><%= f.label :plants_desired %></th>
-      <td><%= f.text_field :plants_desired %></td>
+      <td class="cfp-field"><%= f.text_field :plants_desired %></td>
     </tr>
     <tr>
       <th><%= f.label :other_notes %></th>
-      <td><%= f.text_area :other_notes %></td>
+      <td class="cfp-field"><%= f.text_area :other_notes %></td>
     </tr>
     <tr>
       <th><%= f.label :observed_by %></th>
-      <td><%= f.text_field :observed_by %></td>
+      <td class="cfp-field"><%= f.text_field :observed_by %></td>
     </tr>
     <tr>
       <th><%= f.label "LT Id:" %></th>
-      <td><%= f.number_field :lt_id %></td>
+      <td class="cfp-field"><%= f.number_field :lt_id %></td>
     </tr>
     <tr>
       <th><%= f.label "Cust Id:" %></th>
-      <td><%= f.number_field :cust_id %></td>
+      <td class="cfp-field"><%= f.number_field :cust_id %></td>
     </tr>
     <tr>
-      <th colspan="2"><%= f.submit %></th>
+      <th colspan="2"><%= f.submit "Submit", class: "btn btn-success" %></th>
     </tr>
   </table>
 

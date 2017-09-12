@@ -9,13 +9,18 @@
     </div>
   <% else %>
 
-    <h2>Soil Report</h2>
+    <h5 class="subtitle">Soil Report</h5>
 
     <div class="report-container">
 
-      <table class="sample-report">      
-          <th>Organisms in the Soil Food Web</th>
-          <th>Units</th>
+      <table class="sample-report">
+        <thead>
+          <tr>      
+            <th>Organisms in the Soil Food Web</th>
+            <th style="border-right: 0;">Units</th>
+          </tr>
+        </thead>
+        <tbody>
           <tr>
               <td><strong>Bacterial</strong></td>
               <td>μg/g or mL</td>
@@ -27,47 +32,48 @@
               <tr>
             <td><strong>Fungi</strong></td>
             <td>μg/g or mL</td>
-        </tr>
-        <tr>
-            <td><strong>Oomycetes</strong></td>
-            <td>μg/g or mL</td>
-        </tr>
-        <tr>
-            <td><strong>Flagellate (Protozoa)</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Amoebae (Protozoa)</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Ciliates (Protozoa)</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Bacterial (Nematodes)</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Fungal (Nematodes)</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Root (Nematodes)</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Predatory (Nematodes)</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Nematode Overall</strong></td>
-            <td>Per gram</td>
-        </tr>
-        <tr>
-            <td><strong>Fungal:bacterial ratio F:B</strong></td>
-            <td> </td>
-        </tr>
+          </tr>
+          <tr>
+              <td><strong>Oomycetes</strong></td>
+              <td>μg/g or mL</td>
+          </tr>
+          <tr>
+              <td><strong>Flagellate (Protozoa)</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Amoebae (Protozoa)</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Ciliates (Protozoa)</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Bacterial (Nematodes)</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Fungal (Nematodes)</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Root (Nematodes)</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Predatory (Nematodes)</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Nematode Overall</strong></td>
+              <td>Per gram</td>
+          </tr>
+          <tr>
+              <td><strong>Fungal:bacterial ratio F:B</strong></td>
+              <td> </td>
+          </tr>
+        </tbody>
       </table>
 
       <table class="sample-report">
@@ -427,17 +433,15 @@
             </tr>
 
           </tbody>
-            <tr>
-              <td><!-- CRUD Options -->
-                <div class="sample-history-inner crud-options">
-                  <div class="sample-history-item"><%= link_to 'View Sample', reading_sample_path(@reading, samples) %></div>
+        </table>
 
-                </div>
-              </td><!-- End of CRUD div -->
-          </tr>
-      </table>
+      </div>
 
-    </div>
+      <div class="btn-sample-container">
+        <!-- CRUD Options -->
+          <%= link_to 'View Data', reading_sample_path(@reading, samples), class: "btn btn-success btn-sample" %></div>
+        <!-- End of CRUD div -->
+      </div>
 
     <br>
   

@@ -7,6 +7,16 @@ $biomass-background: #C1A065;
 $form-background: #C19F6D;
 $border-radius: 7.64px;
 
+.btn.btn-success.btn-sample {
+    color: white !important;
+    font-size: 0.8em;
+}
+
+.btn-sample-container {
+    max-width: 50px;
+    margin: 0 auto;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -204,6 +214,7 @@ footer, header {
 .tab-pane {
     border: 1px solid #d4d4d4;
     border-top: none;
+    overflow: scroll;
 }
 
 @media (min-width: 1200px) {

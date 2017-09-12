@@ -14,14 +14,11 @@ ActiveAdmin.register User do
 permit_params :name, :email, :password, :address_line_1, :address_line_2, :city, :state_province_region, :zip_postcode, :country, :telephone, :mobile, :roles
 
     index do
-        column :email
         column :name
+        column :email
         column :roles
-        column :country
         actions
     end
-
-
 
     # #remove unnesecary UI elements and name report
     # config.clear_action_items!
@@ -41,13 +38,11 @@ permit_params :name, :email, :password, :address_line_1, :address_line_2, :city,
         e.where("country = 'JE'")
     end
 
-    
-
-    # Creates a separate page in ActiveAdmin
-    ActiveAdmin.register_page "Calendar" do
-        content do
-            para "Hello World"
-        end
-    end
+    # # Creates a separate page in ActiveAdmin
+    # ActiveAdmin.register_page "Calendar" do
+    #     content do
+    #         para "Hello World"
+    #     end
+    # end
 
 end

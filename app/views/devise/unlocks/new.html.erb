@@ -3,12 +3,12 @@
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="cfp-field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="actions">
+  <div class="actions btn btn-primary">
     <%= f.submit "Resend unlock instructions" %>
   </div>
 <% end %>
