@@ -35,6 +35,10 @@ class Sample < ApplicationRecord
         nematodes_protozoa_calc
         biomass_ratio_calc
     end
+
+    def to_s
+        id
+    end
  
     private
 

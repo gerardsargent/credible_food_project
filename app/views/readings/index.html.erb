@@ -2,12 +2,25 @@
 
   <% if current_user.is_a?(GuestUser) %>
 
-    <div class="login-inner-blurb">
-      <%= image_tag("credible-food-project-splash-1500px.jpg", :alt => "The Credible Food Project Farm, Jersey, Channel Islands", :class => "landing-splash-img") %>
-      <h2>What do we do?</h2>
-      <p>A Credible Food Soil Regeneration strategy helps countries REGENERATE their soils which come in No 11 in the top 100 most substantive solutions to reverse global warming, based on meticulous research by leading scientists and policymakers around the world.</p>
-      <h2>How is this beneficial?</h2>
-      <p>Growing Credible Food improves farmland restoration by DRAWING DOWN carbon. Our educational program empowers farmers to understand their soils better for better productivity / reduced cost.<p>
+    <div class="row">
+      <div class="col align-self-center">
+        <%= image_tag("credible-food-project-splash-1500px.jpg", :alt => "The Credible Food Project Farm, Jersey, Channel Islands", :class => "landing-splash-img") %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h2>What do we do?</h2>
+        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
+      </div>
+      <div class="col-md-4">
+        <h2>How is this beneficial?</h2>
+        <p>Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.<p>
+      </div>
+      <div class="col-md-4">
+        <h2>Can I get involved?</h2>
+        <p>Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur.<p>
+      </div>
     </div>
 
   <% else %>

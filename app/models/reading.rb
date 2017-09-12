@@ -6,4 +6,8 @@ class Reading < ApplicationRecord
     validates_presence_of :client, :organisation, :location, :plants_present, :plants_desired
 
     accepts_nested_attributes_for :samples, allow_destroy: true;
+
+    def to_s
+        client
+    end
 end
