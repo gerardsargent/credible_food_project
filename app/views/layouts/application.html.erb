@@ -17,11 +17,11 @@
 
     <div class="container">
 
-      <div>
+      <header>
         <div class="centre-text main-title">
           <h1>The Credible Food Project</h1>
         </div>
-      </div>
+      </header>
 
       <div class="top">
 
@@ -59,11 +59,23 @@
         <% end %>
       </div>
 
-      <div class="container">
+      <div>
         <%= yield %>
       </div>
     
     </div>
 
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="footer-text">Website developed by <a href="https://www.boxfreshwebsites.com"><%= image_tag("boxfresh-white-250px@2x.png", :alt => "Boxfresh Creative Media", :class => "boxfresh-logo") %></a></p>
+          </div>
+          <div class="col-md-6">
+            <p class="footer-text"><a href="https://crediblefood.com"><%= image_tag("cfp-logo-white-85px@2x.png", :alt => "Credible Food Project", :class => "cfp-logo") %></p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

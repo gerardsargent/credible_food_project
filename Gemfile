@@ -82,3 +82,6 @@ gem 'pundit'
 
 # Country list for new user signup
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
+
+# Font-awesome
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'

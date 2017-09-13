@@ -1,6 +1,6 @@
 class SamplesController < ApplicationController
   before_action :set_sample, only: [:show, :edit, :update, :destroy]
-  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
+  access all: [:show, :index], user: {except: [:destroy]}, site_admin: :all
   layout "sample"
 
   # GET /samples
@@ -96,23 +96,23 @@ class SamplesController < ApplicationController
     @sample.sample_id = params[:reading_id]
     @sample.reading_number = @samples.length + 1
 
-    respond_to do |format|
-      puts "-----------------------"
-      puts "sample_params = "
-      sample_params.each do |k, v|
-        puts(k)
-        puts(v)
-      end
-      puts "-----------------------"
+    # respond_to do |format|
+    #   puts "-----------------------"
+    #   puts "sample_params = "
+    #   sample_params.each do |k, v|
+    #     puts(k)
+    #     puts(v)
+    #   end
+    #   puts "-----------------------"
 
   
       if @sample.save
         format.html { redirect_to new_reading_sample_path, notice: 'Sample was successfully created.' }
       else
-        redirect_to new_reading_sample_path
+        redirect_to new_reading_sample_path, notice: 'An error occured. Try submitting your record again.'
       end
     end
-  end
+  # end
 
   # PATCH/PUT /samples/1
   # PATCH/PUT /samples/1.json

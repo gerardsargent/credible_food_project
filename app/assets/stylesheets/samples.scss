@@ -30,13 +30,13 @@ form input[type="text"]:focus, form input[type="password"]:focus, form input[typ
     box-shadow: 0 0 4px #99a2aa;
 }
 
-footer, header {
+header {
     text-align: center;
     margin: 20px 0;
 }
 
 .active {
-    background-color: transparent !important;
+    background-color: #efefef !important;
     font-weight: 600;
 }
 
@@ -106,8 +106,16 @@ footer, header {
     background-color: lighten( $biomass-background, 40%);
 }
 
+.nematodes-entry td {
+    background: #efefef !important;
+    border: none;
+    
+}
+
 .notes-head {
     text-align: center;
+    background: #efefef;
+    border: none;
 }
 
 .oomycetes {
@@ -154,6 +162,7 @@ footer, header {
 .form_titles th {
     border-left: none;
     border-right: none;
+    border-top: #efefef 1px solid;
     padding: 0 8px;
     line-height: 1.5;
 }
@@ -200,6 +209,10 @@ footer, header {
     background-color: #f4f5f5 !important;
 }
 
+table .sample-input-pane {
+    border-top: none !important;
+}
+
 .sample-notice {
     background-color: #96D4FF;
     border: 1px solid #96C8F2;
@@ -211,10 +224,20 @@ footer, header {
     background-color: $form-background;
 }
 
+.tab-content {
+    margin-bottom: 10px;
+}
+
 .tab-pane {
     border: 1px solid #d4d4d4;
     border-top: none;
     overflow: scroll;
+}
+
+@media (min-width: 464px) {
+    .tab-content {
+        margin-bottom: 50px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -261,7 +284,7 @@ tr:nth-of-type(even) {
 }
 
 .second_section, .third-section {
-    margin: 10px auto;
+    margin: 0 auto 10px;
     width: 90%;
 }
 
@@ -275,6 +298,21 @@ tr:nth-of-type(even) {
     // max-width: 70%;
 }
 
+tr.nematodes-header th {
+    background: #efefef;
+    border-bottom: none;
+    border-top: none;
+    text-align: center;
+}
+
+tr.nematodes-header th:first-child {
+    border-left: none;
+}
+
+tr.nematodes-header th:last-child {
+    border-right: none;
+}
+
 .notes_2 th {
     max-width: 20%;
 }
@@ -285,11 +323,14 @@ tr:nth-of-type(even) {
 }
 
 .sample_input input {
-    background-color: lightgrey;
+    background-color: #fff !important;
+    font-size: 0.8em;
+    padding: 2px;
+    color: #5E6469;
 }
 
 #sample_notes {
-    background-color: #f4f5f5;
+    background-color: #fff;
     margin: 10px auto;
-    width: 80%;
+    width: 100%;
 }

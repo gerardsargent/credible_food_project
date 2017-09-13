@@ -7,7 +7,9 @@
     <meta name="keywords" content="<%= @seo_keywords %>"
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'samples', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'readings', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -22,9 +24,16 @@
     <%= yield %>
 
     <footer>
-        <div>
-        <p>&copy; <%= Time.current.year %> The Credible Food Project</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="footer-text">Website developed by <a href="https://www.boxfreshwebsites.com"><%= image_tag("boxfresh-white-250px@2x.png", :alt => "Boxfresh Creative Media", :class => "boxfresh-logo") %></a></p>
+          </div>
+          <div class="col-md-6">
+            <p class="footer-text"><a href="https://crediblefood.com"><%= image_tag("cfp-logo-white-85px@2x.png", :alt => "Credible Food Project", :class => "cfp-logo") %></p>
+          </div>
         </div>
+      </div>
     </footer>
 
   </body>

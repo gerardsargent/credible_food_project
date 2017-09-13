@@ -11,14 +11,23 @@
     <div class="row">
       <div class="col-md-4">
         <h2>What do we do?</h2>
-        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
+        <div class="col align-self-center">
+          <h2><%= fa_icon "check-circle-o", class: "text-muted large-icon" %></h2>
+        </div>
+        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
       </div>
       <div class="col-md-4">
-        <h2>How is this beneficial?</h2>
+        <h2>How does it work?</h2>
+        <div class="col align-self-center">
+          <h2><%= fa_icon "clock-o", class: "text-muted large-icon" %></h2>
+        </div>
         <p>Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.<p>
       </div>
       <div class="col-md-4">
         <h2>Can I get involved?</h2>
+        <div class="col align-self-center">
+          <h2><%= fa_icon "cutlery", class: "text-muted large-icon" %></h2>
+        </div>
         <p>Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur.<p>
       </div>
     </div>
@@ -27,7 +36,7 @@
     
     <div class="login-inner">
       <%= render 'reading_list', readings: @user_readings %>
-    <div>
+    </div>
 
   <% end %>
 
