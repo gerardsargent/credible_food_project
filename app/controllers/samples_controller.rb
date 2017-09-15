@@ -105,14 +105,14 @@ class SamplesController < ApplicationController
     #   end
     #   puts "-----------------------"
 
-  
+    respond_to do |format|
       if @sample.save
         format.html { redirect_to new_reading_sample_path, notice: 'Sample was successfully created.' }
       else
         redirect_to new_reading_sample_path, notice: 'An error occured. Try submitting your record again.'
       end
     end
-  # end
+  end
 
   # PATCH/PUT /samples/1
   # PATCH/PUT /samples/1.json
@@ -192,7 +192,8 @@ class SamplesController < ApplicationController
         :amoebae_standard_deviation, 
         :amoebae_dilution, 
         :amoebae_protozoa, 
-        :ciliates, :ciliates_mean, 
+        :ciliates, 
+        :ciliates_mean, 
         :ciliates_standard_deviation, 
         :ciliates_dilution, 
         :ciliates_protozoa, 

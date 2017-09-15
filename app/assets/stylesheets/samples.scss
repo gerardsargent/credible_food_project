@@ -126,6 +126,10 @@ header {
     background-color: lighten( $sample-background, 40% );
 }
 
+.reading-header {
+    margin-bottom: 10px;
+}
+
 .flex-centre {
     display: flex;
     justify-content: center;
