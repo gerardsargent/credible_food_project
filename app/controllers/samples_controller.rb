@@ -112,6 +112,9 @@ class SamplesController < ApplicationController
         redirect_to new_reading_sample_path, notice: 'An error occured. Try submitting your record again.'
       end
     end
+
+    puts 'params = '
+    puts params.inspect
   end
 
   # PATCH/PUT /samples/1

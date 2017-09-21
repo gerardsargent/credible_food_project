@@ -8,17 +8,16 @@
 
       <!--Tab headers-->
       <ul class="nav nav-tabs sample-header-tabs">
-        <a data-toggle="tab" href="#sample-1"><li class="active">Sample 1</li></a>
-        
-        <a data-toggle="tab" href="#sample-2"><li>Sample 2</li></a>
-        <a data-toggle="tab" href="#sample-3"><li>Sample 3</li></a>
-        <a data-toggle="tab" href="#sample-4"><li>Sample 4</li></a>
+        <a data-toggle="tab" href="#sample-1"><li class="<%= 'active' if  Sample.last[:sample_gp] == 1 %>">Sample 1</li></a>
+        <a data-toggle="tab" href="#sample-2"><li class="<%= 'active' if  Sample.last[:sample_gp] == 2 %>">Sample 2</li></a>
+        <a data-toggle="tab" href="#sample-3"><li class="<%= 'active' if  Sample.last[:sample_gp] == 3 %>">Sample 3</li></a>
+        <a data-toggle="tab" href="#sample-4"><li class="<%= 'active' if  Sample.last[:sample_gp] == 4 %>">Sample 4</li></a>
       </ul>
 
       <!--Tab panes -->
       <div class="tab-content">
         <!-- Sample 1 -->
-        <div role="tabpanel" class="tab-pane fade active show" id="sample-1">
+        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 1 %>" id="sample-1">
 
           <table>
             <tr class="form_titles">
@@ -257,7 +256,7 @@
         </div> <!--End of .tab-pane-->
 
         <!--Sample 2-->
-        <div role="tabpanel" class="tab-pane fade" id="sample-2">
+        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 2 %>" id="sample-2">
 
           <table>
             <tr class="form_titles">
@@ -496,7 +495,7 @@
         </div> <!--End of .tab-pane--> 
 
         <!--Sample 3-->
-        <div role="tabpanel" class="tab-pane fade" id="sample-3">
+        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 3 %>" id="sample-3">
 
           <table>
             <tr class="form_titles">
@@ -737,7 +736,7 @@
         </div> <!--End of .tab-pane-->
 
         <!--Sample 4-->
-        <div role="tabpanel" class="tab-pane fade" id="sample-4">
+        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 4 %>" id="sample-4">
 
           <table>
             <tr class="form_titles">
@@ -984,14 +983,19 @@
 </div> <!-- End of .sample-container -->
 
 <script>
-var ruleSet_default = {
-  required: true,
-  number: true
-}
-var messageSet_default = {
-  required: "Please enter a value",
-  number: "Please enter a numerical value"
-}
+$(document).ready(function() { 
+    // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        // save the latest tab; use cookies if you like 'em better:
+        localStorage.setItem('lastTab', $(this).attr('href'));
+    });
+
+    // go to the latest tab, if it exists:
+    var lastTab = localStorage.getItem('lastTab');
+    if (lastTab) {
+        $('[href="' + lastTab + '"]').tab('show');
+    }
+});
 $(document).ready(function() {
   $("#sample-form-1").validate(); 
   $("#sample-form-2").validate(); 

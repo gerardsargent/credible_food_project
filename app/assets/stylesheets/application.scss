@@ -28,6 +28,14 @@ footer {
     padding: 25px;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
 .footer-text a {
     color: #D0FCD4 !important;
 }
