@@ -79,7 +79,7 @@
               </tr>
             <% end %>
 
-            <%= form_for [reading, sample] do |s| %>
+            <%= form_for [reading, sample], html: {id: "sample-form-1"} do |s| %>
 
               <!-- normal form for one sample -->
               <% if sample.errors.any? %>
@@ -94,11 +94,11 @@
                 </div>
               <% end %>
 
-              <tr class="sample_input form-group">
+              <tr class="sample_input form-group has-warning">
                 <td>
                   <%= s.label :reading_number, sample.reading_number %>
-                  <%= s.hidden_field :reading_number, :value => sample.reading_number %>
-                  <%= s.hidden_field :sample_gp, :value => 1 %>
+                  <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                  <%= s.hidden_field :sample_gp, :value => 1, :required => true %>
                 </td>
 
                 <td>
@@ -107,85 +107,85 @@
                 </td>
 
                 <td>
-                  <%= s.text_field :bacterial_number, class: 'form-control' %>
+                  <%= s.text_field :bacterial_number, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
                   <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
-                    s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control' %>
+                    s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :bacterial_dilution, class: 'form-control' %>
+                  <%= s.text_field :bacterial_dilution, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
                   <%= actinobacteria_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                  s.select :actinobacteria, actinobacteria_lengths, class: 'form-control' %>
+                  s.select :actinobacteria, actinobacteria_lengths, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :actinobacteria_dilution, class: 'form-control' %>
+                  <%= s.text_field :actinobacteria_dilution, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
                   <%= fungi_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                  s.select :fungi, fungi_lengths, class: 'form-control' %>
+                  s.select :fungi, fungi_lengths, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :fungi_diameter, class: 'form-control' %>
+                  <%= s.text_field :fungi_diameter, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
                   <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                      s.select :fungi_colour, fungi_colour_types, class: 'form-control' %>
+                      s.select :fungi_colour, fungi_colour_types, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :fungi_dilution, class: 'form-control' %>
+                  <%= s.text_field :fungi_dilution, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
                   <%= oomycetes_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                  s.select :oomycetes, oomycetes_lengths, class: 'form-control' %>
+                  s.select :oomycetes, oomycetes_lengths, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :oomycetes_diameter, class: 'form-control' %>
+                  <%= s.text_field :oomycetes_diameter, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
                   <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                      s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control' %>
+                      s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :oomycetes_dilution, class: 'form-control' %>
+                  <%= s.text_field :oomycetes_dilution, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :flagellate, class: 'form-control' %>
+                  <%= s.text_field :flagellate, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :flagellate_dilution, class: 'form-control' %>
+                  <%= s.text_field :flagellate_dilution, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :amoebae, class: 'form-control' %>
+                  <%= s.text_field :amoebae, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :amoebae_dilution, class: 'form-control' %>
+                  <%= s.text_field :amoebae_dilution, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :ciliates, class: 'form-control' %>
+                  <%= s.text_field :ciliates, class: 'form-control', :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :ciliates_dilution, class: 'form-control' %>
+                  <%= s.text_field :ciliates_dilution, class: 'form-control', :required => true %>
                 </td>
 
               </tr>
@@ -206,23 +206,23 @@
 
               <tr class="sample_input form-group nematodes-entry">
                 <td>
-                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_1 %>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_1, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_1 %>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_1, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_1 %>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_1, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_1 %>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_1, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_1 %>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_1, :required => true %>
                 </td>
               </tr>
 
@@ -239,7 +239,7 @@
 
               <tr class="nematodes-entry">
                 <td>
-                  <%= s.text_area :notes, class: 'form-control', value: notes_last_1, :size =>"25x10" %>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_1, :size =>"25x10", :required => true %>
                 </td>
               </tr>
             </table>
@@ -318,7 +318,7 @@
               </tr>
             <% end %>
 
-          <%= form_for [reading, sample] do |s| %>
+          <%= form_for [reading, sample], html: {id: "sample-form-2"} do |s| %>
 
             <!-- normal form for one sample -->
             <% if sample.errors.any? %>
@@ -335,96 +335,96 @@
 
             <tr class="sample_input form-group">
               <td>
-                <%= s.label :reading_number, sample.reading_number %>
-                <%= s.hidden_field :reading_number, :value => sample.reading_number %>
-                <%= s.hidden_field :sample_gp, :value => 2 %>
+                <%= s.label :reading_number, sample.reading_number, :required => true %>
+                <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                <%= s.hidden_field :sample_gp, :value => 2, :required => true %>
               </td>
 
               <td>
                 <%= coverslip_types = [2038, 2491, 3044] 
-                s.select :coverslip, coverslip_types, class: 'form-control' %>
+                s.select :coverslip, coverslip_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :bacterial_number, class: 'form-control' %>
+                <%= s.text_field :bacterial_number, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
-                  s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control' %>
+                  s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :bacterial_dilution, class: 'form-control' %>
+                <%= s.text_field :bacterial_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= actinobacteria_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :actinobacteria, actinobacteria_lengths, class: 'form-control' %>
+                s.select :actinobacteria, actinobacteria_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :actinobacteria_dilution, class: 'form-control' %>
+                <%= s.text_field :actinobacteria_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= fungi_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :fungi, fungi_lengths, class: 'form-control' %>
+                s.select :fungi, fungi_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :fungi_diameter, class: 'form-control' %>
+                <%= s.text_field :fungi_diameter, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :fungi_colour, fungi_colour_types, class: 'form-control' %>
+                    s.select :fungi_colour, fungi_colour_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :fungi_dilution, class: 'form-control' %>
+                <%= s.text_field :fungi_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= oomycetes_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :oomycetes, oomycetes_lengths, class: 'form-control' %>
+                s.select :oomycetes, oomycetes_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :oomycetes_diameter, class: 'form-control' %>
+                <%= s.text_field :oomycetes_diameter, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control' %>
+                    s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :oomycetes_dilution, class: 'form-control' %>
+                <%= s.text_field :oomycetes_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :flagellate, class: 'form-control' %>
+                <%= s.text_field :flagellate, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :flagellate_dilution, class: 'form-control' %>
+                <%= s.text_field :flagellate_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :amoebae, class: 'form-control' %>
+                <%= s.text_field :amoebae, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :amoebae_dilution, class: 'form-control' %>
+                <%= s.text_field :amoebae_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :ciliates, class: 'form-control' %>
+                <%= s.text_field :ciliates, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :ciliates_dilution, class: 'form-control' %>
+                <%= s.text_field :ciliates_dilution, class: 'form-control', :required => true %>
               </td>
 
             </tr>
@@ -445,23 +445,23 @@
 
               <tr class="sample_input form-group nematodes-entry">
                 <td>
-                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_2 %>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_2, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_2 %>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_2, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_2 %>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_2, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_2 %>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_2, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_2 %>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_2, :required => true %>
                 </td>
               </tr>
 
@@ -478,7 +478,7 @@
 
               <tr class="nematodes-entry">
                 <td>
-                  <%= s.text_area :notes, class: 'form-control', value: notes_last_2, :size =>"25x10" %>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_2, :size =>"25x10", :required => true %>
                 </td>
               </tr>
             </table>
@@ -557,7 +557,7 @@
               </tr>
             <% end %>
 
-          <%= form_for [reading, sample] do |s| %>
+          <%= form_for [reading, sample], html: {id: "sample-form-3"} do |s| %>
 
             <!-- normal form for one sample -->
             <% if sample.errors.any? %>
@@ -574,96 +574,96 @@
 
             <tr class="sample_input form-group">
               <td>
-                <%= s.label :reading_number, sample.reading_number %>
-                <%= s.hidden_field :reading_number, :value => sample.reading_number %>
-                <%= s.hidden_field :sample_gp, :value => 3 %>
+                <%= s.label :reading_number, sample.reading_number, :required => true %>
+                <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                <%= s.hidden_field :sample_gp, :value => 3, :required => true %>
               </td>
 
               <td>
                 <%= coverslip_types = [2038, 2491, 3044] 
-                s.select :coverslip, coverslip_types, class: 'form-control' %>
+                s.select :coverslip, coverslip_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :bacterial_number, class: 'form-control' %>
+                <%= s.text_field :bacterial_number, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
-                  s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control' %>
+                  s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :bacterial_dilution, class: 'form-control' %>
+                <%= s.text_field :bacterial_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= actinobacteria_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :actinobacteria, actinobacteria_lengths, class: 'form-control' %>
+                s.select :actinobacteria, actinobacteria_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :actinobacteria_dilution, class: 'form-control' %>
+                <%= s.text_field :actinobacteria_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= fungi_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :fungi, fungi_lengths, class: 'form-control' %>
+                s.select :fungi, fungi_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :fungi_diameter, class: 'form-control' %>
+                <%= s.text_field :fungi_diameter, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :fungi_colour, fungi_colour_types, class: 'form-control' %>
+                    s.select :fungi_colour, fungi_colour_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :fungi_dilution, class: 'form-control' %>
+                <%= s.text_field :fungi_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= oomycetes_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :oomycetes, oomycetes_lengths, class: 'form-control' %>
+                s.select :oomycetes, oomycetes_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :oomycetes_diameter, class: 'form-control' %>
+                <%= s.text_field :oomycetes_diameter, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control' %>
+                    s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :oomycetes_dilution, class: 'form-control' %>
+                <%= s.text_field :oomycetes_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :flagellate, class: 'form-control' %>
+                <%= s.text_field :flagellate, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :flagellate_dilution, class: 'form-control' %>
+                <%= s.text_field :flagellate_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :amoebae, class: 'form-control' %>
+                <%= s.text_field :amoebae, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :amoebae_dilution, class: 'form-control' %>
+                <%= s.text_field :amoebae_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :ciliates, class: 'form-control' %>
+                <%= s.text_field :ciliates, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :ciliates_dilution, class: 'form-control' %>
+                <%= s.text_field :ciliates_dilution, class: 'form-control', :required => true %>
               </td>
 
             </tr>
@@ -684,23 +684,23 @@
 
               <tr class="sample_input form-group nematodes-entry">
                 <td>
-                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_3 %>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_3, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_3 %>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_3, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_3 %>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_3, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_3 %>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_3, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_3 %>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_3, :required => true %>
                 </td>
               </tr>
 
@@ -717,7 +717,7 @@
 
               <tr class="nematodes-entry">
                 <td>
-                  <%= s.text_area :notes, class: 'form-control', value: notes_last_3, :size =>"25x10" %>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_3, :size =>"25x10", :required => true %>
                 </td>
               </tr>
             </table>
@@ -798,7 +798,7 @@
               </tr>
             <% end %>
 
-          <%= form_for [reading, sample] do |s| %>
+          <%= form_for [reading, sample], html: {id: "sample-form-4"} do |s| %>
 
             <!-- normal form for one sample -->
             <% if sample.errors.any? %>
@@ -816,95 +816,95 @@
             <tr class="sample_input form-group">
               <td>
                 <%= s.label :reading_number, sample.reading_number %>
-                <%= s.hidden_field :reading_number, :value => sample.reading_number %>
-                <%= s.hidden_field :sample_gp, :value => 4 %>
+                <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                <%= s.hidden_field :sample_gp, :value => 4, :required => true %>
               </td>
 
               <td>
                 <%= coverslip_types = [2038, 2491, 3044] 
-                s.select :coverslip, coverslip_types, class: 'form-control' %>
+                s.select :coverslip, coverslip_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :bacterial_number, class: 'form-control' %>
+                <%= s.text_field :bacterial_number, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= bacterial_size_shape_types = ["Coccus", "Bacalli", "Other"]
-                  s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control' %>
+                  s.select :bacterial_size_shape, bacterial_size_shape_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :bacterial_dilution, class: 'form-control' %>
+                <%= s.text_field :bacterial_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= actinobacteria_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :actinobacteria, actinobacteria_lengths, class: 'form-control' %>
+                s.select :actinobacteria, actinobacteria_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :actinobacteria_dilution, class: 'form-control' %>
+                <%= s.text_field :actinobacteria_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= fungi_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :fungi, fungi_lengths, class: 'form-control' %>
+                s.select :fungi, fungi_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :fungi_diameter, class: 'form-control' %>
+                <%= s.text_field :fungi_diameter, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= fungi_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :fungi_colour, fungi_colour_types, class: 'form-control' %>
+                    s.select :fungi_colour, fungi_colour_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :fungi_dilution, class: 'form-control' %>
+                <%= s.text_field :fungi_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= oomycetes_lengths = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-                s.select :oomycetes, oomycetes_lengths, class: 'form-control' %>
+                s.select :oomycetes, oomycetes_lengths, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :oomycetes_diameter, class: 'form-control' %>
+                <%= s.text_field :oomycetes_diameter, class: 'form-control', :required => true %>
               </td>
 
               <td>
                 <%= oomycetes_colour_types = ["White", "Red", "Yellow", "Green", "Blue", "Black"]
-                    s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control' %>
+                    s.select :oomycetes_colour, oomycetes_colour_types, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :oomycetes_dilution, class: 'form-control' %>
+                <%= s.text_field :oomycetes_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :flagellate, class: 'form-control' %>
+                <%= s.text_field :flagellate, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :flagellate_dilution, class: 'form-control' %>
+                <%= s.text_field :flagellate_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :amoebae, class: 'form-control' %>
+                <%= s.text_field :amoebae, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :amoebae_dilution, class: 'form-control' %>
+                <%= s.text_field :amoebae_dilution, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :ciliates, class: 'form-control' %>
+                <%= s.text_field :ciliates, class: 'form-control', :required => true %>
               </td>
 
               <td>
-                <%= s.text_field :ciliates_dilution, class: 'form-control' %>
+                <%= s.text_field :ciliates_dilution, class: 'form-control', :required => true %>
               </td>
 
             </tr>
@@ -925,23 +925,23 @@
 
               <tr class="sample_input form-group nematodes-entry">
                 <td>
-                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_4 %>
+                  <%= s.text_field :nematodes_bacteria, class: 'form-control', value: nematodes_bacteria_last_4, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_4 %>
+                  <%= s.text_field :nematodes_fungi, class: 'form-control', value: nematodes_fungi_last_4, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_4 %>
+                  <%= s.text_field :nematodes_predator, class: 'form-control', value: nematodes_predator_last_4, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_4 %>
+                  <%= s.text_field :nematodes_root, class: 'form-control', value: nematodes_root_last_4, :required => true %>
                 </td>
 
                 <td>
-                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_4 %>
+                  <%= s.text_field :nematodes_dilution, class: 'form-control', value: nematodes_dilution_last_4, :required => true %>
                 </td>
               </tr>
 
@@ -958,7 +958,7 @@
 
               <tr class="nematodes-entry">
                 <td>
-                  <%= s.text_area :notes, class: 'form-control', value: notes_last_4, :size =>"25x10" %>
+                  <%= s.text_area :notes, class: 'form-control', value: notes_last_4, :size =>"25x10", :required => true %>
                 </td>
               </tr>
             </table>
@@ -982,3 +982,12 @@
   </div> <!--End of .row-->
 
 </div> <!-- End of .sample-container -->
+
+<script>
+$(document).ready(function() {
+  $("#sample-form-1").validate(); 
+  $("#sample-form-2").validate(); 
+  $("#sample-form-3").validate(); 
+  $("#sample-form-4").validate(); 
+});
+</script>
