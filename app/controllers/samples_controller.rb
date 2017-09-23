@@ -21,6 +21,11 @@ class SamplesController < ApplicationController
     @page_title = "Input sample data"
 
     @sample = @reading.samples.build
+    label_1 = 0
+    @reading_number_label_1 = label_1 + 1
+
+    label_2 = 0
+    @reading_number_label_2 = label_2 + 1
   end
 
   # GET /samples/new
@@ -75,7 +80,7 @@ class SamplesController < ApplicationController
     # add new item to array for next reading number if < 20
     @sample = @reading.samples.new
     @sample.reading_number = @samples.length + 1
-    
+
     @page_title = "Input Sample Data"
   end
 
@@ -210,6 +215,10 @@ class SamplesController < ApplicationController
         :fb_biomass_ratio, 
         :coverslip, 
         :notes, 
-        :reading_number)
+        :reading_number,
+        :entry_1_label, 
+        :entry_2_label, 
+        :entry_3_label, 
+        :entry_4_label)
     end
 end

@@ -60,6 +60,7 @@ class Sample < ApplicationRecord
         nematodes_sum_calc
         nematodes_protozoa_calc
         biomass_ratio_calc
+        entry_2_label_calc
     end
 
     def to_s
@@ -563,6 +564,24 @@ class Sample < ApplicationRecord
 
     def biomass_ratio_calc
         self.fb_biomass_ratio = (@fungi_micrograms / (@bacterial_micrograms + @actinobacteria_micrograms))
+    end
+
+    def entry_2_label_calc
+        # Take all of the readings for sample x and put them into an array
+        # entry_2_label_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:sample_gp, 2)
+        entry_2_label_array = Sample.where(sample_gp: 2).pluck(:sample_gp)
+        entry_2_label_array_new = entry_2_label_array.push(self.sample_gp)
+        # @entry_2_label_array_compact = entry_2_label_array.compact
+        
+        # If this is the first reading of the associated sample, then push a value into the array
+        # self.entry_2_label = @entry_2_label_array_compact.length
+        
+        # puts "@entry_2_label_array_compact = "
+        # puts @entry_2_label_array_compact.inspect
+        # puts "self.entry_2_label = "
+        # puts self.entry_2_label
+        puts "entry_2_label_array_new"
+        puts entry_2_label_array_new.inspect
     end
         
 end

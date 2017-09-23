@@ -8,16 +8,40 @@
 
       <!--Tab headers-->
       <ul class="nav nav-tabs sample-header-tabs">
-        <a data-toggle="tab" href="#sample-1"><li class="<%= 'active' if  Sample.last[:sample_gp] == 1 %>">Sample 1</li></a>
-        <a data-toggle="tab" href="#sample-2"><li class="<%= 'active' if  Sample.last[:sample_gp] == 2 %>">Sample 2</li></a>
-        <a data-toggle="tab" href="#sample-3"><li class="<%= 'active' if  Sample.last[:sample_gp] == 3 %>">Sample 3</li></a>
-        <a data-toggle="tab" href="#sample-4"><li class="<%= 'active' if  Sample.last[:sample_gp] == 4 %>">Sample 4</li></a>
+        <a data-toggle="tab" href="#sample-1"><li class="
+          <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active' if Sample.last[:sample_gp] == 1 
+          end %>">Sample 1</li></a>
+        <a data-toggle="tab" href="#sample-2"><li class="
+          <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active' if Sample.last[:sample_gp] == 2 
+          end %>">Sample 2</li></a>
+        <a data-toggle="tab" href="#sample-3"><li class="
+          <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active' if Sample.last[:sample_gp] == 3 
+          end %>">Sample 3</li></a>
+        <a data-toggle="tab" href="#sample-4"><li class="
+          <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active' if Sample.last[:sample_gp] == 4 
+          end %>">Sample 4</li></a>
       </ul>
 
       <!--Tab panes -->
       <div class="tab-content">
         <!-- Sample 1 -->
-        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 1 %>" id="sample-1">
+        <div role="tabpanel" class="tab-pane fade <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active show' if Sample.last[:sample_gp] == 1 
+          end %>" id="sample-1">
 
           <table>
             <tr class="form_titles">
@@ -256,7 +280,11 @@
         </div> <!--End of .tab-pane-->
 
         <!--Sample 2-->
-        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 2 %>" id="sample-2">
+        <div role="tabpanel" class="tab-pane fade <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active show' if Sample.last[:sample_gp] == 2 
+          end %>" id="sample-2">
 
           <table>
             <tr class="form_titles">
@@ -334,7 +362,7 @@
 
             <tr class="sample_input form-group">
               <td>
-                <%= s.label :reading_number, sample.reading_number, :required => true %>
+                <%= s.label :reading_number, sample.reading_number %>
                 <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
                 <%= s.hidden_field :sample_gp, :value => 2, :required => true %>
               </td>
@@ -495,7 +523,11 @@
         </div> <!--End of .tab-pane--> 
 
         <!--Sample 3-->
-        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 3 %>" id="sample-3">
+        <div role="tabpanel" class="tab-pane fade <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active show' if Sample.last[:sample_gp] == 3 
+          end %>" id="sample-3">
 
           <table>
             <tr class="form_titles">
@@ -573,7 +605,7 @@
 
             <tr class="sample_input form-group">
               <td>
-                <%= s.label :reading_number, sample.reading_number, :required => true %>
+                <%= s.label :reading_number, sample.reading_number %>
                 <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
                 <%= s.hidden_field :sample_gp, :value => 3, :required => true %>
               </td>
@@ -736,7 +768,11 @@
         </div> <!--End of .tab-pane-->
 
         <!--Sample 4-->
-        <div role="tabpanel" class="tab-pane fade <%= 'active show' if  Sample.last[:sample_gp] == 4 %>" id="sample-4">
+        <div role="tabpanel" class="tab-pane fade <%= 
+          if Sample.last == nil
+            puts ''
+          else 'active show' if Sample.last[:sample_gp] == 4 
+          end %>" id="sample-4">
 
           <table>
             <tr class="form_titles">
