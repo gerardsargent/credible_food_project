@@ -73,7 +73,7 @@
             <% if sample_gp_1 %>
               <% sample_gp_1.each do |s| %>
                 <tr>
-                  <td><%=s.reading_number%></td>
+                  <td><%=s.entry_1_label%></td>
                   <td><%=s.coverslip%></td>
                   <td><%=s.bacterial_number%></td>
                   <td><%=s.bacterial_size_shape%></td>
@@ -119,8 +119,8 @@
 
               <tr class="sample_input form-group has-warning">
                 <td>
-                  <%= s.label :reading_number, sample.reading_number %>
-                  <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                  <%= s.label :entry, entry_1_label %>
+                  <%= s.hidden_field :entry_1_label, :value => entry_1_label, :required => true %>
                   <%= s.hidden_field :sample_gp, :value => 1, :required => true %>
                 </td>
 
@@ -316,7 +316,7 @@
             <% if sample_gp_2 %>
               <% sample_gp_2.each do |ss| %>
                 <tr>
-                  <td><%=ss.reading_number%></td>
+                  <td><%=ss.entry_2_label%></td>
                   <td><%=ss.coverslip%></td>
                   <td><%=ss.bacterial_number%></td>
                   <td><%=ss.bacterial_size_shape%></td>
@@ -362,8 +362,8 @@
 
             <tr class="sample_input form-group">
               <td>
-                <%= s.label :reading_number, sample.reading_number %>
-                <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                <%= s.label :entry, entry_2_label %>
+                <%= s.hidden_field :entry_2_label, :value => entry_2_label, :required => true %>
                 <%= s.hidden_field :sample_gp, :value => 2, :required => true %>
               </td>
 
@@ -559,7 +559,7 @@
             <% if sample_gp_3 %>
               <% sample_gp_3.each do |sss| %>
                 <tr>
-                  <td><%=sss.reading_number%></td>
+                  <td><%=sss.entry_3_label%></td>
                   <td><%=sss.coverslip%></td>
                   <td><%=sss.bacterial_number%></td>
                   <td><%=sss.bacterial_size_shape%></td>
@@ -605,8 +605,8 @@
 
             <tr class="sample_input form-group">
               <td>
-                <%= s.label :reading_number, sample.reading_number %>
-                <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                <%= s.label :entry, entry_3_label %>
+                <%= s.hidden_field :entry_3_label, :value => entry_3_label, :required => true %>
                 <%= s.hidden_field :sample_gp, :value => 3, :required => true %>
               </td>
 
@@ -804,7 +804,7 @@
             <% if sample_gp_4 %>
               <% sample_gp_4.each do |sss| %>
                 <tr>
-                  <td><%=sss.reading_number%></td>
+                  <td><%=sss.entry_4_label%></td>
                   <td><%=sss.coverslip%></td>
                   <td><%=sss.bacterial_number%></td>
                   <td><%=sss.bacterial_size_shape%></td>
@@ -850,8 +850,8 @@
 
             <tr class="sample_input form-group">
               <td>
-                <%= s.label :reading_number, sample.reading_number %>
-                <%= s.hidden_field :reading_number, :value => sample.reading_number, :required => true %>
+                <%= s.label :entry, entry_4_label %>
+                <%= s.hidden_field :entry_4_label, :value => entry_4_label, :required => true %>
                 <%= s.hidden_field :sample_gp, :value => 4, :required => true %>
               </td>
 
