@@ -60,7 +60,7 @@ class Sample < ApplicationRecord
         nematodes_sum_calc
         nematodes_protozoa_calc
         biomass_ratio_calc
-        entry_label_calc
+        entry_2_label_calc
     end
 
     def to_s
@@ -566,39 +566,22 @@ class Sample < ApplicationRecord
         self.fb_biomass_ratio = (@fungi_micrograms / (@bacterial_micrograms + @actinobacteria_micrograms))
     end
 
-    def entry_label_calc
+    def entry_2_label_calc
         # Take all of the readings for sample x and put them into an array
-        #entry_1_label_array
-        entry_1_label_array = Sample.where(sample_gp: 1).pluck(:sample_gp)
-        entry_1_label_array_new = entry_1_label_array.push(self.sample_gp)
-        entry_1_label_array_compact = entry_1_label_array_new.compact
-        entry_1_label_array_extract = entry_1_label_array_compact.select { |e| e == 1 }
-        @entry_1_label = entry_1_label_array_extract.length
-        self.entry_1_label = @entry_1_label
-        
-        # entry_2_label_array
+        # entry_2_label_array = Sample.where(sample_id: sample_id).where.not(id: self.id).pluck(:sample_gp, 2)
         entry_2_label_array = Sample.where(sample_gp: 2).pluck(:sample_gp)
         entry_2_label_array_new = entry_2_label_array.push(self.sample_gp)
-        entry_2_label_array_compact = entry_2_label_array_new.compact
-        entry_2_label_array_extract = entry_2_label_array_compact.select { |e| e == 2 }
-        @entry_2_label = entry_2_label_array_extract.length
-        self.entry_2_label = @entry_2_label
-
-        # entry_3_label_array
-        entry_3_label_array = Sample.where(sample_gp: 3).pluck(:sample_gp)
-        entry_3_label_array_new = entry_3_label_array.push(self.sample_gp)
-        entry_3_label_array_compact = entry_3_label_array_new.compact
-        entry_3_label_array_extract = entry_3_label_array_compact.select { |e| e == 3 }
-        @entry_3_label = entry_3_label_array_extract.length
-        self.entry_3_label = @entry_3_label
-
-        # entry_4_label_array
-        entry_4_label_array = Sample.where(sample_gp: 4).pluck(:sample_gp)
-        entry_4_label_array_new = entry_4_label_array.push(self.sample_gp)
-        entry_4_label_array_compact = entry_4_label_array_new.compact
-        entry_4_label_array_extract = entry_4_label_array_compact.select { |e| e == 4 }
-        @entry_4_label = entry_4_label_array_extract.length
-        self.entry_4_label = @entry_4_label
+        # @entry_2_label_array_compact = entry_2_label_array.compact
+        
+        # If this is the first reading of the associated sample, then push a value into the array
+        # self.entry_2_label = @entry_2_label_array_compact.length
+        
+        # puts "@entry_2_label_array_compact = "
+        # puts @entry_2_label_array_compact.inspect
+        # puts "self.entry_2_label = "
+        # puts self.entry_2_label
+        puts "entry_2_label_array_new"
+        puts entry_2_label_array_new.inspect
     end
         
 end
