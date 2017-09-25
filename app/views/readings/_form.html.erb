@@ -33,6 +33,11 @@
       <td class="cfp-field"><%= f.text_field :location %></td>
     </tr>
     <tr>
+      <th><%= f.label :sample_type %></th>
+      <td class="cfp-field"><%= sample_type_choice = ["Field", "Compost"] 
+      f.select :sample_type, sample_type_choice %></td>
+    </tr>    
+    <tr>
       <th><%= f.label :plants_present %></th>
       <td class="cfp-field"><%= f.text_field :plants_present %></td>
     </tr>

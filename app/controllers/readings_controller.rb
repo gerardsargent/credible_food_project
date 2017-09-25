@@ -142,6 +142,6 @@ class ReadingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reading_params
-      params.require(:reading).permit(:client, :organisation, :date_collected, :date_observed, :location, :plants_present, :plants_desired, :other_notes, :observed_by, :lt_id, :cust_id, :user_id)
+      params.require(:reading).permit(:client, :organisation, :date_collected, :date_observed, :location, :plants_present, :plants_desired, :other_notes, :observed_by, :lt_id, :cust_id, :user_id, :sample_type)
     end
 end
