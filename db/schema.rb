@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 20170925152459) do
   end
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "sample"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.float    "lat",        limit: 24
     t.float    "lng",        limit: 24
-    t.integer  "users_id"
-    t.index ["users_id"], name: "index_locations_on_users_id", using: :btree
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
   end
 
   create_table "readings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,13 +72,23 @@ ActiveRecord::Schema.define(version: 20170925152459) do
     t.index ["user_id"], name: "index_readings_on_user_id", using: :btree
   end
 
-  create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
+  create_table "sample_ids", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "sample_id"
-    t.integer  "reading_id"
-    t.integer  "reading_number"
-    t.integer  "sample_gp"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_id"], name: "index_sample_ids_on_sample_id", using: :btree
+    t.index ["user_id"], name: "index_sample_ids_on_user_id", using: :btree
+  end
+
+  create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "coverslip"
+    t.integer  "user_id"
+    t.integer  "reading_id"
+    t.integer  "sample_id"
+    t.integer  "location_id"
+    t.integer  "sample_gp"
+    t.integer  "reading_number"
     t.integer  "bacterial_number"
     t.string   "bacterial_size_shape"
     t.float    "bacterial_mean",                     limit: 24
@@ -95,26 +106,26 @@ ActiveRecord::Schema.define(version: 20170925152459) do
     t.integer  "fungi_diameter"
     t.string   "fungi_colour"
     t.float    "fungi_mean",                         limit: 24
+    t.float    "fungi_calculation",                  limit: 24
     t.float    "fungi_standard_deviation",           limit: 24
     t.integer  "fungi_dilution"
     t.float    "fungal_cm_length_for_calc",          limit: 24
-    t.float    "fungi_calculation",                  limit: 24
     t.float    "fungi_average_diameter_in_um",       limit: 24
     t.float    "fungi_average_diameter_in_cm",       limit: 24
     t.bigint   "fungal_strands_cm"
     t.bigint   "fungi_micrograms"
     t.float    "oomycetes",                          limit: 24
     t.string   "oomycetes_colour"
-    t.integer  "oomycetes_diameter"
     t.float    "oomycetes_mean",                     limit: 24
     t.float    "oomycetes_standard_deviation",       limit: 24
-    t.float    "oomycetes_calculation",              limit: 24
-    t.float    "oomycetes_average_diameter_in_um",   limit: 24
+    t.integer  "oomycetes_dilution"
     t.float    "oomycetes_cm_length_for_calc",       limit: 24
-    t.float    "oomycetes_micrograms",               limit: 24
+    t.float    "oomycetes_average_diameter_in_um",   limit: 24
     t.float    "oomycetes_average_diameter_in_cm",   limit: 24
     t.bigint   "oomycetes_strands_cm"
-    t.integer  "oomycetes_dilution"
+    t.float    "oomycetes_calculation",              limit: 24
+    t.integer  "oomycetes_diameter"
+    t.float    "oomycetes_micrograms",               limit: 24
     t.integer  "flagellate"
     t.float    "flagellate_mean",                    limit: 24
     t.float    "flagellate_standard_deviation",      limit: 24
@@ -130,18 +141,17 @@ ActiveRecord::Schema.define(version: 20170925152459) do
     t.float    "ciliates_standard_deviation",        limit: 24
     t.integer  "ciliates_dilution"
     t.bigint   "ciliates_protozoa"
-    t.integer  "nematodes_bacteria"
-    t.integer  "nematodes_fungi"
-    t.integer  "nematodes_predator"
     t.integer  "nematodes_root"
+    t.integer  "nematodes_predator"
+    t.integer  "nematodes_fungi"
+    t.integer  "nematodes_bacteria"
     t.float    "nematodes_mean",                     limit: 24
     t.integer  "nematodes_dilution"
     t.bigint   "nematodes_protozoa"
+    t.text     "notes",                              limit: 65535
     t.float    "fb_biomass_ratio",                   limit: 24
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
-    t.integer  "location_id"
-    t.text     "notes",                              limit: 65535
     t.integer  "entry_1_label"
     t.integer  "entry_2_label"
     t.integer  "entry_3_label"
@@ -180,7 +190,7 @@ ActiveRecord::Schema.define(version: 20170925152459) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "locations", "users", column: "users_id"
+  add_foreign_key "locations", "users"
   add_foreign_key "readings", "users"
   add_foreign_key "samples", "locations"
   add_foreign_key "samples", "readings"

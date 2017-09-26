@@ -15,5 +15,4 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require jquery.validate
 //= require_tree .

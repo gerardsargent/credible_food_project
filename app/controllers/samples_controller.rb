@@ -26,6 +26,42 @@ class SamplesController < ApplicationController
 
     label_2 = 0
     @reading_number_label_2 = label_2 + 1
+
+    # Nematodes (Bacteria) (Samples 1-4) Cell B41
+    @nematodes_bacteria_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_bacteria).last
+    @nematodes_bacteria_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_bacteria).last 
+
+    # Nematodes (Fungal) (Samples 1-4) Cell C41
+    @nematodes_fungi_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_fungi).last
+    @nematodes_fungi_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_fungi).last
+    @nematodes_fungi_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_fungi).last
+    @nematodes_fungi_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_fungi).last
+
+    # Nematodes (Root) (Samples 1-4) Cell E41
+    @nematodes_root_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_root).last
+    @nematodes_root_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_root).last
+    @nematodes_root_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_root).last
+    @nematodes_root_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_root).last
+
+    # Nematodes (Predator) (Samples 1-4) Cell D41
+    @nematodes_predator_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_predator).last
+    @nematodes_predator_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_predator).last
+    @nematodes_predator_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_predator).last
+    @nematodes_predator_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_predator).last
+
+    # Nematodes (Dilution) (Samples 1-4) Cell D41
+    @nematodes_dilution_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:nematodes_dilution).last
+    @nematodes_dilution_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:nematodes_dilution).last
+    @nematodes_dilution_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:nematodes_dilution).last
+    @nematodes_dilution_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:nematodes_dilution).last
+
+    # Notes (Samples 1-4)
+    @notes_last_1 = Sample.where(id: @reading.samples, sample_gp: 1).pluck(:notes).last
+    @notes_last_2 = Sample.where(id: @reading.samples, sample_gp: 2).pluck(:notes).last
+    @notes_last_3 = Sample.where(id: @reading.samples, sample_gp: 3).pluck(:notes).last
+    @notes_last_4 = Sample.where(id: @reading.samples, sample_gp: 4).pluck(:notes).last
   end
 
   # GET /samples/new

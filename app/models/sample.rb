@@ -569,7 +569,8 @@ class Sample < ApplicationRecord
     def entry_label_calc
         # Take all of the readings for sample x and put them into an array
         #entry_1_label_array
-        entry_1_label_array = Sample.where(sample_gp: 1).pluck(:sample_gp)
+        # entry_1_label_array = Sample.where(sample_gp: 1).pluck(:sample_gp)
+        entry_1_label_array = Sample.where(sample_gp: 1).where(sample_id: sample_id).pluck(:sample_gp)
         entry_1_label_array_new = entry_1_label_array.push(self.sample_gp)
         entry_1_label_array_compact = entry_1_label_array_new.compact
         entry_1_label_array_extract = entry_1_label_array_compact.select { |e| e == 1 }
@@ -577,7 +578,7 @@ class Sample < ApplicationRecord
         self.entry_1_label = @entry_1_label
         
         # entry_2_label_array
-        entry_2_label_array = Sample.where(sample_gp: 2).pluck(:sample_gp)
+        entry_2_label_array = Sample.where(sample_gp: 2).where(sample_id: sample_id).pluck(:sample_gp)
         entry_2_label_array_new = entry_2_label_array.push(self.sample_gp)
         entry_2_label_array_compact = entry_2_label_array_new.compact
         entry_2_label_array_extract = entry_2_label_array_compact.select { |e| e == 2 }
@@ -585,7 +586,7 @@ class Sample < ApplicationRecord
         self.entry_2_label = @entry_2_label
 
         # entry_3_label_array
-        entry_3_label_array = Sample.where(sample_gp: 3).pluck(:sample_gp)
+        entry_3_label_array = Sample.where(sample_gp: 3).where(sample_id: sample_id).pluck(:sample_gp)
         entry_3_label_array_new = entry_3_label_array.push(self.sample_gp)
         entry_3_label_array_compact = entry_3_label_array_new.compact
         entry_3_label_array_extract = entry_3_label_array_compact.select { |e| e == 3 }
@@ -593,7 +594,7 @@ class Sample < ApplicationRecord
         self.entry_3_label = @entry_3_label
 
         # entry_4_label_array
-        entry_4_label_array = Sample.where(sample_gp: 4).pluck(:sample_gp)
+        entry_4_label_array = Sample.where(sample_gp: 4).where(sample_id: sample_id).pluck(:sample_gp)
         entry_4_label_array_new = entry_4_label_array.push(self.sample_gp)
         entry_4_label_array_compact = entry_4_label_array_new.compact
         entry_4_label_array_extract = entry_4_label_array_compact.select { |e| e == 4 }
