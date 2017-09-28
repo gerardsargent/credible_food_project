@@ -1,6 +1,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+* {
+    margin: 0;
+}
+
 a {
     color: #8E5F34 !important;
     text-decoration: none;
@@ -9,6 +13,10 @@ a {
 a:hover {
     color: #213924 !important;
     text-decoration: none !important;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
@@ -20,12 +28,6 @@ body {
 
 div {
     margin: 0;
-}
-
-footer {
-    background: #3A3A3C;
-    text-shadow: #000 0 1px 0;
-    padding: 25px;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -224,6 +226,27 @@ tr:nth-of-type(odd) {
     background: #97B3BF;
     padding: 20px 0;
     display: none;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* Equal to .site-footer height */
+    margin-bottom: -160px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.site-footer, .page-wrap:after {
+    height: 160px;
+}
+
+.site-footer {
+    background: #3A3A3C;
+    text-shadow: #000 0 1px 0;
+    padding: 25px;
 }
 
 .subtitle {

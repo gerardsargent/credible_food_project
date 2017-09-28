@@ -15,65 +15,69 @@
 
   <body>
 
-    <div class="container">
+    <div class="page-wrap">
 
-      <header>
-        <div class="centre-text main-title">
-          <h1>The Credible Food Project</h1>
+      <div class="container">
+
+        <header>
+          <div class="centre-text main-title">
+            <h1>The Credible Food Project</h1>
+          </div>
+        </header>
+
+        <div class="top">
+
+          <% if current_user.is_a?(GuestUser) %>
+            <div class="landing-splash">
+              <div class="login-top">
+                <div>
+                  <%= link_to "Register", new_user_registration_path %>
+                </div>
+                <div>
+                  <%= link_to "Login", new_user_session_path %>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="landing-splash">
+              <div class="login-top">
+                <div class="login-top-inner">
+                  <%= link_to "Your Account", edit_user_registration_path %>
+                </div>
+                <div class="login-top-inner">
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                </div>
+                <div class="login-top-inner">
+                  <%= link_to "Back", root_path %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="landing-splash">
+              <div class="login-inner-top">
+                <h3>Hello, <%= current_user.first_name %></h3>
+                <p id="notice"><%= notice %></p>
+              </div>
+          </div>
+
         </div>
-      </header>
-
-      <div class="top">
-
-        <% if current_user.is_a?(GuestUser) %>
-          <div class="landing-splash">
-            <div class="login-top">
-              <div>
-                <%= link_to "Register", new_user_registration_path %>
-              </div>
-              <div>
-                <%= link_to "Login", new_user_session_path %>
-              </div>
-            </div>
-          </div>
-        <% else %>
-          <div class="landing-splash">
-            <div class="login-top">
-              <div class="login-top-inner">
-                <%= link_to "Your Account", edit_user_registration_path %>
-              </div>
-              <div class="login-top-inner">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-              </div>
-              <div class="login-top-inner">
-                <%= link_to "Back", root_path %>
-              </div>
-            </div>
-          </div>
-        <% end %>
 
         <div class="landing-splash">
-            <div class="login-inner-top">
-              <h3>Hello, <%= current_user.first_name %></h3>
-              <p id="notice"><%= notice %></p>
-            </div>
+          <%= link_to root_path do %>
+            <%= image_tag("logo-transparent-02-735x800px.png", :alt => "logo", :class => "logo") %>
+          <% end %>
         </div>
 
+        <div>
+          <%= yield %>
+        </div>
+      
       </div>
 
-      <div class="landing-splash">
-        <%= link_to root_path do %>
-          <%= image_tag("logo-transparent-02-735x800px.png", :alt => "logo", :class => "logo") %>
-        <% end %>
-      </div>
-
-      <div>
-        <%= yield %>
-      </div>
-    
     </div>
 
-    <footer>
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
