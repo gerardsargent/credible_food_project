@@ -1,8 +1,46 @@
 <div class="container centre-text">
 
-    <h2>Sample Data</h2>
+    <h3>Sample Data</h3>
 
 </div class>
+
+        <div class="top">
+
+          <% if current_user.is_a?(GuestUser) %>
+            <div class="landing-splash">
+              <div class="login-top">
+                <div>
+                  <%= link_to "Register", new_user_registration_path %>
+                </div>
+                <div>
+                  <%= link_to "Login", new_user_session_path %>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="landing-splash">
+              <div class="login-top">
+                <div class="login-top-inner">
+                  <%= link_to "Home", root_path %>
+                </div>
+                <div class="login-top-inner">
+                  <%= link_to "Your Account", edit_user_registration_path %>
+                </div>
+                <div class="login-top-inner">
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="landing-splash">
+              <div class="login-inner-top">
+                <h3>Hello, <%= current_user.first_name %></h3>
+                <p id="notice"><%= notice %></p>
+              </div>
+          </div>
+
+        </div>
 
 <%= render 'reading_header', reading: @reading %>
 
