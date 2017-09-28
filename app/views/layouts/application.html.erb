@@ -39,7 +39,15 @@
         <% else %>
           <div class="landing-splash">
             <div class="login-top">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              <div class="login-top-inner">
+                <%= link_to "Your Account", edit_user_registration_path %>
+              </div>
+              <div class="login-top-inner">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </div>
+              <div class="login-top-inner">
+                <%= link_to "Back", root_path %>
+              </div>
             </div>
           </div>
         <% end %>

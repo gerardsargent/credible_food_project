@@ -36,6 +36,20 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0; 
 }
 
+.cfp-field label, 
+.cfp-field em,
+.cfp-field i {
+    width: 100%;
+    display: block;
+}
+
+.field_with_errors input {
+    border: 1px solid #631212 !important;
+    -webkit-box-shadow: 0px 0px 5px 0px #9C1D1D;
+    -moz-box-shadow: 0px 0px 5px 0px #9C1D1D;
+    box-shadow: 0px 0px 5px 0px #9C1D1D;
+}
+
 .footer-text a {
     color: #D0FCD4 !important;
 }
@@ -132,6 +146,10 @@ tr:nth-of-type(odd) {
     text-align: center;
 }
 
+.reading-header-container {
+    overflow: scroll;
+}
+
 .report-container {
     display: flex;
 }
@@ -166,6 +184,10 @@ tr:nth-of-type(odd) {
 
 .login-top div {
     padding: 0 10px;
+}
+
+.login-top-inner {
+    display: block;
 }
 
 .login-inner {
