@@ -1,5 +1,11 @@
 <div class="container mt-5 mb-5">
 
+  <div class="landing-splash">
+    <%= link_to root_path do %>
+      <%= image_tag("regensoil-logo-800x513.png", :alt => "Regensoil QMC Logo", :class => "logo") %>
+    <% end %>
+  </div>
+
   <div class="row justify-content-md-center">
     <h3>Sign up</h3>
   </div>
@@ -78,8 +84,6 @@
           <%= f.submit "Sign up", class: 'btn btn-success' %>
         </div>
       <% end %>
-
-      <%= render "devise/shared/links" %>
 
     </div>
 

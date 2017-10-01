@@ -2,9 +2,15 @@
 
   <% if current_user.is_a?(GuestUser) %>
 
+    <div class="landing-splash">
+      <%= link_to root_path do %>
+        <%= image_tag("regensoil-logo-1600x1026.png", :alt => "Regensoil QMC Logo", :class => "landing-logo") %>
+      <% end %>
+    </div>
+
     <div class="row">
       <div class="col align-self-center landing-title">
-        <h2>Using The Website</h2>
+        <h2 class="welcome-title">Welcome</h2>
       </div>
     </div>
 
@@ -51,6 +57,12 @@
     </div>
 
   <% else %>
+
+    <div class="landing-splash">
+      <%= link_to root_path do %>
+        <%= image_tag("regensoil-logo-800x513.png", :alt => "Regensoil QMC Logo", :class => "logo") %>
+      <% end %>
+    </div>
     
     <div class="login-inner">
       <%= render 'reading_list', readings: @user_readings %>

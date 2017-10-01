@@ -20,7 +20,7 @@ html, body {
 }
 
 body {
-    font-family: 'Work Sans','Helvetica-Neue', sans-serif !important;
+    font-family: 'Nunito','Helvetica-Neue', sans-serif !important;
     color: #3A3A3C;
     margin: 0;
     letter-spacing: 0.03em;
@@ -45,7 +45,9 @@ h1, h2, h3, h4, h5, h6, p {
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
     margin-bottom: 25px !important;
-    font-family: 'Nunito', 'Helvetica-Neue', sans-serif !important;
+    font-family: 'Roboto', 'Helvetica-Neue', sans-serif !important;
+    font-weight: 200 !important;
+    text-transform: uppercase;
 }
 
 p {
@@ -108,7 +110,7 @@ tr:nth-of-type(odd) {
 }
 
 .cfp-field input, #reading_other_notes {
-    border-radius: 7.67px;
+    border-radius: 4px;
     border: 1px solid #99a2aa;
     width: 100%;
     padding: 10px;
@@ -173,6 +175,12 @@ tr:nth-of-type(odd) {
 
 .report-container {
     display: flex;
+}
+
+.hello {
+    font-family: 'Nunito','Helvetica-Neue', sans-serif !important;
+    color: #242425;
+    font-size: 1em;
 }
 
 .landing-instructions-container {
@@ -244,8 +252,14 @@ tr:nth-of-type(odd) {
 }
 
 .logo {
-    margin: 0 auto;
+    margin: 25px auto;
     max-width: 150px;
+    display: block;
+}
+
+.landing-logo {
+    margin: 0 auto;
+    max-width: 400px;
     display: block;
 }
 
@@ -278,6 +292,12 @@ tr:nth-of-type(odd) {
 
 .subtitle {
     margin-bottom: 0 !important;
+}
+
+.welcome-title {
+    font-size: 3.5em;
+    margin: 50px 0 !important;
+    letter-spacing: 0.15em;
 }
 
 // .top {

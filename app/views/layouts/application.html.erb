@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
 
     <meta name="keywords" content="<%= @seo_keywords %>">
-    <link href="https://fonts.googleapis.com/css?family=Nunito|Work+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= stylesheet_link_tag    'samples', media: 'all' %>
@@ -47,16 +47,10 @@
           <% end %>
 
           <div class="p-2 ml-auto greeting">
-            <h5>Hello, <%= current_user.first_name %></h5>
+            <h5 class="hello">Hello, <%= current_user.first_name %></h5>
             <p id="notice"><%= notice %></p>
           </div>
 
-        </div>
-
-        <div class="landing-splash">
-          <%= link_to root_path do %>
-            <%= image_tag("regensoil-logo-800x540.png", :alt => "logo", :class => "logo") %>
-          <% end %>
         </div>
 
         <div>
