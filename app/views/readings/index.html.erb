@@ -14,9 +14,17 @@
       </div>
     </div>
 
+    <div class="row justify-content-center">
+      <div class="col-md-5 landing-instructions-img-container">
+        <%= image_tag("take-a-soil-sample-1000.jpg", :alt => "RegenSoil QMC - Take a Soil Sample", :class => "landing-instructions-img") %>
+      </div>
+      <div class="col-md-5 landing-instructions-img-container">
+        <%= image_tag("how-to-use-qmc-1000.jpg", :alt => "RegenSoil QMC - Take a Soil Sample", :class => "landing-instructions-img") %>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-md-4 landing-instructions-container">
-        <%= image_tag("take-a-soil-sample-1000.jpg", :alt => "RegenSoil QMC - Take a Soil Sample", :class => "landing-instructions-img") %>
         <h3>Taking a Soil Sample</h3>
         <div class="col align-self-center">
           <h2><%= fa_icon "check-circle-o", class: "text-muted large-icon" %></h2>
@@ -30,7 +38,6 @@
       </div>
 
       <div class="col-md-4 landing-instructions-container">
-        <%= image_tag("how-to-use-qmc-1000.jpg", :alt => "RegenSoil QMC - Take a Soil Sample", :class => "landing-instructions-img") %>
         <h3>Inputting Data</h3>
         <div class="col align-self-center">
           <h2><%= fa_icon "clock-o", class: "text-muted large-icon" %></h2>
@@ -43,7 +50,6 @@
       </div>
 
       <div class="col-md-4 landing-instructions-container">
-        <%= image_tag("results-1000.jpg", :alt => "RegenSoil QMC - Take a Soil Sample", :class => "landing-instructions-img") %>
         <h3>Your results</h3>
         <div class="col align-self-center">
           <h2><%= fa_icon "bar-chart", class: "text-muted large-icon" %></h2>
