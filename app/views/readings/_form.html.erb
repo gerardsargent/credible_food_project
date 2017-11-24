@@ -1,0 +1,69 @@
+<%= form_for(reading) do |f| %>
+  <% if reading.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h3>
+
+      <ul>
+      <% reading.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="reading-input">
+    <tr>
+      <th><%= f.label :client %></th>
+      <td class="cfp-field"><%= f.text_field :client %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :organisation %></th>
+      <td class="cfp-field"><%= f.text_field :organisation %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :date_collected %></th>
+      <td class="cfp-field"><%= f.datetime_select :date_collected %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :date_observed %></th>
+      <td class="cfp-field"><%= f.datetime_select :date_observed %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :location %></th>
+      <td class="cfp-field"><%= f.text_field :location %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :sample_type %></th>
+      <td class="cfp-field"><%= sample_type_choice = ["Field", "Compost"] 
+      f.select :sample_type, sample_type_choice %></td>
+    </tr>    
+    <tr>
+      <th><%= f.label :plants_present %></th>
+      <td class="cfp-field"><%= f.text_field :plants_present %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :plants_desired %></th>
+      <td class="cfp-field"><%= f.text_field :plants_desired %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :other_notes %></th>
+      <td class="cfp-field"><%= f.text_area :other_notes %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :observed_by %></th>
+      <td class="cfp-field"><%= f.text_field :observed_by %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "LT Id:" %></th>
+      <td class="cfp-field"><%= f.number_field :lt_id %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "Cust Id:" %></th>
+      <td class="cfp-field"><%= f.number_field :cust_id %></td>
+    </tr>
+    <tr>
+      <th colspan="2"><%= f.submit "Submit", class: "btn btn-success" %></th>
+    </tr>
+  </table>
+
+<% end %>

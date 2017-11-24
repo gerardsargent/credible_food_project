@@ -1,0 +1,369 @@
+@import "bootstrap";
+
+$dark-green: #213921;
+$margin-padding-desktop: 25px;
+$sample-background: #BFC24B;
+$biomass-background: #C1A065;
+$form-background: #C19F6D;
+$border-radius: 7.64px;
+
+.btn.btn-success.btn-sample {
+    color: white !important;
+    font-size: 0.8em;
+}
+
+.btn-sample-container {
+    max-width: 50px;
+    margin: 0 auto;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1E2831;
+}
+
+form input[type="text"]:focus, form input[type="password"]:focus, form input[type="email"]:focus, form input[type="number"]:focus, form input[type="url"]:focus, form input[type="tel"]:focus, form input[type="date"]:focus, form input[type="time"]:focus, form textarea:focus {
+    border: 1px solid #99a2aa;
+    -webkit-box-shadow: 0 0 4px #99a2aa;
+    box-shadow: 0 0 4px #99a2aa;
+}
+
+header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.active {
+    background-color: #efefef !important;
+    font-weight: 600;
+}
+
+.amoeba {
+    background-color: lighten( $biomass-background, 20% )
+}
+
+.bacteria {
+    background-color: $sample-background;
+}
+
+.biomass {
+    background-color: $biomass-background;
+}
+
+// .blank-samples-container {
+//     margin-bottom: 45%;
+// }
+
+.btn {
+    font-size: 0.8em;
+}
+
+.centre-text {
+    text-align: center;
+}
+
+.crud-options {
+    text-align: center;
+}
+
+.actinobacteria {
+    background-color: lighten( $sample-background, 10% );
+}
+
+.ciliates {
+    background-color: lighten( $biomass-background, 30%);
+}
+
+.flagellate {
+    background-color: lighten( $biomass-background, 10%);
+}
+
+.form-control {
+    padding: 0.2em;
+    font-size: 0.5rem;
+}
+
+.fungi {
+    background-color: lighten( $sample-background, 20% );
+}
+
+.nav-tabs {
+    margin: 10px 0 0 0;
+}
+
+.nav-tabs .active {
+    background: #DEDDDD;
+    border-top-right-radius: 7.67px;
+    border-top-left-radius: 7.67px;
+}
+
+.nav-tabs li {
+    padding: 10px 15px;
+    border: 1px solid #E6E6E6;
+    border-bottom: none;
+    border-top-right-radius: 7.67px;
+    border-top-left-radius: 7.67px;
+    font-size: 0.8em;
+}
+
+.nematodes {
+    background-color: lighten( $biomass-background, 40%);
+}
+
+.nematodes-entry td {
+    background: #efefef !important;
+    border: none;
+    
+}
+
+.notes-head {
+    text-align: center;
+    background: #efefef;
+    border: none;
+}
+
+.oomycetes {
+    background-color: lighten( $sample-background, 30% );
+}
+
+.others {
+    background-color: lighten( $sample-background, 40% );
+}
+
+.reading-header {
+    margin-bottom: 10px;
+}
+
+.flex-centre {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.flex-no-wrap-lg {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.form-control:focus {
+    border-color: #838B92;
+}
+
+.form-header {
+    background-color: $form-background;
+}
+
+.form_titles th {
+    border-left: none;
+    border-right: none;
+    border-top: #efefef 1px solid;
+    padding: 0 8px;
+    line-height: 1.5;
+}
+
+.sample-container {
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+.nav-tabs li {
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+}
+
+.sample-header-tabs a {
+    color: #5E6469;
+}
+
+.sample-header-tabs a:hover, 
+.sample-header-tabs a:active {
+    color: #43474B;
+    border-top-right-radius: 7.67px;
+    border-top-left-radius: 7.67px;
+}
+
+.sample-history {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+    margin: $margin-padding-desktop auto;
+    border-radius: $border-radius;
+}
+
+.sample-history-inner {
+    width: 100%;
+}
+
+.sample-history-item {
+    padding: 5px 0;
+}
+
+.sample-history-title {
+    width: 100%;
+    text-align: center;
+    padding: $margin-padding-desktop;
+}
+
+.sample_input input {
+    background-color: #f4f5f5 !important;
+}
+
+table .sample-input-pane {
+    border-top: none !important;
+}
+
+.sample-notice {
+    background-color: #96D4FF;
+    border: 1px solid #96C8F2;
+    padding: $margin-padding-desktop;
+    text-align: center;
+} 
+
+.sample-summary {
+    background-color: $form-background;
+}
+
+.tab-content {
+    margin-bottom: 10px;
+}
+
+.tab-pane {
+    border: 1px solid #d4d4d4;
+    border-top: none;
+    overflow: scroll;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.25);
+    border: 1px solid #C4C4C4;
+    z-index: 999;
+}
+
+.tab-pane table {
+    box-shadow: none;
+    border: none;
+}
+
+.tab-pane .sample_submit {
+    margin-bottom: 30px;
+}
+
+@media (min-width: 464px) {
+    .tab-content {
+        margin-bottom: 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .flex-no-wrap-lg {
+        flex-wrap: nowrap;
+    }
+}
+
+// Samples Form Mk.II CSS - Below
+
+.form_title {
+    display: flex;
+    flex-grow: 12;
+}
+
+table {
+    width: 100%;
+}
+
+table th, td {
+    font-size: 0.5em;
+}   
+
+th {
+    background-image: linear-gradient(180deg, #efefef, #dfe1e2);
+    color: #5E6469;
+    border: solid 1px #cdcdcd;
+    text-shadow: #fff 0 1px 0;
+    line-height: 18px;
+    font-weight: bold;
+    font-size: 0.45em !important;
+    border-top-color: #e6e6e6;
+    border-right-color: #d4d4d4;
+    border-bottom-color: #cdcdcd;
+    border-left-color: #d4d4d4;
+}
+
+tr:nth-of-type(odd) {
+  background: #f4f5f5;
+}
+
+tr:nth-of-type(even) {
+  background: #fff;
+}
+
+.second_section, .third-section {
+    margin: 0 auto 10px;
+    width: 90%;
+}
+
+.nematodes {
+    flex-grow: 1;
+    max-width: 20%;
+}
+
+.notes {
+    // flex-grow: 3;
+    // max-width: 70%;
+}
+
+tr.nematodes-header th {
+    background: #efefef;
+    border-bottom: none;
+    border-top: none;
+    text-align: center;
+}
+
+tr.nematodes-header th:first-child {
+    border-left: none;
+}
+
+tr.nematodes-header th:last-child {
+    border-right: none;
+}
+
+.notes_2 th {
+    max-width: 20%;
+}
+
+.sample_submit {
+    display: flex;
+    justify-content: center;
+}
+
+.sample_input input {
+    background-color: #fff !important;
+    font-size: 0.8em;
+    padding: 2px;
+    color: #5E6469;
+}
+
+#sample_notes {
+    background-color: #fff;
+    margin: 10px auto;
+    width: 100%;
+}

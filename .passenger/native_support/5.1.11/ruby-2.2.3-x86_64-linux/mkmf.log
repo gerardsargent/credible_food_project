@@ -1,0 +1,173 @@
+have_header: checking for alloca.h... -------------------- yes
+
+"gcc -o conftest -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g conftest.c  -L. -L/home/tluce/.rvm/rubies/ruby-2.2.3/lib -Wl,-R/home/tluce/.rvm/rubies/ruby-2.2.3/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-R'/../lib' -lruby  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -E -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <alloca.h>
+/* end */
+
+--------------------
+
+have_header: checking for ruby/version.h... -------------------- yes
+
+"gcc -E -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/version.h>
+/* end */
+
+--------------------
+
+have_header: checking for ruby/io.h... -------------------- yes
+
+"gcc -E -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/io.h>
+/* end */
+
+--------------------
+
+have_header: checking for ruby/thread.h... -------------------- yes
+
+"gcc -E -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/thread.h>
+/* end */
+
+--------------------
+
+have_var: checking for ruby_version... -------------------- no
+
+"gcc -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g   -c conftest.c"
+conftest.c: In function 't':
+conftest.c:13:55: error: 'ruby_version' undeclared (first use in this function)
+ int t(void) { const volatile void *volatile p; p = &(&ruby_version)[0]; return 0; }
+                                                       ^
+conftest.c:13:55: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:13:45: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+ int t(void) { const volatile void *volatile p; p = &(&ruby_version)[0]; return 0; }
+                                             ^
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { const volatile void *volatile p; p = &(&ruby_version)[0]; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_io_blocking_region() in ruby/io.h... -------------------- yes
+
+"gcc -o conftest -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g conftest.c  -L. -L/home/tluce/.rvm/rubies/ruby-2.2.3/lib -Wl,-R/home/tluce/.rvm/rubies/ruby-2.2.3/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-R'/../lib' -lruby  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:15:57: error: 'rb_thread_io_blocking_region' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_io_blocking_region; return 0; }
+                                                         ^
+conftest.c:15:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:15:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_io_blocking_region; return 0; }
+                                ^
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby/io.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_io_blocking_region; return 0; }
+/* end */
+
+"gcc -o conftest -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g conftest.c  -L. -L/home/tluce/.rvm/rubies/ruby-2.2.3/lib -Wl,-R/home/tluce/.rvm/rubies/ruby-2.2.3/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-R'/../lib' -lruby  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:15:1: warning: implicit declaration of function 'rb_thread_io_blocking_region' [-Wimplicit-function-declaration]
+ int t(void) { rb_thread_io_blocking_region(); return 0; }
+ ^
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby/io.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { rb_thread_io_blocking_region(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_call_without_gvl() in ruby/thread.h... -------------------- yes
+
+"gcc -o conftest -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/x86_64-linux -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0/ruby/backward -I/home/tluce/.rvm/rubies/ruby-2.2.3/include/ruby-2.2.0 -I/usr/share/passenger/ruby_extension_source     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC -g conftest.c  -L. -L/home/tluce/.rvm/rubies/ruby-2.2.3/lib -Wl,-R/home/tluce/.rvm/rubies/ruby-2.2.3/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-R'/../lib' -lruby  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:15:32: warning: variable 'p' set but not used [-Wunused-but-set-variable]
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_call_without_gvl; return 0; }
+                                ^
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby/thread.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_call_without_gvl; return 0; }
+/* end */
+
+--------------------
+

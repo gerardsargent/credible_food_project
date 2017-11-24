@@ -1,0 +1,44 @@
+@import "bootstrap";
+
+form input:focus, form textarea:focus {
+  border: 1px solid #99a2aa !important;
+  -webkit-box-shadow: 0 0 4px #99a2aa !important;
+  box-shadow: 0 0 4px #99a2aa !important;
+}
+
+.flex-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.report-container {
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+table.reading-input {
+  font-size: 2em;
+  border: none;
+}
+
+table.sample-report {
+  float: left;
+  width: auto !important;
+  font-size: 1.7em !important;
+  border: 0 !important;
+  margin: 20px 0;
+}
+
+tr:nth-of-type(odd) {
+  background: #f4f5f5;
+}
+
+td {
+  vertical-align: top;
+  border: 0;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 0.45em;
+}

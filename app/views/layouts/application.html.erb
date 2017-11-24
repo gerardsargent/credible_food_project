@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CredibleFoodProject</title>
+    <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="keywords" content="<%= @seo_keywords %>">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto" rel="stylesheet">
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag    'samples', media: 'all' %>
+    <%= stylesheet_link_tag    'readings', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="page-wrap">
+
+      <div class="container">
+
+        <header>
+          <div class="centre-text main-title">
+            <h1>The Credible Food Project</h1>
+          </div>
+        </header>
+
+        <div class="d-flex justify-content-start">
+
+          <% if current_user.is_a?(GuestUser) %>
+              <div class="p-2 login-top-inner">
+                <%= link_to "Register", new_user_registration_path %>
+              </div>
+              <div class="p-2 login-top-inner">
+                <%= link_to "Login", new_user_session_path %>
+              </div>
+          <% else %>
+              <div class="p-2 login-top-inner">
+                <%= link_to "Home", root_path %>
+              </div>
+              <div class="p-2 login-top-inner">
+                <%= link_to "Your Account", edit_user_registration_path %>
+              </div>
+              <div class="p-2 login-top-inner">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </div>
+          <% end %>
+
+          <div class="p-2 ml-auto greeting">
+            <h5 class="hello">Hello, <%= current_user.first_name %></h5>
+            <p id="notice"><%= notice %></p>
+          </div>
+
+        </div>
+
+        <div>
+          <%= yield %>
+        </div>
+      
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="footer-text"><a href="https://crediblefood.com"><%= image_tag("cfp-logo-white-85px@2x.png", :alt => "Credible Food Project", :class => "cfp-logo", :style => "margin-bottom: 5px") %></a><br>&copy; <%= Date.today.year %></p>
+          </div>
+          <div class="col-md-6">
+            <p class="footer-text"><a href="https://www.boxfreshwebsites.com"><%= image_tag("boxfresh-white-250px@2x.png", :alt => "Boxfresh Creative Media", :class => "boxfresh-logo") %></a><br>Website development</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

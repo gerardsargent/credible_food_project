@@ -1,10 +1,4 @@
-source 'https://rubygems.org'
-
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
@@ -24,9 +18,10 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -34,6 +29,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# require 'rbconfig'
+# gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw/i
+
+# Allows connection to Heroku
+gem "figaro"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,7 +48,34 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Ruby library that pretty prints Ruby objects in full color exposing their internal structure with proper indentation. Useful for debugging calculations dependent on variables being passed between actions
+  gem 'awesome_print', '~> 1.7'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# User authentication
+gem 'devise', '~> 4.2'
+
+# User authorisation
+gem 'petergate', '~> 1.7', '>= 1.7.5'
+
+# Bootstrap v4
+gem 'bootstrap', '~> 4.0.0.beta'
+
+# ActiveAdmin
+gem 'activeadmin'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
+
+# Country list for new user signup
+gem 'country_select', require: 'country_select_without_sort_alphabetical'
+
+# Font-awesome
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+
+# jQuery form validation
+gem 'jquery-validation-rails'
+
+  # Calculates descriptive statistics including measures of central tendency (e.g. mean, median mode), dispersion (e.g. range, and quartiles), and spread (e.g variance and standard deviation).
+  gem 'descriptive-statistics', '~> 2.1', '>= 2.1.2'
