@@ -24,3 +24,6 @@
 
 # Ignore secrets.yml
 /config/secrets.yml
+
+/vendor
+/bin
