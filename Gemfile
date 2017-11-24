@@ -1,11 +1,5 @@
 source 'http://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "http://github.com/#{repo_name}.git"
-end
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use mysql as the database for Active Record
@@ -61,9 +55,6 @@ group :development do
   # Calculates descriptive statistics including measures of central tendency (e.g. mean, median mode), dispersion (e.g. range, and quartiles), and spread (e.g variance and standard deviation).
   gem 'descriptive-statistics', '~> 2.1', '>= 2.1.2'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User authentication
 gem 'devise', '~> 4.2'
