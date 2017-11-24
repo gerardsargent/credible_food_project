@@ -51,9 +51,6 @@ group :development do
 
   # Ruby library that pretty prints Ruby objects in full color exposing their internal structure with proper indentation. Useful for debugging calculations dependent on variables being passed between actions
   gem 'awesome_print', '~> 1.7'
-
-  # Calculates descriptive statistics including measures of central tendency (e.g. mean, median mode), dispersion (e.g. range, and quartiles), and spread (e.g variance and standard deviation).
-  gem 'descriptive-statistics', '~> 2.1', '>= 2.1.2'
 end
 
 # User authentication
@@ -79,3 +76,6 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 # jQuery form validation
 gem 'jquery-validation-rails'
+
+  # Calculates descriptive statistics including measures of central tendency (e.g. mean, median mode), dispersion (e.g. range, and quartiles), and spread (e.g variance and standard deviation).
+  gem 'descriptive-statistics', '~> 2.1', '>= 2.1.2'
