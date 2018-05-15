@@ -270,7 +270,8 @@
           </div>
 
           <div class="sample_submit form-group">
-            <%= s.submit "Add Sample", class: 'btn btn-success' %>
+            <%= s.submit "Add Sample", class: 'btn btn-success sample-submit-btn' %>
+            <%= link_to 'Soil Report', reading, class: "btn btn-primary sample-submit-btn" %>
           </div>
               
           <% end %>
@@ -513,7 +514,8 @@
           </div> <!-- End of third-section -->
 
           <div class="sample_submit form-group">
-            <%= s.submit "Add Sample", class: 'btn btn-success' %>
+            <%= s.submit "Add Sample", class: 'btn btn-success sample-submit-btn' %>
+            <%= link_to 'Soil Report', reading, class: "btn btn-primary sample-submit-btn" %>
           </div>
               
           <% end %>
@@ -756,10 +758,9 @@
           </div> <!-- End of third-section -->
 
           <div class="sample_submit form-group">
-            <%= s.submit "Add Sample", class: 'btn btn-success' %>
-          </div>
-            
-          
+            <%= s.submit "Add Sample", class: 'btn btn-success sample-submit-btn' %>
+            <%= link_to 'Soil Report', reading, class: "btn btn-primary sample-submit-btn" %>
+          </div>         
               
           <% end %>
 
@@ -1002,6 +1003,7 @@
 
           <div class="sample_submit form-group">
             <%= s.submit "Add Sample", class: 'btn btn-success sample-submit-btn' %>
+            <%= link_to 'Soil Report', reading, class: "btn btn-primary sample-submit-btn" %>
           </div>
               
           <% end %>

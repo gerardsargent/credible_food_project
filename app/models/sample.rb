@@ -63,9 +63,9 @@ class Sample < ApplicationRecord
         entry_label_calc
     end
 
-    def to_s
-        id
-    end
+    # def to_s
+    #     id
+    # end
  
     private
 
